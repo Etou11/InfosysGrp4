@@ -8,18 +8,18 @@
 		<version>2.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>hsesslingen.group4</groupId>
-	<artifactId>jumbleShare</artifactId>
+	<groupId>com.infosys.grp4</groupId>
+	<artifactId>JumbleShare</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>jumbleShare</name>
-	<description>Infosys project of group 4</description>
+	<name>JumbleShare</name>
+	<description>Application to offer and rent vehicles</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -27,8 +27,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>mssql-jdbc</artifactId>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
