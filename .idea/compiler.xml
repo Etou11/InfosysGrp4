@@ -7,9 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="JumbleShare" />
+        <module name="jumbleShare" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="jumbleShare" target="11" />
       <module name="JumbleShare" target="11" />
       <module name="JumbleShare (1)" target="11" />
       <module name="wrapper" target="1.5" />
@@ -18,6 +20,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="JumbleShare" options="-parameters" />
+      <module name="jumbleShare" options="-parameters" />
     </option>
   </component>
 </project>

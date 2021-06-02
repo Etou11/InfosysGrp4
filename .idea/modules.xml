@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JumbleShare.iml" filepath="$PROJECT_DIR$/JumbleShare.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jumbleShare.iml" filepath="$PROJECT_DIR$/jumbleShare.iml" />
     </modules>
   </component>
 </project>
