@@ -5,8 +5,7 @@ import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21UserRepository;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +27,9 @@ public class MainController
 
     @GetMapping(path = "getVehicleData")
     List<Grp4Ss21Vehicle> getVehicle() { return vehicleRepository.findAll(); }
+
+    //@PostMapping(path = "createNewVehicle")
+    //public @ResponseBody String addNewVehicle (@RequestParam boolean isActive, @RequestParam String brand, @RequestParam String plateOrSerialNumber, @RequestParam String additionalInformation, @RequestParam double pricePerMinute)
 
 
 }
