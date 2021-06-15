@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="utf-8">
         <title>JumbleShare</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="styles.css" type="text/css" rel="stylesheet"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <style>
           .table {
               display: block;
@@ -58,7 +60,7 @@
           }
           /* #vehicle:nth-child(7){
               background-image: url('images/Fahrrad.jpg');
-              background-size: cover;  
+              background-size: cover;
           } */
 
         </style>
@@ -80,18 +82,64 @@
       </header>
 
     <body>
-        
-        <div class="table"></div>
-        <div class="vehicles">
-            <div id="vehicle"> </div>
-            <div id="vehicle"> </div>
-            <div id="vehicle"> </div>
-            <div id="vehicle"> </div>
-            <div id="vehicle"> </div>
-            <div id="vehicle"> </div>
-            <!-- <div id="vehicle"> </div> -->
-        </div>
-           
+
+    <table id="datatable-vehicle-index" class="datatable datatable-vehicle datatable-vehicle-index" style="width:100%">
+        <thead>
+        <tr>
+            <th>Brand</th>
+            <th>Plate</th>
+            <th>Price per Minute</th>
+            <th>Longitude</th>
+            <th>Latitude</th>
+            <th>Vehicle Type</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+
+        </tr>
+        </tfoot>
+    </table>
+
+    <script>
+
+    function createDataTable(args) {
+
+        $('#datatable-vehicle-index').DataTable( {
+            data: args,
+            "columns": [
+            { "data": "brand" },
+            { "data": "plateOrSerialNumber" },
+            { "data": "pricePerMinute" },
+            { "data": "longitude" },
+            { "data": "latitude" },
+            { "data": "vehicleTypeId" }
+               ]
+        } );
+
+    }
+
+    $(document).ready(function() {
+
+         $.ajax({
+            type: "GET",
+            url: "/getVehicleData",
+            success: function (res) {
+                createDataTable(res);
+            },
+            error: (xhr, ajaxOptions, thrownError) => {
+                console.error(xhr.responseText, { xhr });
+            }
+        });
+
+} );
+
+
+
+
+
+    </script>
+
     </body>
 
     <footer>

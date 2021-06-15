@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 	$('.acc h2').click(function(){
 		$(this).next('.content').slideToggle();

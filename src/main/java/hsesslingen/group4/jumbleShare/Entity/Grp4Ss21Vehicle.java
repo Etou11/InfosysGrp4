@@ -49,6 +49,6 @@ public class Grp4Ss21Vehicle implements Serializable
     private String userId;
 
     @Column(name = "[vehicletypeid]", nullable = false)
-    private String verhicleTypeId;
+    private String vehicleTypeId;
 
 }
