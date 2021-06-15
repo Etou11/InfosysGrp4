@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <title>JumbleShare</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles.css" type="text/css" rel="stylesheet"/>
+        <style>
+          input[type=text], input[type=password] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              display: inline-block;
+              border: 1px solid lightgray;
+              box-sizing: border-box;
+          }
+          button {
+              background-color: #3082cf;
+              color: white;
+              padding: 14px 20px;
+              margin: 8px 0;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+          }
+          button:hover {
+              opacity: 0.8;
+          }
+          .formular{
+              margin: 50px;
+              width: 600px;
+          }
+          #add{
+              width: 300px;
+          }
+
+        </style>
+    </head>
+    <header class="site-header">
+        <div class="wrapper site-header__wrapper">
+          <a href="index.html" class="logo"><img src="images/logo_small.png" alt="logo" width="50%"></a>
+          <nav class="nav">
+            <ul class="nav__wrapper">
+              <li class="nav__item"><a href="index.html">Home</a></li>
+              <li class="nav__item"><a href="new.html">Add Vehicle</a></li>
+              <li class="nav__item"><a href="account.html">My Account</a></li>
+              <li class="nav__item"><a href="contact.html">Contact</a></li>
+              <li class="nav__item"><a href="login.html">Log In</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+<div class="limiter">
+    <body>
+     <h1> Add Vehicle </h1>
+
+     <div class="formular">
+     <form action="index.html" method="post">
+      
+          <label for="field"><b>Vehicle Typ</b></label>
+          <input type="text" placeholder="Enter Vehicle type" name="uname" required>
+      
+          <label for="field"><b>Brand</b></label>
+          <input type="text" placeholder="Enter Vehicle Brand" name="uname" required>
+
+          <label for="field"><b>Model</b></label>
+          <input type="text" placeholder="Enter Vehicle Model" name="uname" required>
+
+          <label for="field"><b>Location</b></label>
+          <input type="text" placeholder="Enter Vehicle Location" name="uname" required>
+      
+          <label for="field"><b>Price per Minute</b></label>
+          <input type="text" placeholder="Enter Vehicle Price per Minute" name="uname" required>
+
+          <label for="field"><b>Other Information</b></label>
+          <input type="text" placeholder="Enter Other Information" name="uname" required>
+
+          <label for="field"><b>Phone number</b></label>
+          <input type="text" placeholder="Enter Your Phonenumber" name="uname" required>
+
+          <button id="add" type="add"><a href="index.html">Add Vehicle</a></button>
+          <label>
+        </div>
+    </body>
+</div> 
+    <footer>
+        <p> Follow us </p>
+        <div id="icons">
+            
+          <img src="images/facebook.svg" alt="facebook"> 
+          <img src="images/instagram.svg" alt="instagram">
+          <img src="images/twitter.svg" alt="twitter">
+          <img src="images/linkedin.svg" alt="linkedin">
+        </div>
+
+        <div id="copyright"> <p> &copy; 2021 by JumbleShare</p> </div>
+      
+    </footer>
+</div>
+</head>
+</html>

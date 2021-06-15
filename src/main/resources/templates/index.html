@@ -1,10 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <title>JumbleShare</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles.css" type="text/css" rel="stylesheet"/>
+        <style>
+          .table {
+              display: block;
+              position: relative;
+              width: 50%;
+              height: 400px;
+              left: 25%;
+              margin-top: 5%;
+              margin-bottom: 5%;
+              border: 2px solid #ccc;
+          }
+
+          .vehicles {
+              display: inline-block;
+              margin: 90px;
+          }
+
+          .vehicles > #vehicle{
+              width: 300px;
+              height: 200px;
+              position: relative;
+              margin: 5px;
+              float: left;
+              border: 1px solid black;
+          }
+
+          #vehicle:nth-child(1){
+              background-image: url('images/Auto.jpg');
+              background-size: cover;
+          }
+
+          #vehicle:nth-child(2){
+              background-image: url('images/Transporter.png');
+              background-size: cover;
+          }
+          #vehicle:nth-child(3){
+              background-image: url('images/Motorrad.jpg');
+              background-size: cover;
+          }
+          #vehicle:nth-child(4){
+              background-image: url('images/Roller.jpg');
+              background-size: cover;
+          }
+          #vehicle:nth-child(5){
+              background-image: url('images/E-Scooter.jpg');
+              background-size: cover;
+          }
+          #vehicle:nth-child(6){
+              background-image: url('images/EBike.jpg');
+              background-size: cover;
+          }
+          /* #vehicle:nth-child(7){
+              background-image: url('images/Fahrrad.jpg');
+              background-size: cover;  
+          } */
+
+        </style>
+    </head>
+
+    <header class="site-header">
+        <div class="wrapper site-header__wrapper">
+          <a href="index.html" class="logo"><img src="images/logo_small.png" alt="logo" width="50%"></a>
+          <nav class="nav">
+            <ul class="nav__wrapper">
+              <li class="nav__item"><a href="index.html">Home</a></li>
+              <li class="nav__item"><a href="new.html">Add Vehicle</a></li>
+              <li class="nav__item"><a href="account.html">My Account</a></li>
+              <li class="nav__item"><a href="contact.html">Contact</a></li>
+              <li class="nav__item"><a href="login.html">Log In</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+    <body>
+        
+        <div class="table"></div>
+        <div class="vehicles">
+            <div id="vehicle"> </div>
+            <div id="vehicle"> </div>
+            <div id="vehicle"> </div>
+            <div id="vehicle"> </div>
+            <div id="vehicle"> </div>
+            <div id="vehicle"> </div>
+            <!-- <div id="vehicle"> </div> -->
+        </div>
+           
+    </body>
+
+    <footer>
+        <p> Follow us </p>
+        <div id="icons">
+            
+          <img src="images/facebook.svg" alt="facebook"> 
+          <img src="images/instagram.svg" alt="instagram">
+          <img src="images/twitter.svg" alt="twitter">
+          <img src="images/linkedin.svg" alt="linkedin">
+        </div>
+
+        <div id="copyright"> <p> &copy; 2021 by JumbleShare</p> </div>
+    </footer>
 </head>
-<body>
-<h1>This is a default index page for testing purpose</h1>
-</body>
 </html>

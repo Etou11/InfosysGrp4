@@ -12,6 +12,27 @@ public class WebController {
         return "index";
     }
 
+    @GetMapping(value = "/account")
+    public String account()
+    {
+        return "account";
+    }
+
+    @GetMapping(value = "/contact")
+    public String contact()
+    {
+        return "contact";
+    }
+
+    @GetMapping(value = "/login")
+    public String login()
+    {
+        return "login";
+    }
+
+    @GetMapping(value = "/new")
+    public String newPage() { return "new"; }
+
     @GetMapping(value = "/test")
     public String test()
     {
