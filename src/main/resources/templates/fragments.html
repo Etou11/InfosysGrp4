@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8">
+    <title>JumbleShare</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" type="text/css" rel="stylesheet"/>
+    <link href=//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+</head>
+<header class="site-header" th:fragment="header">
+    <div class="wrapper site-header__wrapper">
+        <a href="index.html" class="logo"><img src="images/logo_small.png" alt="logo" width="50%"></a>
+        <nav class="nav">
+            <ul class="nav__wrapper">
+                <li class="nav__item"><a href="/index.html">Home</a></li>
+                <li class="nav__item"><a href="/new.html">Add Vehicle</a></li>
+                <li class="nav__item"><a href="/account.html">My Account</a></li>
+                <li class="nav__item"><a href="/contact.html">Contact</a></li>
+                <li class="nav__item"><a href="/login.html">Log In</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<body>
+</body>
+<footer th:fragment="footer">
+    <p> Follow us </p>
+    <div id="icons">
+        <img src="images/facebook.svg" alt="facebook">
+        <img src="images/instagram.svg" alt="instagram">
+        <img src="images/twitter.svg" alt="twitter">
+        <img src="images/linkedin.svg" alt="linkedin">
+    </div>
+    <div id="copyright"><p> &copy; 2021 by JumbleShare</p></div>
+</footer>
+</html>

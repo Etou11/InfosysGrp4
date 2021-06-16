@@ -1,11 +1,28 @@
 <!DOCTYPE html>
-<html lang="de">
-    <head>
-        <meta charset="utf-8">
-        <title>JumbleShare</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="styles.css" type="text/css" rel="stylesheet"/>
-        <style> 
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<header th:replace="fragments :: header"></header>
+<div class="limiter">
+    <body>
+    <h1>Contact us </h1>
+    <div class="contactdata">
+        <div class="contact">
+            <img src="images/location-icon.jpeg" alt="Location">
+            <h3>Location</h3>
+            <p> Flandernstr. 101 <br> 73732 Esslingen <br> Germany</p>
+        </div>
+        <div class="contact">
+            <img src="images/phone-icon.png" alt="Telephone">
+            <h3>Telephone</h3>
+            <p> 0711 397 49</p>
+        </div>
+        <div class="contact">
+            <img src="images/email-icon.jpeg" alt="E-Mail">
+            <h3>E-mail</h3>
+            <P> contact&#64;JumbleShare.com</P>
+        </div>
+    </div>
+    <style>
           .contact > img {
               width: 30%;
               align-items: center;
@@ -13,7 +30,7 @@
           .contactdata > .contact {
               width: 400px;
               height: 400px;
-              float: left;  
+              float: left;
               justify-content: center;
           }
           .contactdata {
@@ -27,57 +44,8 @@
           .contact > p {
               font-size: 20px;
           }
-        </style>
-    </head>
-    <header class="site-header">
-        <div class="wrapper site-header__wrapper">
-          <a href="index.html" class="logo"><img src="images/logo_small.png" alt="logo" width="50%"></a>
-          <nav class="nav">
-            <ul class="nav__wrapper">
-              <li class="nav__item"><a href="index.html">Home</a></li>
-              <li class="nav__item"><a href="new.html">Add Vehicle</a></li>
-              <li class="nav__item"><a href="account.html">My Account</a></li>
-              <li class="nav__item"><a href="contact.html">Contact</a></li>
-              <li class="nav__item"><a href="login.html">Log In</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-<div class="limiter">
-    <body>
-        <h1>Contact us </h1>
-        <div class="contactdata">
-        <div class="contact"> 
-            <img src="images/location-icon.jpeg" alt="Location">
-            <h3>Location</h3>
-            <p> Flandernstr. 101 <br> 73732 Esslingen <br> Germany</p>
-        </div>
-        <div class="contact"> 
-            <img src="images/phone-icon.png" alt="Telephone">
-            <h3>Telephone</h3>
-            <p> 0711 397 49</p>
-        </div>
-        <div class="contact"> 
-            <img src="images/email-icon.jpeg" alt="E-Mail">
-            <h3>E-mail</h3>
-            <P> contact&#64;JumbleShare.com</P>
-        </div>
-      </div>   
+    </style>
     </body>
-</div> 
-    <footer>
-        <p> Follow us </p>
-        <div id="icons">
-            
-          <img src="images/facebook.svg" alt="facebook"> 
-          <img src="images/instagram.svg" alt="instagram">
-          <img src="images/twitter.svg" alt="twitter">
-          <img src="images/linkedin.svg" alt="linkedin">
-        </div>
-
-        <div id="copyright"> <p> &copy; 2021 by JumbleShare</p> </div>
-      
-    </footer>
 </div>
-</head>
+<footer th:replace="fragments :: footer"></footer>
 </html>

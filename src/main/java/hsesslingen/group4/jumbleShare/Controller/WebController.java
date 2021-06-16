@@ -33,6 +33,9 @@ public class WebController {
     @GetMapping(value = "/new.html")
     public String newPage() { return "new"; }
 
+    @GetMapping(value = "/register.html")
+    public String register() { return "register"; }
+
     @GetMapping(value = "/test.html")
     public String test()
     {
