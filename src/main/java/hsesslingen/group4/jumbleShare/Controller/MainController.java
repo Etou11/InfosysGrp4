@@ -28,6 +28,7 @@ public class MainController
     @GetMapping(path = "getVehicleData")
     List<Grp4Ss21Vehicle> getVehicle() { return vehicleRepository.findAll(); }
 
+
     //@PostMapping(path = "createNewVehicle")
     //public @ResponseBody String addNewVehicle (@RequestParam boolean isActive, @RequestParam String brand, @RequestParam String plateOrSerialNumber, @RequestParam String additionalInformation, @RequestParam double pricePerMinute)
 
