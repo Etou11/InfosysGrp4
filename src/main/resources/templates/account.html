@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <title>JumbleShare</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles.css" type="text/css" rel="stylesheet"/>
-    <script src='js/jquery.min.js'></script>
+    <link rel="stylesheet" href="styles.css" type="text/css"/>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" type="text/css" />
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
 </head>
 <header class="site-header" th:replace="fragments :: header"></header>
 <body>
@@ -17,24 +18,47 @@
         <h2>Personal Data</h2>
         <div class="content">
             <div class="content-inner">
+
                 <div class="formular">
-                    <form action="index.html" method="post">
-                        <label for="field"><b>First Name</b></label>
-                        <input type="text" placeholder="Enter First Name" name="uname" required>
-                        <label for="field"><b>Surname</b></label>
-                        <input type="text" placeholder="Enter Surname" name="uname" required>
-                        <label for="field"><b>Birthday</b></label>
-                        <input type="text" placeholder="Enter Birthday" name="uname" required>
-                        <label for="field"><b>E-Mail</b></label>
-                        <input type="text" placeholder="Enter E-Mail" name="uname" required>
-                        <label for="field"><b>Phone number</b></label>
-                        <input type="text" placeholder="Enter Phone number" name="uname" required>
-                        <label for="field"><b>Address</b></label>
-                        <input type="text" placeholder="Enter Address" name="uname" required>
-                        <label for="field"><b>IBAN</b></label>
-                        <input type="text" placeholder="Enter IBAN" name="uname" required>
-                        <label for="field"><b>BIC</b></label>
-                        <input type="text" placeholder="Enter BIC" name="uname" required>
+                    <form action="insert.php" method="post">
+
+                        <label for="customernr"><b>Customer Number</b></label>
+                        <input type="text" placeholder="Enter Customer Number" name="customernr" id="customernr"
+                               required>
+
+                        <label for="fname"><b>First Name</b></label>
+                        <input type="text" placeholder="Enter First Name" name="fname" id="fname" required>
+
+                        <label for="lname"><b>Enter Last Name</b></label>
+                        <input type="text" placeholder="Enter Last Name" name="lname" id="lname" required>
+
+                        <label for="uname"><b>Username</b></label>
+                        <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+
+                        <label for="email"><b>E-Mail</b></label>
+                        <input type="email" placeholder="Enter E-Mail" name="email" id="email" required>
+
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+                        <!--<label for="field"><b>Birthday</b></label> Date Picker Feld hinzufügen
+                        <input type="text" placeholder="Enter Birthday" name="uname" id="customernr" required> -->
+
+                        <!-- <label for="field"><b>Phone number</b></label>
+                        <input type="text" placeholder="Enter Phone number" name="uname" required> -->
+
+                        <label for="street"><b>Street and Number</b></label>
+                        <input type="text" placeholder="Enter Street and Number" name="street" id="street" required>
+
+                        <label for="postcode"><b>Post Code</b></label>
+                        <input type="text" placeholder="Enter Post Code" name="postcode" id="postcode" required>
+
+                        <label for="city"><b>City</b></label>
+                        <input type="text" placeholder="Enter City" name="city" id="city" required>
+
+                        <label for="country"><b>Country</b></label>
+                        <input type="text" placeholder="Enter Country" name="country" id="country" required>
+
                         <button id="add" type="add"><a href="index.html">Save Changes </a></button>
                     </form>
                 </div>
@@ -42,17 +66,54 @@
         </div>
     </div>
 </div>
-<!-- 2. Part  -->
+
+<!--  2. Part -->
 <div class="container">
     <div class="acc">
-        <h2>My Bookings</h2>
+        <h2>Payment Settings</h2>
         <div class="content">
             <div class="content-inner">
+
+                <div class="formular">
+                    <form action="index.html" method="post">
+
+                        <label for="field"><b>Owner First Name</b></label>
+                        <input type="text" placeholder="Enter Owner First Name" name="uname" required>
+
+                        <label for="field"><b>Owner Surname</b></label>
+                        <input type="text" placeholder="Enter Owner Surname" name="uname" required>
+
+                        <label for="field"><b>IBAN</b></label>
+                        <input type="text" placeholder="Enter IBAN" name="uname" required>
+
+                        <label for="field"><b>BIC</b></label>
+                        <input type="text" placeholder="Enter BIC" name="uname" required>
+
+                        <label for="field"><b>Bankname</b></label>
+                        <input type="text" placeholder="Enter Bankname" name="uname" required>
+
+                        <button id="paybutton" type="add"><a href="index.html">Save Changes </a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 3. Part  -->
+<div class="container">
+    <div class="acc">
+        <h2>My Bookings</h2> <!--MIT DATA TABLES MACHEN / Rechnungserstellung PDF-->
+        <div class="content">
+            <div class="content-inner">
+
+                <!-- <div class="formular">
+                  <form action="index.html" method="post"> -->
+
                 <div class="limiter">
                     <div class="container-table100">
                         <div class="wrap-table100">
                             <div class="table100">
-                                <table>
+                                <table id="bookings">
                                     <thead>
                                     <tr class="table100-head">
                                         <th class="column1">Date</th>
@@ -88,8 +149,11 @@
                                         <td class="column5">5 min</td>
                                         <td class="column6">2€</td>
                                     </tr>
+
+
                                     </tbody>
                                 </table>
+                                <button class="btn" onclick="exportTableToCSV('bookings.csv')">CSV File</button>
                             </div>
                         </div>
                     </div>
@@ -98,130 +162,153 @@
         </div>
     </div>
 </div>
-<!-- 3. Part  -->
+
+
+<!-- 4. Part  -->
 <div class="container">
     <div class="acc">
-        <h2>My Vehicles</h2>
+        <h2>My Vehicles</h2> <!-- MIT DATA TABLES MACHEN / SAVE CHANGES + DELETE BUTTONS /-->
         <div class="content">
             <div class="content-inner">
-                <div class="formular">
-                    <form action="index.html" method="post">
-                        <label for="field"><b>Vehicle Typ</b></label>
-                        <input type="text" placeholder="Enter Vehicle type" name="uname" required>
-                        <label for="field"><b>Brand</b></label>
-                        <input type="text" placeholder="Enter Vehicle Brand" name="uname" required>
-                        <label for="field"><b>Model</b></label>
-                        <input type="text" placeholder="Enter Vehicle Model" name="uname" required>
-                        <label for="field"><b>Price per Minute</b></label>
-                        <input type="text" placeholder="Enter Vehicle Price per Minute" name="uname" required>
-                        <button id="add" type="add"><a href="index.html">Save Changes </a></button>
-                    </form>
-                </div>
+
+
+                <!-- <div class="formular">
+                  <form action="index.html" method="post">
+
+                    <label for="field"><b>Vehicle Typ</b></label>
+                    <input type="text" placeholder="Enter Vehicle type" name="uname" required>
+
+                    <label for="field"><b>Brand</b></label>
+                    <input type="text" placeholder="Enter Vehicle Brand" name="uname" required>
+
+                    <label for="field"><b>Model</b></label>
+                    <input type="text" placeholder="Enter Vehicle Model" name="uname" required>
+
+                    <label for="field"><b>Price per Minute</b></label>
+                    <input type="text" placeholder="Enter Vehicle Price per Minute" name="uname" required>
+
+                    <button id="add" type="add"><a href="index.html">Save Changes </a></button>
+                  </div> -->
             </div>
         </div>
     </div>
 </div>
+<script>
+  $(document).ready( function () {
+    $('#bookings').DataTable();
+  });
+</script>
 <style>
-          h2 {
-              text-align: center;
-              font-size: 50px;
-              margin: 50px;
-          }
-          h3 {
-            text-align: center;
-            font-size: 30px;
-          }
-          input[type=text], input[type=password] {
-              width: 100%;
-              padding: 12px 20px;
-              margin: 8px 0;
-              display: inline-block;
-              border: 1px solid lightgray;
-              box-sizing: border-box;
-          }
-          button {
-              background-color: #3082cf;
-              color: white;
-              padding: 14px 20px;
-              margin: 8px 0;
-              border: none;
-              cursor: pointer;
-              width: 100%;
-          }
-          button:hover {
-              opacity: 0.8;
-          }
-          .formular{
-              margin: 50px;
-              width: 600px;
-          }
-          .container {
-              max-width: 70%;
-              margin: 0 auto;
-              padding: 8px;
-              margin-top:20px;
-              margin-bottom: 10px;
+        *{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        font-family: Arial, Helvetica, sans-serif;
+        }
+        h2 {
+          text-align: center;
+          font-size: 50px;
+          margin: 50px;
+        }
+        h3 {
+        text-align: center;
+        font-size: 30px;
+        }
+        input[type=text], input[type=password], input[type=email] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid lightgray;
+          box-sizing: border-box;
+        }
+        button {
+          background-color: #3082cf;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+        button:hover {
+          opacity: 0.8;
+        }
+        .formular{
+          margin: 50px;
+          width: 600px;
+        }
+        .container {
+          max-width: 70%;
+          margin: 0 auto;
+          padding: 8px;
+          margin-top:20px;
+          margin-bottom: 10px;
 
-          }
-          .acc h2 {
-              font-size: 25px;
-              background-color: rgb(36, 147, 211);
-              color:white;
-              padding: 15px;
-              margin: 0;
-              cursor: pointer;
-              letter-spacing: 2px;
-              position: relative;
+        }
+        .acc h2 {
+          font-size: 25px;
+          background-color: rgb(36, 147, 211);
+          color:white;
+          padding: 15px;
+          margin: 0;
+          cursor: pointer;
+          letter-spacing: 2px;
+          position: relative;
 
-          }
-          /*Format Screen Width*/
-          @media (min-width:300px) { .acc h2 {font-size:15px;} }
+        }
+        /*Format Screen Width*/
+        @media (min-width:300px) { .acc h2 {font-size:15px;} }
 
-          @media (min-width:640px) { .acc h2 {font-size:20px;} }
+        @media (min-width:640px) { .acc h2 {font-size:20px;} }
 
-          @media (min-width:960px) { .acc h2 {font-size:20px;} }
+        @media (min-width:960px) { .acc h2 {font-size:20px;} }
 
-          @media (min-width:1100px) { .acc h2 {font-size:25px;} }
+        @media (min-width:1100px) { .acc h2 {font-size:25px;} }
 
-          /*Formatting for the paragraphs closed*/
-          .acc h2:after {
-              content: '+';
-              position: absolute;
-              right: 20px;
-              font-size: 40px;
-              top: 50%;
-              transform: translateY(-50%);
-          }
-          @media (min-width: 300px) { .acc h2:after {font-size:20px;} }
+        /*Formatting for the paragraphs closed*/
+        .acc h2:after {
+          content: '+';
+          position: absolute;
+          right: 20px;
+          font-size: 40px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        @media (min-width: 300px) { .acc h2:after {font-size:20px;} }
 
-          @media (min-width: 640px) { .acc h2:after {font-size:30px;} }
+        @media (min-width: 640px) { .acc h2:after {font-size:30px;} }
 
-          @media (min-width:960px) { .acc h2:after {font-size:35px;} }
+        @media (min-width:960px) { .acc h2:after {font-size:35px;} }
 
-          @media (min-width:1100px) { .acc h2:after {font-size:40px;} }
+        @media (min-width:1100px) { .acc h2:after {font-size:40px;} }
 
-          /*Formatting for the paragraphs opened*/
-          .acc.active h2:after {
-            content: '-';
-          }
-          .acc {
-              border-bottom: 1px solid  #fff ;
-          }
-          /*Content in boxes*/
-          .content {
-              background-color: #fff;
-              display: none;
-              margin-top: 0;
-              line-height: 1.5;
-          }
-          .content-inner {
-              padding: 15px;
-          }
-          /*Format Screen Width*/
-          @viewport{
-          zoom: 1.0;
-          width: extend-to-zoom;
-          }
+        /*Formatting for the paragraphs opened*/
+        .acc.active h2:after {
+        content: '-';
+        }
+        .acc {
+          border-bottom: 1px solid  #fff ;
+        }
+        /*Content in boxes*/
+        .content {
+          background-color: #fff;
+          display: none;
+          margin-top: 0;
+          line-height: 1.5;
+        }
+        .content-inner {
+          padding: 15px;
+        }
+        /*Format Screen Width*/
+        @viewport{
+        zoom: 1.0;
+        width: extend-to-zoom;
+        }
+
 
 </style>
 </body>

@@ -1,8 +1,10 @@
 package hsesslingen.group4.jumbleShare.Controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class WebController {
@@ -33,8 +35,10 @@ public class WebController {
     @GetMapping(value = "/new.html")
     public String newPage() { return "new"; }
 
+    /*
     @GetMapping(value = "/register.html")
     public String register() { return "register"; }
+     */
 
     @GetMapping(value = "/test.html")
     public String test()

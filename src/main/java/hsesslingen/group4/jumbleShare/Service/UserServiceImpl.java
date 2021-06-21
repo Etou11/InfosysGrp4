@@ -4,6 +4,11 @@ import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21User;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21UserRepository;
 import hsesslingen.group4.jumbleShare.Web.Dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,4 +38,5 @@ public class UserServiceImpl implements UserService {
         );
         return userRepository.save(user);
     }
+
 }

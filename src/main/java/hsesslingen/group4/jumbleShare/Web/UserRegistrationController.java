@@ -3,7 +3,6 @@ package hsesslingen.group4.jumbleShare.Web;
 import hsesslingen.group4.jumbleShare.Service.UserService;
 import hsesslingen.group4.jumbleShare.Web.Dto.UserRegistrationDto;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller

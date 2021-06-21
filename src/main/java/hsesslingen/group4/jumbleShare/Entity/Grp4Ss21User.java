@@ -3,11 +3,10 @@ package hsesslingen.group4.jumbleShare.Entity;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -23,7 +22,9 @@ public class Grp4Ss21User implements Serializable
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "[id]", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    @Column(name = "[id]",unique = true ,nullable = false)
     private String id;
 
     @Column(name = "[customernr]", nullable = false)
@@ -45,6 +46,7 @@ public class Grp4Ss21User implements Serializable
     private String password;
 
     @Column(name = "[dateofbirth]", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
     @Column(name = "[city]", nullable = false)
@@ -59,4 +61,21 @@ public class Grp4Ss21User implements Serializable
     @Column(name = "[streetandnumber]", nullable = false)
     private String streetAndNumber;
 
+    public Grp4Ss21User() {
+
+    }
+
+    public Grp4Ss21User(String customerNr, String FName, String LName, String userName, String email, String password, Date dateOfBirth, String city, String country, Integer postCode, String streetAndNumber) {
+        this.customerNr = customerNr;
+        this.FName = FName;
+        this.LName = LName;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.city = city;
+        this.country = country;
+        this.postCode = postCode;
+        this.streetAndNumber = streetAndNumber;
+    }
 }

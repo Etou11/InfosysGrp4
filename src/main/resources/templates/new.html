@@ -11,26 +11,72 @@
     <body>
         <h1> Add Vehicle </h1>
         <div class="formular">
-            <form action="index.html" method="post">
-                <label for="field"><b>Vehicle Typ</b></label>
-                <input type="text" placeholder="Enter Vehicle type" name="uname" required>
-                <label for="field"><b>Brand</b></label>
-                <input type="text" placeholder="Enter Vehicle Brand" name="uname" required>
-                <label for="field"><b>Model</b></label>
-                <input type="text" placeholder="Enter Vehicle Model" name="uname" required>
-                <label for="field"><b>Location</b></label>
-                <input type="text" placeholder="Enter Vehicle Location" name="uname" required>
-                <label for="field"><b>Price per Minute</b></label>
-                <input type="text" placeholder="Enter Vehicle Price per Minute" name="uname" required>
-                <label for="field"><b>Other Information</b></label>
-                <input type="text" placeholder="Enter Other Information" name="uname" required>
-                <label for="field"><b>Phone number</b></label>
-                <input type="text" placeholder="Enter Your Phonenumber" name="uname" required>
+
+            <div th:if="${param.success}">
+                <div class="alert alert-info">
+                    You've successfully add the vehicle!
+                </div>
+            </div>
+            <form th:action="@{/new}" method="post" th:object="${vehicle}">
+                <label for="vehicletype"><b>Vehicle Typ</b></label>
+                <br>
+                <select name="vehicletype" id="vehicletype" required="required" autofocus="autofocus">
+                    <option disabled selected value> -- Select Vehicle Type -- </option>
+                    <option>Bike</option>
+                    <option>Roller - electrical</option>
+                    <option>Van - gasoline</option>
+                    <option>Bike - electrical > 20 kmh</option>
+                    <option>Car - diesel</option>
+                    <option>Bike - electrical <= 20 kmh</option>
+                    <option>Scooter - electrical</option>
+                    <option>Car - gasoline</option>
+                    <option>Car - electric</option>
+                    <option>Motorcycle - gasoline</option>
+                </select>
+                <br>
+                <label for="brand"><b>Brand and Model</b></label>
+                <input th:field="*{brand}" type="text" placeholder="Enter Vehicle Brand and Model" name="brand" id="brand" required>
+                <label for="platenumber"><b>Plate Or Serial Number</b></label>
+                <input th:field="*{plateOrSerialNumber}" type="text" placeholder="Enter Plate Or Serial Number" name="platenumber" id="platenumber" required>
+                <label for="info"><b>Other Information</b></label>
+                <input th:field="*{additionalInformation}" type="text" placeholder="Enter Other Information" name="info" id="info" required>
+                <label for="price"><b>Price per Minute</b></label>
+                <input th:field="*{pricePerMinute}" type="text" placeholder="Enter Vehicle Price per Minute" name="price" id="price" required>
+                <label for="latitude"><b>Latitude</b></label>
+                <input th:field="*{latitude}" type="text" placeholder="Enter Latitude" name="latitude" id="latitude" required>
+                <label for="longitude"><b>Longitude</b></label>
+                <input th:field="*{longitude}" type="text" placeholder="Enter Longitude" name="longitude" id="longitude" required>
+                <label for="active"><b>Status</b></label>
+                <input type="checkbox" placeholder="Status" name="active" id="active" required>
+                <br>
+                <!--
+                <label for="location"><b>Location</b></label>
+                <button onclick="getLocation()" name="uname" id="location">Get Current Position</button>
+                <p th:field="*{latitude}" id="latitude"></p>
+                <p th:field="*{longitude}" id="longitude"></p>
+                -->
                 <button id="add" type="add"><a href="index.html">Add Vehicle</a></button>
             </form>
         </div>
         <style>
+        *{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: Arial, Helvetica, sans-serif;
+}
           input[type=text], input[type=password] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              display: inline-block;
+              border: 1px solid lightgray;
+              box-sizing: border-box;
+          }
+          #vehicletype {
               width: 100%;
               padding: 12px 20px;
               margin: 8px 0;
@@ -58,6 +104,21 @@
               width: 300px;
           }
         </style>
+    <script>
+        var lat = document.getElementById("latitude");
+        var long = document.getElementById("longitude");
+        function getLocation() {
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                lat.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        function showPosition(position) {
+            lat.innerHTML = "Latitude: " + position.coords.latitude;
+            long.innerHTML = "Longitude: " + position.coords.longitude;
+        }
+    </script>
     </body>
 </div>
 <footer th:replace="fragments :: footer"></footer>

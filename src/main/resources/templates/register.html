@@ -8,53 +8,70 @@
 </head>
 <header th:replace="fragments :: header"></header>
 <body>
-<form action="insert.php" method="post">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
 
-    <div class="container">
-        <label for="customer"><b>Customer Number</b></label>
-        <input type="text" placeholder="Customer Number" name="customer" pattern="[0-9]{6}" required>
+            <!-- success message -->
+            <div th:if="${param.success}">
+                <div class="alert alert-info">
+                    You've successfully registered!
+                </div>
+            </div>
 
-        <label for="fname"><b>First Name</b></label>
-        <input type="text" placeholder="First Name" name="fname" required>
+            <h1>Registration</h1>
 
-        <label for="lname"><b>Last Name</b></label>
-        <input type="text" placeholder="Last Name" name="lname" required>
+            <form th:action="@{/register}" method="post" th:object="${user}">
+                <label for="customerNumber"><b>Customer Number</b></label>
+                <input th:field="*{customerNumber}" type="text" placeholder="Customer Number" name="customerNumber" pattern="[0-9]{6}" required>
 
-        <label for="email"><b>E-Mail</b></label>
-        <input type="email" placeholder="E-Mail" name="email" required>
+                <label for="firstName"><b>First Name</b></label>
+                <input th:field="*{firstName}" type="text" placeholder="First Name" name="firstName" required>
 
-        <label for="birthday"><b>Date of Birth</b></label>
-        <input type="date" name="birthday" required>
+                <label for="lastName"><b>Last Name</b></label>
+                <input th:field="*{lastName}" type="text" placeholder="Last Name" name="lastName" required>
 
-        <label for="street"><b>Street and Number</b></label>
-        <input type="text" placeholder="Street and Number" name="street" required>
+                <label for="email"><b>E-Mail</b></label>
+                <input th:field="*{email}" type="email" placeholder="E-Mail" name="email" required>
 
-        <label for="postcode"><b>Postcode</b></label>
-        <input type="text" placeholder="Postcode" name="postcode" pattern="[0-9]{5}" required>
+                <label for="date"><b>Date of Birth</b></label>
+                <input th:field="*{date}" type="date" name="date" required>
 
-        <label for="city"><b>City</b></label>
-        <input type="text" placeholder="City" name="city" required>
+                <label for="street"><b>Street and Number</b></label>
+                <input th:field="*{street}" type="text" placeholder="Street and Number" name="street" required>
 
-        <label for="country"><b>Country</b></label>
-        <input type="text" placeholder="Country" name="country" required>
+                <label for="postcode"><b>Postcode</b></label>
+                <input th:field="*{postcode}" type="text" placeholder="Postcode" name="postcode" pattern="[0-9]{5}" required>
 
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+                <label for="city"><b>City</b></label>
+                <input th:field="*{city}" type="text" placeholder="City" name="city" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="password" onchange='check_pass();' required>
+                <label for="country"><b>Country</b></label>
+                <input th:field="*{country}" type="text" placeholder="Country" name="country" required>
 
-        <label for="psw"><b>Confirm Password</b></label>
-        <input type="password" placeholder="Confirm Password" name="psw-conf" id="confirm_password"
-               onchange='check_pass();' required>
+                <label for="username"><b>Username</b></label>
+                <input th:field="*{username}" type="text" placeholder="Enter Username" name="username" required>
 
-        <input type="submit" name="submit" value="Registration" id="submit" disabled/>
-        <div class="small-container">
-            <p>Already have an account?</p><a href="login.html">Log In</a>
+                <label for="password"><b>Password</b></label>
+                <input th:field="*{password}" type="password" placeholder="Enter Password" name="password" id="password" onchange='check_pass();'
+                       required>
+
+                <label for="psw"><b>Confirm Password</b></label>
+                <input type="password" placeholder="Confirm Password" name="psw-conf" id="confirm_password"
+                       onchange='check_pass();' required>
+
+                <button type="submit" id="submit" disabled>
+                    Register
+                </button>
+            </form>
+
         </div>
     </div>
 
-</form>
+    <div class="small-container">
+        <p>Already have an account?</p><a href="login.html">Log In</a>
+    </div>
+</div>
 <script>
         function check_pass() {
           if (document.getElementById('password').value ==
@@ -70,7 +87,15 @@
 
 </script>
 <style>
-
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: Arial, Helvetica, sans-serif;
+}
           input[type=text],
           input[type=password],
           input[type=date],
@@ -137,7 +162,8 @@
             cursor: not-allowed;
           }
 
-    </style>
+
+</style>
 </body>
 <footer th:replace="fragments :: footer"></footer>
 </html>
