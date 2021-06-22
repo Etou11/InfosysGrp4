@@ -5,6 +5,10 @@
     <title>JumbleShare</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" type="text/css" rel="stylesheet"/>
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <script src="http://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="/js/main.js"></script>
+</head>
 </head>
 <header th:replace="fragments :: header"></header>
 <div class="limiter">
@@ -20,18 +24,8 @@
             <form th:action="@{/new}" method="post" th:object="${vehicle}">
                 <label for="vehicletype"><b>Vehicle Typ</b></label>
                 <br>
-                <select name="vehicletype" id="vehicletype" required="required" autofocus="autofocus">
+                <select class="dropdown dropdown-vehicletypes" name="vehicletype" id="vehicletype" required="required" autofocus="autofocus">
                     <option disabled selected value> -- Select Vehicle Type -- </option>
-                    <option>Bike</option>
-                    <option>Roller - electrical</option>
-                    <option>Van - gasoline</option>
-                    <option>Bike - electrical > 20 kmh</option>
-                    <option>Car - diesel</option>
-                    <option>Bike - electrical <= 20 kmh</option>
-                    <option>Scooter - electrical</option>
-                    <option>Car - gasoline</option>
-                    <option>Car - electric</option>
-                    <option>Motorcycle - gasoline</option>
                 </select>
                 <br>
                 <label for="brand"><b>Brand and Model</b></label>
@@ -103,6 +97,33 @@
           }
         </style>
     <script>
+
+    function populateDropdown(list) {
+
+    for (var i = 0; i < list.length; i+=2) {
+        var select = document.getElementById("vehicletype");
+        var option = document.createElement("option");
+        option.text = list[i+1];
+        option.value = list[i];
+        select.add(option);
+        }
+    }
+
+        $(document).ready(function() {
+
+        $.ajax({
+            type: "GET",
+            url: "/getVehicleTypes",
+            success: function (res) {
+                populateDropdown(res);
+            },
+            error: (xhr, ajaxOptions, thrownError) => {
+                console.error(xhr.responseText, { xhr });
+            }
+        });
+
+    });
+
         var lat = document.getElementById("latitude");
         var long = document.getElementById("longitude");
         function getLocation() {
@@ -116,6 +137,8 @@
             lat.innerHTML = "Latitude: " + position.coords.latitude;
             long.innerHTML = "Longitude: " + position.coords.longitude;
         }
+
+
     </script>
     </body>
 </div>

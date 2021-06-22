@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Grp4Ss21User save(UserRegistrationDto registrationDto) {
         Grp4Ss21User user = new Grp4Ss21User(
+                UUID.randomUUID(),
                 registrationDto.getFirstName(),
                 registrationDto.getLastName(),
                 registrationDto.getUsername(),

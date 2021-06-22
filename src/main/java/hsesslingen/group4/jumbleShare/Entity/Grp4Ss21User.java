@@ -58,8 +58,8 @@ public class Grp4Ss21User implements Serializable
 
     }
 
-    public Grp4Ss21User(String FName, String LName, String userName, String email, String password, Date dateOfBirth, String city, String country, Integer postCode, String streetAndNumber) {
-        this.id = UUID.randomUUID();
+    public Grp4Ss21User(UUID id, String FName, String LName, String userName, String email, String password, Date dateOfBirth, String city, String country, Integer postCode, String streetAndNumber) {
+        this.id = id;
         this.FName = FName;
         this.LName = LName;
         this.userName = userName;

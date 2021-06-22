@@ -15,7 +15,7 @@ import java.util.UUID;
 @Data
 @Entity
 @Table(name = "Grp_4_SS21_VehicleType")
-public class Grp4Ss21Vehicletype implements Serializable
+public class Grp4Ss21VehicleType implements Serializable
 {
 
     private static final long serialVersionUID = 1L;
@@ -27,12 +27,12 @@ public class Grp4Ss21Vehicletype implements Serializable
     @Column(name = "[description]", nullable = false)
     private String description;
 
-    public Grp4Ss21Vehicletype()
+    public Grp4Ss21VehicleType()
     {
 
     }
 
-    public Grp4Ss21Vehicletype (String description)
+    public Grp4Ss21VehicleType (String description)
     {
         this.id = UUID.randomUUID();
         this.description = description;

@@ -26,9 +26,8 @@ public class UserRegistrationDto {
 
     }
 
-    public UserRegistrationDto(UUID id, String firstName, String lastName, String email, Date date, String street, Integer postcode, String city, String country, String username, String password) {
+    public UserRegistrationDto(String firstName, String lastName, String email, Date date, String street, Integer postcode, String city, String country, String username, String password) {
         super();
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -46,7 +45,7 @@ public class UserRegistrationDto {
         return id;
     }
 
-    public void  setId(UUID id)
+    public void setId(UUID id)
     {
         this.id = id;
     }
