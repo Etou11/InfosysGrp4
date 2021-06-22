@@ -33,19 +33,19 @@
         $('#datatable-vehicle-index').DataTable( {
             data: args,
             "columns": [
-            { "data": "Brand" },
-            { "data": "PlateOrSerialNumber" },
-            { "data": "PricePerMinute" },
-            { "data": "Longitude" },
-            { "data": "Latitude" },
-            { "data": "VehicleTypeId" }
+            { "data": "brand" },
+            { "data": "plateOrSerialNumber" },
+            { "data": "pricePerMinute" },
+            { "data": "longitude" },
+            { "data": "latitude" },
+            { "data": "vehicleTypeId" }
             ]
         } );
     }
     $(document).ready(function() {
         $.ajax({
             type: "GET",
-            url: "/json/getVehicleData.json",
+            url: "/getVehicleData",
             success: function (res) {
                 createDataTable(res);
             },

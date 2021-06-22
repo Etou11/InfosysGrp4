@@ -5,6 +5,8 @@ import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21VehicleRepository;
 import hsesslingen.group4.jumbleShare.Web.Dto.CreateVehicleDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class VehicleServiceImpl implements VehicleService {
 
@@ -20,11 +22,16 @@ public class VehicleServiceImpl implements VehicleService {
         Grp4Ss21Vehicle vehicle = new Grp4Ss21Vehicle(
                 createVehicleDto.getBrand(),
                 createVehicleDto.getPlateOrSerialNumber(),
-                createVehicleDto.getAdditionalInformation(),
                 createVehicleDto.getPricePerMinute(),
                 createVehicleDto.getLatitude(),
                 createVehicleDto.getLongitude()
         );
         return vehicleRepository.save(vehicle);
+    }
+
+    @Override
+    public List<Grp4Ss21Vehicle> findAll()
+    {
+        return vehicleRepository.findAll();
     }
 }

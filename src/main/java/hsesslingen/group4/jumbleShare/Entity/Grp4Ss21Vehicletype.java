@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * $table.getTableComment()
@@ -21,9 +22,20 @@ public class Grp4Ss21Vehicletype implements Serializable
 
     @Id
     @Column(name = "[id]", nullable = false)
-    private String id;
+    private UUID id;
 
     @Column(name = "[description]", nullable = false)
     private String description;
+
+    public Grp4Ss21Vehicletype()
+    {
+
+    }
+
+    public Grp4Ss21Vehicletype (String description)
+    {
+        this.id = UUID.randomUUID();
+        this.description = description;
+    }
 
 }

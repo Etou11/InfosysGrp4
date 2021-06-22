@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class UserRegistrationDto {
 
-    //private UUID id;
+    private UUID id;
     private String firstName;
     private String lastName;
     private String email;
@@ -26,8 +26,9 @@ public class UserRegistrationDto {
 
     }
 
-    public UserRegistrationDto(String firstName, String lastName, String email, Date date, String street, Integer postcode, String city, String country, String username, String password) {
+    public UserRegistrationDto(UUID id, String firstName, String lastName, String email, Date date, String street, Integer postcode, String city, String country, String username, String password) {
         super();
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -40,7 +41,6 @@ public class UserRegistrationDto {
         this.password = password;
     }
 
-    /*
     public UUID getId()
     {
         return id;
@@ -51,7 +51,6 @@ public class UserRegistrationDto {
         this.id = id;
     }
 
-     */
 
     public String getFirstName() {
         return firstName;

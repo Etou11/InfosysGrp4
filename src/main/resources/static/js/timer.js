@@ -1,13 +1,3 @@
-
-$(document).ready(function(){
-	$('.acc h2').click(function(){
-		$(this).next('.content').slideToggle();
-		$(this).parent().toggleClass('active');
-		$(this).parent().siblings().children('.content').slideUp();
-		$(this).parent().siblings().removeClass('active');
-	});
-});
-
 const startDateTime = new Date('June 21, 2021 , 11:18:00'); // start
 const startStamp = startDateTime.getTime();
 
