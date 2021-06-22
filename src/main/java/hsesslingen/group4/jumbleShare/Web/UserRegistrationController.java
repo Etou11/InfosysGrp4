@@ -4,6 +4,7 @@ import hsesslingen.group4.jumbleShare.Service.UserService;
 import hsesslingen.group4.jumbleShare.Web.Dto.UserRegistrationDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter;
 
 @Controller
 @RequestMapping("/register")

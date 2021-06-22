@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" type="text/css" />
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <script src="http://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="/js/main.js"></script>
 </head>
 <header th:replace="fragments :: header"></header>
 <body>
@@ -13,7 +16,7 @@
     <thead>
     <tr>
         <th>Brand</th>
-        <th>Plate</th>
+        <th>PlateNumber</th>
         <th>Price per Minute</th>
         <th>Longitude</th>
         <th>Latitude</th>
@@ -26,32 +29,31 @@
     </tfoot>
 </table>
 <script>
-            function createDataTable(args) {
-                $('#datatable-vehicle-index').DataTable( {
-                    data: args,
-                    "columns": [
-                    { "data": "brand" },
-                    { "data": "plateOrSerialNumber" },
-                    { "data": "pricePerMinute" },
-                    { "data": "longitude" },
-                    { "data": "latitude" },
-                    { "data": "vehicleTypeId" }
-                    ]
-                } );
+    function createDataTable(args) {
+        $('#datatable-vehicle-index').DataTable( {
+            data: args,
+            "columns": [
+            { "data": "Brand" },
+            { "data": "PlateOrSerialNumber" },
+            { "data": "PricePerMinute" },
+            { "data": "Longitude" },
+            { "data": "Latitude" },
+            { "data": "VehicleTypeId" }
+            ]
+        } );
+    }
+    $(document).ready(function() {
+        $.ajax({
+            type: "GET",
+            url: "/json/getVehicleData.json",
+            success: function (res) {
+                createDataTable(res);
+            },
+            error: (xhr, ajaxOptions, thrownError) => {
+                console.error(xhr.responseText, { xhr });
             }
-            $(document).ready(function() {
-                $.ajax({
-                    type: "GET",
-                    url: "/getVehicleData",
-                    success: function (res) {
-                        createDataTable(res);
-                    },
-                    error: (xhr, ajaxOptions, thrownError) => {
-                        console.error(xhr.responseText, { xhr });
-                    }
-                });
-            } );
-
+        });
+    } );
 </script>
 <style>
 *{

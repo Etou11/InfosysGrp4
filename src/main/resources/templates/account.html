@@ -5,9 +5,10 @@
     <title>JumbleShare</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css" type="text/css"/>
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" type="text/css" />
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" type="text/css"/>
     <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
     <script src="/js/main.js"></script>
 </head>
 <header class="site-header" th:replace="fragments :: header"></header>
@@ -93,6 +94,7 @@
                         <input type="text" placeholder="Enter Bankname" name="uname" required>
 
                         <button id="paybutton" type="add"><a href="index.html">Save Changes </a></button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -113,15 +115,17 @@
                     <div class="container-table100">
                         <div class="wrap-table100">
                             <div class="table100">
+                                <input tpye="file" id="upload-csv" accept=".csv">
                                 <table id="bookings">
                                     <thead>
                                     <tr class="table100-head">
-                                        <th class="column1">Date</th>
-                                        <th class="column2">Order ID</th>
-                                        <th class="column3">User</th>
-                                        <th class="column4">Price</th>
-                                        <th class="column5">Quantity</th>
-                                        <th class="column6">Total</th>
+                                        <th class="column1">Start Trip</th>
+                                        <th class="column2">End Trip</th>
+                                        <th class="column3">Order ID</th>
+                                        <th class="column4">User</th>
+                                        <th class="column5">Price</th>
+                                        <th class="column6">Quantity</th>
+                                        <th class="column7">Total</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -149,11 +153,15 @@
                                         <td class="column5">5 min</td>
                                         <td class="column6">2€</td>
                                     </tr>
-
-
                                     </tbody>
                                 </table>
                                 <button class="btn" onclick="exportTableToCSV('bookings.csv')">CSV File</button>
+                                <div id="dvImportSegments" class="fileupload ">
+                                    <fieldset>
+                                        <legend>Upload your CSV File</legend>
+                                        <input type="file" name="File Upload" id="txtFileUpload" accept=".csv"/>
+                                    </fieldset>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -161,6 +169,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
@@ -171,7 +180,45 @@
         <div class="content">
             <div class="content-inner">
 
-
+                <table id="datatable-vehicle-index" class="datatable datatable-vehicle datatable-vehicle-index">
+                    <thead>
+                    <tr class="table100-head">
+                        <th>Brand</th>
+                        <th>PlateNumber</th>
+                        <th>Information</th>
+                        <th>Price per Minute</th>
+                        <th>Longitude</th>
+                        <th>Latitude</th>
+                    </tr>
+                    </thead>
+                </table>
+                <script>
+                    function createDataTable(args) {
+                        $('#datatable-vehicle-index').DataTable( {
+                            data: args,
+                            "columns": [
+                            { "data": "brand" },
+                            { "data": "plateOrSerialNumber" },
+                            { "data": "pricePerMinute" },
+                            { "data": "longitude" },
+                            { "data": "latitude" },
+                            { "data": "vehicleTypeId" }
+                            ]
+                        } );
+                    }
+                    $(document).ready(function() {
+                        $.ajax({
+                            dataType: "GET",
+                            url: "/json/getVehicleData.json",
+                            success: function (res) {
+                                createDataTable(res);
+                            },
+                            error: (xhr, ajaxOptions, thrownError) => {
+                                console.error(xhr.responseText, { xhr });
+                            }
+                        });
+                    });
+                </script>
                 <!-- <div class="formular">
                   <form action="index.html" method="post">
 
@@ -193,10 +240,12 @@
         </div>
     </div>
 </div>
-<script>
+<script type="text/javascript">
   $(document).ready( function () {
     $('#bookings').DataTable();
   });
+
+
 </script>
 <style>
         *{
@@ -308,6 +357,20 @@
         zoom: 1.0;
         width: extend-to-zoom;
         }
+        #upload {
+            padding: 8px;
+            margin-left:20px;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #3082cf;
+            color: white;
+        }
+        #upload:hover {
+            opacity: 0.8;
+        }
+        button.btn-space {
+        margin-left: 1em;
+    }
 
 
 </style>

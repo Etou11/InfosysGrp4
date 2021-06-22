@@ -8,5 +8,4 @@ import javax.transaction.Transactional;
 
 public interface Grp4Ss21VehicleRepository extends JpaRepository<Grp4Ss21Vehicle, String>, JpaSpecificationExecutor<Grp4Ss21Vehicle>
 {
-
 }
