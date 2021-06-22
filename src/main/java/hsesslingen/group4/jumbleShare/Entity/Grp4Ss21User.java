@@ -1,14 +1,13 @@
 package hsesslingen.group4.jumbleShare.Entity;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * $table.getTableComment()
@@ -18,17 +17,11 @@ import java.util.Date;
 @Table(name = "Grp_4_SS21_User")
 public class Grp4Ss21User implements Serializable
 {
-
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(name = "[id]",unique = true ,nullable = false)
-    private String id;
-
-    @Column(name = "[customernr]", nullable = false)
-    private String customerNr;
+    private UUID id;
 
     @Column(name = "[fname]", nullable = false)
     private String FName;
@@ -65,8 +58,8 @@ public class Grp4Ss21User implements Serializable
 
     }
 
-    public Grp4Ss21User(String customerNr, String FName, String LName, String userName, String email, String password, Date dateOfBirth, String city, String country, Integer postCode, String streetAndNumber) {
-        this.customerNr = customerNr;
+    public Grp4Ss21User(String FName, String LName, String userName, String email, String password, Date dateOfBirth, String city, String country, Integer postCode, String streetAndNumber) {
+        this.id = UUID.randomUUID();
         this.FName = FName;
         this.LName = LName;
         this.userName = userName;
@@ -78,4 +71,5 @@ public class Grp4Ss21User implements Serializable
         this.postCode = postCode;
         this.streetAndNumber = streetAndNumber;
     }
+
 }

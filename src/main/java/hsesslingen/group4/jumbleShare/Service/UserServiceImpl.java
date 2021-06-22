@@ -11,6 +11,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -24,7 +27,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public Grp4Ss21User save(UserRegistrationDto registrationDto) {
         Grp4Ss21User user = new Grp4Ss21User(
-                registrationDto.getCustomerNumber(),
                 registrationDto.getFirstName(),
                 registrationDto.getLastName(),
                 registrationDto.getUsername(),
@@ -38,5 +40,12 @@ public class UserServiceImpl implements UserService {
         );
         return userRepository.save(user);
     }
+
+    @Override
+    public List<Grp4Ss21User> findAll()
+    {
+        return userRepository.findAll();
+    }
+
 
 }

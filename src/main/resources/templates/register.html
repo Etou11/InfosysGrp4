@@ -22,8 +22,6 @@
             <h1>Registration</h1>
 
             <form th:action="@{/register}" method="post" th:object="${user}">
-                <label for="customerNumber"><b>Customer Number</b></label>
-                <input th:field="*{customerNumber}" type="text" placeholder="Customer Number" name="customerNumber" pattern="[0-9]{6}" required>
 
                 <label for="firstName"><b>First Name</b></label>
                 <input th:field="*{firstName}" type="text" placeholder="First Name" name="firstName" required>

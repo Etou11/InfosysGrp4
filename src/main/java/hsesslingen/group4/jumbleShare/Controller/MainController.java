@@ -4,6 +4,8 @@ import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21User;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21UserRepository;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21VehicleRepository;
+import hsesslingen.group4.jumbleShare.Service.UserService;
+import hsesslingen.group4.jumbleShare.Service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,12 +16,12 @@ public class MainController
 {
 
     @Autowired
-    Grp4Ss21UserRepository userRepository;
+    UserServiceImpl userService;
 
     @GetMapping(path = "getUserData")
     List<Grp4Ss21User> getUsers()
     {
-        return userRepository.findAll();
+        return userService.findAll();
     }
 
     @Autowired

@@ -3,10 +3,11 @@ package hsesslingen.group4.jumbleShare.Web.Dto;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class UserRegistrationDto {
 
-    private String customerNumber;
+    //private UUID id;
     private String firstName;
     private String lastName;
     private String email;
@@ -25,9 +26,8 @@ public class UserRegistrationDto {
 
     }
 
-    public UserRegistrationDto(String customerNumber, String firstName, String lastName, String email, Date date, String street, Integer postcode, String city, String country, String username, String password) {
+    public UserRegistrationDto(String firstName, String lastName, String email, Date date, String street, Integer postcode, String city, String country, String username, String password) {
         super();
-        this.customerNumber = customerNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -40,13 +40,18 @@ public class UserRegistrationDto {
         this.password = password;
     }
 
-    public String getCustomerNumber() {
-        return customerNumber;
+    /*
+    public UUID getId()
+    {
+        return id;
     }
 
-    public void setCustomerNumber(String customerNumber) {
-        this.customerNumber = customerNumber;
+    public void  setId(UUID id)
+    {
+        this.id = id;
     }
+
+     */
 
     public String getFirstName() {
         return firstName;
