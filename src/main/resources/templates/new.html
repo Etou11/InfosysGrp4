@@ -7,7 +7,7 @@
     <link href="styles.css" type="text/css" rel="stylesheet"/>
     <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
     <script src="http://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="main.js"></script>
 </head>
 </head>
 <header th:replace="fragments :: header"></header>
@@ -24,16 +24,15 @@
             <form th:action="@{/new}" method="post" th:object="${vehicle}">
                 <label for="vehicletype"><b>Vehicle Typ</b></label>
                 <br>
-                <select class="dropdown dropdown-vehicletypes" name="vehicletype" id="vehicletype" required="required" autofocus="autofocus">
+                <select th:field="*{vehicleTypeId}" class="dropdown dropdown-vehicletypes" name="vehicletype" id="vehicletype" required="required" autofocus="autofocus">
                     <option disabled selected value> -- Select Vehicle Type -- </option>
+                    <option th:each="vehicleType: ${#vehicleTypes}"></option>
                 </select>
                 <br>
                 <label for="brand"><b>Brand and Model</b></label>
                 <input th:field="*{brand}" type="text" placeholder="Enter Vehicle Brand and Model" name="brand" id="brand" required>
                 <label for="platenumber"><b>Plate Or Serial Number</b></label>
                 <input th:field="*{plateOrSerialNumber}" type="text" placeholder="Enter Plate Or Serial Number" name="platenumber" id="platenumber" required>
-                <label for="info"><b>Other Information</b></label>
-                <input th:field="*{additionalInformation}" type="text" placeholder="Enter Other Information" name="info" id="info" required>
                 <label for="price"><b>Price per Minute</b></label>
                 <input th:field="*{pricePerMinute}" type="text" placeholder="Enter Vehicle Price per Minute" name="price" id="price" required>
                 <label for="latitude"><b>Latitude</b></label>
@@ -47,7 +46,10 @@
                 <p th:field="*{latitude}" id="latitude"></p>
                 <p th:field="*{longitude}" id="longitude"></p>
                 -->
-                <button id="add" type="add"><a href="index.html">Add Vehicle</a></button>
+               <!-- <button id="add" type="add"><a href="index.html">Add Vehicle</a></button> -->
+                <button type="submit" id="submit">
+                    Add Vehicle
+                </button>
             </form>
         </div>
         <style>

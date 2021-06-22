@@ -3,27 +3,54 @@ package hsesslingen.group4.jumbleShare.Web.Dto;
 import org.springframework.security.core.Authentication;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class CreateVehicleDto {
+
+    //TODO: Replace with actual login system
+    private static String currentlyActiveUser = "7A822D83-4FAF-DF4B-BEFC-078CEBC6A93A";
+    private static UUID _currentlyActiveUser = UUID.fromString(currentlyActiveUser);
+
     private String brand;
     private String plateOrSerialNumber;
-    private String additionalInformation;
     private BigDecimal pricePerMinute;
     private BigDecimal latitude;
     private BigDecimal longitude;
-    private String user;
+    private UUID userId;
+    private UUID vehicleTypeId;
 
     public CreateVehicleDto() {
     }
 
-    public CreateVehicleDto(String brand, String plateOrSerialNumber, String additionalInformation, BigDecimal pricePerMinute, BigDecimal latitude, BigDecimal longitude, String user) {
+    public CreateVehicleDto(String brand, String plateOrSerialNumber, BigDecimal pricePerMinute, BigDecimal latitude, BigDecimal longitude, UUID vehicleTypeId, String user) {
+        //super();
         this.brand = brand;
         this.plateOrSerialNumber = plateOrSerialNumber;
-        this.additionalInformation = additionalInformation;
         this.pricePerMinute = pricePerMinute;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.user = user;
+        this.vehicleTypeId = vehicleTypeId;
+        this.userId = _currentlyActiveUser;
+    }
+
+    public UUID getUserId()
+    {
+        return _currentlyActiveUser;
+    }
+
+    public void setUserId(UUID userId)
+    {
+        this.userId = userId;
+    }
+
+    public UUID getVehicleTypeId()
+    {
+        return vehicleTypeId;
+    }
+
+    public void setVehicleTypeId(UUID vehicleTypeId)
+    {
+        this.vehicleTypeId = vehicleTypeId;
     }
 
     public String getBrand() {
@@ -40,14 +67,6 @@ public class CreateVehicleDto {
 
     public void setPlateOrSerialNumber(String plateOrSerialNumber) {
         this.plateOrSerialNumber = plateOrSerialNumber;
-    }
-
-    public String getAdditionalInformation() {
-        return additionalInformation;
-    }
-
-    public void setAdditionalInformation(String additionalInformation) {
-        this.additionalInformation = additionalInformation;
     }
 
     public BigDecimal getPricePerMinute() {
@@ -74,11 +93,4 @@ public class CreateVehicleDto {
         this.longitude = longitude;
     }
 
-    public String getUser() {
-        return user;
-    }
-    public void setUser(Authentication authentication) {
-        String currentUsername = authentication.getName();
-        this.user = currentUsername;
-    }
 }

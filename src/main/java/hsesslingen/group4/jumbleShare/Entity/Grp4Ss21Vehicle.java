@@ -39,24 +39,25 @@ public class Grp4Ss21Vehicle implements Serializable
     private BigDecimal latitude;
 
     @Column(name = "[userid]", nullable = false)
-    private String userId;
+    private UUID userId;
 
     @Column(name = "[vehicletypeid]", nullable = false)
-    private String vehicleTypeId;
+    private UUID vehicleTypeId;
 
     public Grp4Ss21Vehicle()
     {
 
     }
 
-    public Grp4Ss21Vehicle(String brand, String plateOrSerialNumber, BigDecimal pricePerMinute, BigDecimal longitude, BigDecimal latitude) {
-        this.id = UUID.randomUUID();
+    public Grp4Ss21Vehicle(UUID id, String brand, String plateOrSerialNumber, BigDecimal pricePerMinute, BigDecimal longitude, BigDecimal latitude, UUID vehicleTypeId, UUID userId) {
+        this.id = id;
         this.brand = brand;
         this.plateOrSerialNumber = plateOrSerialNumber;
         this.pricePerMinute = pricePerMinute;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.vehicleTypeId = vehicleTypeId;
+        this.userId = userId;
     }
-
 
 }

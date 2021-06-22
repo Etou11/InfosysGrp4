@@ -5,10 +5,22 @@ import java.util.UUID;
 public class VehicleTypeDto
 {
     private String description;
+    private String id;
 
     public VehicleTypeDto (String description)
     {
         super();
+        this.description = description;
+    }
+
+    public VehicleTypeDto ()
+    {
+
+    }
+
+    public VehicleTypeDto (String id, String description)
+    {
+        this.id = id;
         this.description = description;
     }
 
