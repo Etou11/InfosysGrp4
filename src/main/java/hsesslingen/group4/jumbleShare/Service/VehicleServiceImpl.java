@@ -17,9 +17,7 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public Grp4Ss21Vehicle save(CreateVehicleDto createVehicleDto) {
-
         Grp4Ss21Vehicle vehicle = new Grp4Ss21Vehicle(
-                createVehicleDto.getActive(),
                 createVehicleDto.getBrand(),
                 createVehicleDto.getPlateOrSerialNumber(),
                 createVehicleDto.getAdditionalInformation(),

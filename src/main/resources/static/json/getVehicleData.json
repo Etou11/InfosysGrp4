@@ -1,0 +1,202 @@
+[
+  {
+    "Id": "B6E918FD-574E-4885-AE4F-0944BF38CA3E",
+    "Brand": "Suzuki",
+    "PlateOrSerialNumber": "57262828",
+    "PricePerMinute": 230489.00,
+    "Longitude": 48.733530,
+    "Latitude": 9.325070,
+    "User": "jumbleshare",
+    "VehicleTypeId": "5131611C-6287-4793-B40B-E3C1B2DD8CE9"
+  },
+  {
+    "Id": "EE5231DC-8FD4-46F7-95FB-168CE6DD8796",
+    "Brand": "Wayfarer Elektrofahrrad Citybike",
+    "PlateOrSerialNumber": "82528983",
+    "PricePerMinute": 11.00,
+    "Longitude": 48.733570,
+    "Latitude": 9.325030,
+    "User": "MaxKing",
+    "VehicleTypeId": "A5AC743B-6DDA-4925-A9A4-90BE3C60A50D"
+  },
+  {
+    "Id": "B74D4817-3B37-46F3-9D11-2098AF931D28",
+    "Brand": "Opel Zafira",
+    "PlateOrSerialNumber": "57162827",
+    "PricePerMinute": 230589.00,
+    "Longitude": 48.733530,
+    "Latitude": 9.325070,
+    "User": "lonny2021",
+    "VehicleTypeId": "D942AFBD-1BB4-4172-A152-85249816D2EF"
+  },
+  {
+    "Id": "F7556CCA-A8E6-4296-9C3C-47498FB49E88",
+    "Brand": "Maisto",
+    "PlateOrSerialNumber": "57262828",
+    "PricePerMinute": 230489.00,
+    "Longitude": 48.733530,
+    "Latitude": 9.325070,
+    "User": "jumbleshare",
+    "VehicleTypeId": "C2A60330-557B-452B-8755-27EC329D4D24"
+  },
+  {
+    "Id": "D4761914-8666-4896-8F66-56696DF79598",
+    "Brand": "Kawasaki",
+    "PlateOrSerialNumber": "57262828",
+    "PricePerMinute": 230489.00,
+    "Longitude": 48.733530,
+    "Latitude": 9.325070,
+    "User": "jumbleshare",
+    "VehicleTypeId": "5131611C-6287-4793-B40B-E3C1B2DD8CE9"
+  },
+  {
+    "Id": "7F7689E0-6892-4D39-B029-82D7DE98D00D",
+    "Brand": "Moutain Bike",
+    "PlateOrSerialNumber": "57262827",
+    "PricePerMinute": 100.00,
+    "Longitude": 48.733590,
+    "Latitude": 9.325010,
+    "User": "T_Müller",
+    "VehicleTypeId": "813E3A4E-E6B4-45EC-87EB-07B7C2D066C6"
+  },
+  {
+    "Id": "57558EBD-AC3D-48B4-85F9-8FF91F9561AF",
+    "Brand": "Audi Q4 e-tron",
+    "PlateOrSerialNumber": "57262837",
+    "PricePerMinute": 8963.00,
+    "Longitude": 48.733550,
+    "Latitude": 9.325050,
+    "User": "MaxQueen",
+    "VehicleTypeId": "69F2F637-1214-4A42-BA49-E1281BA4B8F9"
+  },
+  {
+    "Id": "7A2D8257-B06E-48E6-A56A-9064B0A72154",
+    "Brand": "Ford Mustang",
+    "PlateOrSerialNumber": "57162827",
+    "PricePerMinute": 230589.00,
+    "Longitude": 48.733530,
+    "Latitude": 9.325070,
+    "User": "Scooter04",
+    "VehicleTypeId": "D942AFBD-1BB4-4172-A152-85249816D2EF"
+  },
+  {
+    "Id": "6F7651B4-72C9-4333-B330-914FA3BBDB2F",
+    "Brand": "Mercedes V Klasse",
+    "PlateOrSerialNumber": "57262828",
+    "PricePerMinute": 230489.00,
+    "Longitude": 48.733530,
+    "Latitude": 9.325070,
+    "User": "Chris33",
+    "VehicleTypeId": "3495F6EC-2F76-4D38-9831-4342F1CEBEA1"
+  },
+  {
+    "Id": "DBA42928-55F4-4856-B7DC-A9559D1F409B",
+    "Brand": "Vespa",
+    "PlateOrSerialNumber": "57262828",
+    "PricePerMinute": 230489.00,
+    "Longitude": 48.733530,
+    "Latitude": 9.325070,
+    "User": "Charming82",
+    "VehicleTypeId": "C2A60330-557B-452B-8755-27EC329D4D24"
+  },
+  {
+    "Id": "1742EF01-7942-4BF7-9D91-AEE2169B8BB6",
+    "Brand": "Fisher E-Bike",
+    "PlateOrSerialNumber": "37857658",
+    "PricePerMinute": 2536.00,
+    "Longitude": 48.733580,
+    "Latitude": 9.325020,
+    "User": "jumbleshare",
+    "VehicleTypeId": "1162E87D-A1A9-4DC6-AE64-5E9C65D1711B"
+  },
+  {
+    "Id": "9D27B513-DB88-4AEA-BD77-B4D380FD5E07",
+    "Brand": "All Terrain Electric Fat E-Bike",
+    "PlateOrSerialNumber": "37857658",
+    "PricePerMinute": 2536.00,
+    "Longitude": 48.733580,
+    "Latitude": 9.325020,
+    "User": "jumbleshare",
+    "VehicleTypeId": "1162E87D-A1A9-4DC6-AE64-5E9C65D1711B"
+  },
+  {
+    "Id": "151FF2B3-D1C9-4E6B-8156-BA10EE0D89F3",
+    "Brand": "Hyundai IONIQ 5",
+    "PlateOrSerialNumber": "57262837",
+    "PricePerMinute": 8963.00,
+    "Longitude": 48.733550,
+    "Latitude": 9.325050,
+    "User": "jumbleshare",
+    "VehicleTypeId": "69F2F637-1214-4A42-BA49-E1281BA4B8F9"
+  },
+  {
+    "Id": "73624529-BD45-45E5-B241-C804EC2B66AF",
+    "Brand": "Opel Corsa",
+    "PlateOrSerialNumber": "57262727",
+    "PricePerMinute": 112568.00,
+    "Longitude": 48.733540,
+    "Latitude": 9.325060,
+    "User": "MaxQueen",
+    "VehicleTypeId": "15970739-917F-4C75-B0FF-C2F40C75E704"
+  },
+  {
+    "Id": "FC5D5B38-D7E4-4F25-8511-CFC12EDCE2B5",
+    "Brand": "Mercedes A Klasse",
+    "PlateOrSerialNumber": "57262727",
+    "PricePerMinute": 112568.00,
+    "Longitude": 48.733540,
+    "Latitude": 9.325060,
+    "User": "MaxKing",
+    "VehicleTypeId": "15970739-917F-4C75-B0FF-C2F40C75E704"
+  },
+  {
+    "Id": "209F69E7-F98B-4478-9D36-D03E7640D9C3",
+    "Brand": "Moutain Bike",
+    "PlateOrSerialNumber": "57262827",
+    "PricePerMinute": 100.00,
+    "Longitude": 48.733590,
+    "Latitude": 9.325010,
+    "User": "Peter12",
+    "VehicleTypeId": "813E3A4E-E6B4-45EC-87EB-07B7C2D066C6"
+  },
+  {
+    "Id": "A4A11E87-2C06-40E5-8C90-D8D68C89A37A",
+    "Brand": "Carver E-Strict",
+    "PlateOrSerialNumber": "82528983",
+    "PricePerMinute": 11.00,
+    "Longitude": 48.733570,
+    "Latitude": 9.325030,
+    "User": "Peter12",
+    "VehicleTypeId": "A5AC743B-6DDA-4925-A9A4-90BE3C60A50D"
+  },
+  {
+    "Id": "001189A2-6365-4E6F-9C86-E84CE99DF53D",
+    "Brand": "VW T5",
+    "PlateOrSerialNumber": "57262828",
+    "PricePerMinute": 230489.00,
+    "Longitude": 48.733530,
+    "Latitude": 9.325070,
+    "User": "PrincessLaura",
+    "VehicleTypeId": "3495F6EC-2F76-4D38-9831-4342F1CEBEA1"
+  },
+  {
+    "Id": "207F8C4D-CB77-4732-8DC1-EBF96AAEEBAC",
+    "Brand": "Story Retro Ride Scooter",
+    "PlateOrSerialNumber": "98433422",
+    "PricePerMinute": 354.00,
+    "Longitude": 48.733560,
+    "Latitude": 9.325040,
+    "User": "PrincessLaura",
+    "VehicleTypeId": "821CD30B-232D-4A5D-98D6-B163F503186D"
+  },
+  {
+    "Id": "300246C7-A54F-45C1-861F-F6BEEB238775",
+    "Brand": "Story E-Motion Elektrisch Scooter",
+    "PlateOrSerialNumber": "98433422",
+    "PricePerMinute": 354.00,
+    "Longitude": 48.733560,
+    "Latitude": 9.325040,
+    "User": "jumbleshare",
+    "VehicleTypeId": "821CD30B-232D-4A5D-98D6-B163F503186D"
+  }
+]

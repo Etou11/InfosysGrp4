@@ -2,10 +2,8 @@ package hsesslingen.group4.jumbleShare.Controller;
 
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21User;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
-import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicletype;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21UserRepository;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21VehicleRepository;
-import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21VehicletypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
