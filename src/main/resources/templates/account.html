@@ -190,6 +190,7 @@
                         <th>Latitude</th>
                         <th>Vehicle Type Id</th>
                         <th></th>
+                        <th></th>
                     </tr>
                     <tfoot>
                     <tr>
@@ -198,8 +199,10 @@
                 </table>
                 <script>
 
+                var table;
+
                     function createDataTable(args) {
-                        $('#datatable-vehicle-account').DataTable( {
+                       table = $('#datatable-vehicle-account').DataTable( {
                             data: args,
                             "columns": [
                             { "data": "brand" },
@@ -208,13 +211,20 @@
                             { "data": "longitude" },
                             { "data": "latitude" },
                             { "data": "vehicleTypeId" },
+                            { "data": "id" },
                             { "data": null }
                             ],
                             "columnDefs": [ {
-                            "targets": -1,
-                            "data": null,
-                            "defaultContent": "<button onclick='jQueryAjaxDelete(this)' type='button'>Delete!</button>"
-                            } ]
+                                "targets": -1,
+                                "data": null,
+                                "orderable": false,
+                                "defaultContent": "<button type='button'>Delete!</button>"
+                            },
+                            {
+                                "targets": [ 6 ],
+                                "visible": false
+                            }
+                             ]
                         } );
                     }
 
@@ -227,7 +237,7 @@
 
                             $.ajax({
                                 type: "GET",
-                                data: data ,
+                                data: data,
                                 url: "/getVehicleDataForUser",
                                 success: function (res) {
                                     createDataTable(res);
@@ -237,6 +247,31 @@
                                     console.error(xhr.responseText, { xhr });
                                 }
                             });
+
+
+                                $('#datatable-vehicle-account').on( 'click', 'button', function () {
+                                    if (confirm('Do you really want to delete this entry?')) {
+                                    var vehicle = table.row( $(this).parents('tr') ).data();
+
+                                    var data = {
+                                        id: vehicle.id
+                                    }
+
+                                    $.ajax({
+                                        type: 'GET',
+                                        url: "/deleteVehicle",
+                                        data: data,
+                                        success: function(res) {
+                                            $('#view-all').html(res.html);
+                                            location.reload();
+                                        },
+                                        error: function(err) {
+                                            console.log(err);
+                                        }
+                                    });
+
+                                    }
+                                } );
                     });
 
                     jQueryAjaxDelete = form => {

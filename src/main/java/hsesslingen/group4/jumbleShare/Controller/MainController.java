@@ -66,8 +66,14 @@ public class MainController
     @GetMapping(path = "getVehicleTypes")
     List<String> getVehicleTypes() { return dbController.getAllVehicleTypes(); }
 
-    @DeleteMapping(path ="deleteVehicle")
-    void deleteVehicleById(Grp4Ss21Vehicle vehicle) { vehicleService.delete(vehicle); }
+    @GetMapping(path ="deleteVehicle")
+    boolean deleteVehicleById(String id)
+    {
+        //TODO: Continue here
+        System.out.println("Hello world!");
+        var test = "test";
+        return true;
+    }
 
 
 
