@@ -6,6 +6,6 @@ import hsesslingen.group4.jumbleShare.Web.Dto.CreateVehicleDto;
 import java.util.List;
 
 public interface VehicleService {
-    Grp4Ss21Vehicle save(CreateVehicleDto createVehicleDto);
+    void save(CreateVehicleDto createVehicleDto);
     List<Grp4Ss21Vehicle> findAll();
 }

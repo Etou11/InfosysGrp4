@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @RequestMapping("/new")
@@ -55,6 +53,10 @@ public class CreateVehicleController {
 
     @PostMapping
     public String createNewVehicle(@ModelAttribute("vehicle") CreateVehicleDto createVehicleDto) {
+
+        if(createVehicleDto.getId() == null)
+            createVehicleDto.setId(UUID.randomUUID());
+
         vehicleService.save(createVehicleDto);
         return "redirect:/new?success";
     }

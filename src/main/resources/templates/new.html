@@ -25,8 +25,7 @@
                 <label for="vehicletype"><b>Vehicle Typ</b></label>
                 <br>
                 <select th:field="*{vehicleTypeId}" class="dropdown dropdown-vehicletypes" name="vehicletype" id="vehicletype" required="required" autofocus="autofocus">
-                    <option disabled selected value> -- Select Vehicle Type -- </option>
-                    <option th:each="vehicleType: ${#vehicleTypes}"></option>
+                    <option th:each="vehicleType: ${#vehicleTypes}" th:value="${vehicleType.id}" th:text="${vehicleType.description}"></option>
                 </select>
                 <br>
                 <label for="brand"><b>Brand and Model</b></label>
@@ -39,6 +38,7 @@
                 <input th:field="*{latitude}" type="text" placeholder="Enter Latitude" name="latitude" id="latitude" required>
                 <label for="longitude"><b>Longitude</b></label>
                 <input th:field="*{longitude}" type="text" placeholder="Enter Longitude" name="longitude" id="longitude" required>
+                <input th:field="*{userId}" style="display: none;" th:value="1d7cd350-2492-0e46-ab26-25ba831d7786">
                 <br>
                 <!--
                 <label for="location"><b>Location</b></label>

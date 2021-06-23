@@ -8,9 +8,10 @@ import java.util.UUID;
 public class CreateVehicleDto {
 
     //TODO: Replace with actual login system
-    private static String currentlyActiveUser = "7A822D83-4FAF-DF4B-BEFC-078CEBC6A93A";
-    private static UUID _currentlyActiveUser = UUID.fromString(currentlyActiveUser);
+    private  String currentlyActiveUser = "D568817B-A8D2-43AA-A4BD-DC92378CB6DE";
+    private  UUID _currentlyActiveUser = UUID.fromString(currentlyActiveUser);
 
+    private UUID id;
     private String brand;
     private String plateOrSerialNumber;
     private BigDecimal pricePerMinute;
@@ -22,8 +23,9 @@ public class CreateVehicleDto {
     public CreateVehicleDto() {
     }
 
-    public CreateVehicleDto(String brand, String plateOrSerialNumber, BigDecimal pricePerMinute, BigDecimal latitude, BigDecimal longitude, UUID vehicleTypeId, String user) {
-        //super();
+    public CreateVehicleDto(UUID id, String brand, String plateOrSerialNumber, BigDecimal pricePerMinute, BigDecimal latitude, BigDecimal longitude, UUID vehicleTypeId, String user) {
+        super();
+        this.id = id;
         this.brand = brand;
         this.plateOrSerialNumber = plateOrSerialNumber;
         this.pricePerMinute = pricePerMinute;
@@ -46,6 +48,16 @@ public class CreateVehicleDto {
     public UUID getVehicleTypeId()
     {
         return vehicleTypeId;
+    }
+
+    public UUID getId()
+    {
+        return id;
+    }
+
+    public void setId(UUID id)
+    {
+        this.id = id;
     }
 
     public void setVehicleTypeId(UUID vehicleTypeId)

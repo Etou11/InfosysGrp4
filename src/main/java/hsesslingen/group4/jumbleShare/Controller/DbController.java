@@ -1,6 +1,7 @@
 package hsesslingen.group4.jumbleShare.Controller;
 
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21User;
+import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -87,6 +88,38 @@ public class DbController
                     "'"+ user.getCountry() +"',\n" +
                     "" + user.getPostCode() + ",\n" +
                     "'" + user.getStreetAndNumber() + "')");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+
+    public void createNewVehicle(Grp4Ss21Vehicle vehicle)
+    {
+        try
+        {
+            Connection con = DriverManager.getConnection (connectionUrl);
+
+            Statement St = con.createStatement();
+            St.executeQuery("INSERT INTO [dbo].[Grp_4_SS21_Vehicle]\n" +
+                    "           ([Id]\n" +
+                    "           ,[Brand]\n" +
+                    "           ,[PlateOrSerialNumber]\n" +
+                    "           ,[PricePerMinute]\n" +
+                    "           ,[Longitude]\n" +
+                    "           ,[Latitude]\n" +
+                    "           ,[UserId]\n" +
+                    "           ,[VehicleTypeId])\n" +
+                    "     VALUES\n" +
+                    "('" + vehicle.getId() + "',\n" +
+                    "'"+ vehicle.getBrand()  +"',\n" +
+                    " '"+ vehicle.getPlateOrSerialNumber()  +"',\n" +
+                    " '" + vehicle.getPricePerMinute()+ "',\n" +
+                    "'" + vehicle.getLongitude() + "',\n" +
+                    "'" + vehicle.getLatitude() + "',\n" +
+                    "'" + vehicle.getUserId()+ "',\n" +
+                    "'" + vehicle.getVehicleTypeId() + "')");
         }
         catch (Exception e)
         {

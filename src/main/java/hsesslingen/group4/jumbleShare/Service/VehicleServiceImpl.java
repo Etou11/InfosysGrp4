@@ -1,5 +1,6 @@
 package hsesslingen.group4.jumbleShare.Service;
 
+import hsesslingen.group4.jumbleShare.Controller.DbController;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21VehicleRepository;
 import hsesslingen.group4.jumbleShare.Web.Dto.CreateVehicleDto;
@@ -19,7 +20,7 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public Grp4Ss21Vehicle save(CreateVehicleDto createVehicleDto) {
+    public void save(CreateVehicleDto createVehicleDto) {
         Grp4Ss21Vehicle vehicle = new Grp4Ss21Vehicle(
                 UUID.randomUUID(),
                 createVehicleDto.getBrand(),
@@ -30,7 +31,8 @@ public class VehicleServiceImpl implements VehicleService {
                 createVehicleDto.getVehicleTypeId(),
                 createVehicleDto.getUserId()
         );
-        return vehicleRepository.save(vehicle);
+        DbController dbController = new DbController();
+        dbController.createNewVehicle(vehicle);
     }
 
     @Override
