@@ -3,11 +3,14 @@ package hsesslingen.group4.jumbleShare.Controller;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21User;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21VehicleType;
+import hsesslingen.group4.jumbleShare.Helper.HelperExtension;
 import hsesslingen.group4.jumbleShare.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 @RestController
@@ -30,6 +33,30 @@ public class MainController
     @GetMapping(path = "getVehicleData")
     List<Grp4Ss21Vehicle> getVehicle() { return vehicleService.findAll(); }
 
+    @GetMapping(path = "getVehicleDataForUser")
+    List<Grp4Ss21Vehicle> getVehicleById(String userId)
+    {
+        userId = userId.toLowerCase(Locale.ROOT);
+        userId = userId.replaceAll("-", "");
+        userId = userId.substring(userId.length() - 8);
+
+        var vehicles = vehicleService.findAll();
+        ArrayList<Grp4Ss21Vehicle> vehiclesFiltered = new ArrayList<Grp4Ss21Vehicle>();
+
+        for (Grp4Ss21Vehicle ele : vehicles)
+        {
+            var parsedGuid = HelperExtension.hexToStr(ele.getUserId().toString());
+            parsedGuid = parsedGuid.replaceAll("-","");
+            parsedGuid = parsedGuid.substring(parsedGuid.length() - 8);
+
+            if(userId.contentEquals(parsedGuid))
+                vehiclesFiltered.add(ele);
+        }
+
+        return vehiclesFiltered;
+    }
+
+
     @Autowired
     VehicleTypeServiceImpl vehicleTypeService;
 
@@ -38,6 +65,9 @@ public class MainController
 
     @GetMapping(path = "getVehicleTypes")
     List<String> getVehicleTypes() { return dbController.getAllVehicleTypes(); }
+
+    @DeleteMapping(path ="deleteVehicle")
+    void deleteVehicleById(Grp4Ss21Vehicle vehicle) { vehicleService.delete(vehicle); }
 
 
 

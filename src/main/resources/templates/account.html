@@ -180,21 +180,26 @@
         <div class="content">
             <div class="content-inner">
 
-                <table id="datatable-vehicle-index" class="datatable datatable-vehicle datatable-vehicle-index">
+                <table id="datatable-vehicle-account" class="datatable datatable-vehicle datatable-vehicle-account">
                     <thead>
                     <tr class="table100-head">
                         <th>Brand</th>
                         <th>PlateNumber</th>
-                        <th>Information</th>
                         <th>Price per Minute</th>
                         <th>Longitude</th>
                         <th>Latitude</th>
+                        <th>Vehicle Type Id</th>
+                        <th></th>
                     </tr>
-                    </thead>
+                    <tfoot>
+                    <tr>
+                    </tr>
+                    </tfoot>
                 </table>
                 <script>
+
                     function createDataTable(args) {
-                        $('#datatable-vehicle-index').DataTable( {
+                        $('#datatable-vehicle-account').DataTable( {
                             data: args,
                             "columns": [
                             { "data": "brand" },
@@ -202,23 +207,62 @@
                             { "data": "pricePerMinute" },
                             { "data": "longitude" },
                             { "data": "latitude" },
-                            { "data": "vehicleTypeId" }
-                            ]
+                            { "data": "vehicleTypeId" },
+                            { "data": null }
+                            ],
+                            "columnDefs": [ {
+                            "targets": -1,
+                            "data": null,
+                            "defaultContent": "<button onclick='jQueryAjaxDelete(this)' type='button'>Delete!</button>"
+                            } ]
                         } );
                     }
+
+
                     $(document).ready(function() {
-                        $.ajax({
-                            dataType: "GET",
-                            url: "/json/getVehicleData.json",
-                            success: function (res) {
-                                createDataTable(res);
-                            },
-                            error: (xhr, ajaxOptions, thrownError) => {
-                                console.error(xhr.responseText, { xhr });
-                            }
-                        });
-                        
+
+                        var data = {
+                        userId: 'D568817B-A8D2-43AA-A4BD-DC92378CB6DE'
+                        };
+
+                            $.ajax({
+                                type: "GET",
+                                data: data ,
+                                url: "/getVehicleDataForUser",
+                                success: function (res) {
+                                    createDataTable(res);
+                                },
+                                error: (xhr, ajaxOptions, thrownError) => {
+                                    console.log("ajax failed");
+                                    console.error(xhr.responseText, { xhr });
+                                }
+                            });
                     });
+
+                    jQueryAjaxDelete = form => {
+                        if (confirm('Do you really want to delete this entry?')) {
+                            try {
+                            console.log(form);
+                                $.ajax({
+                                    type: 'DELETE',
+                                    url: "/deleteVehicle",
+                                    data: new FormData(form),
+                                    contentType: false,
+                                    processData: false,
+                                    success: function(res) {
+                                        $('#view-all').html(res.html);
+                                        location.reload();
+                                    },
+                                    error: function(err) {
+                                        console.log(err);
+                                    }
+                                });
+                            } catch (ex) {
+                                console.log(ex);
+                            }
+                        }
+                        return false;
+                    }
                 </script>
                 <!-- <div class="formular">
                   <form action="index.html" method="post">
@@ -241,13 +285,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-  $(document).ready( function () {
-    $('#bookings').DataTable();
-  });
 
-
-</script>
 <style>
         *{
         margin: 0;

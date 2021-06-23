@@ -37,7 +37,6 @@ public class CreateVehicleController {
 
         ArrayList<VehicleTypeDto> vehicleTypes = new ArrayList<VehicleTypeDto>();
 
-
         for (int i = 0; i < vehicleTypeList.size(); i+=2)
         {
             VehicleTypeDto vehicleType = new VehicleTypeDto (

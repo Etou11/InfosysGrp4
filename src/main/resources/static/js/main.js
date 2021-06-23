@@ -8,6 +8,7 @@ $(document).ready(function(){
 	});
 });
 
+/*
 const startDateTime = new Date('June 21, 2021 , 11:18:00'); // start
 const startStamp = startDateTime.getTime();
 
@@ -33,3 +34,4 @@ document.getElementById("time-elapsed").innerHTML = h+" Stunden, "+m+" Minuten, 
 
 
 timer = setInterval(updateClock, 1000);
+*/

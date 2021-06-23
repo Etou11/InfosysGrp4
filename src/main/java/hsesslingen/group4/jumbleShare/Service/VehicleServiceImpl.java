@@ -40,4 +40,13 @@ public class VehicleServiceImpl implements VehicleService {
     {
         return vehicleRepository.findAll();
     }
+
+    @Override
+    public void deleteById(UUID id) { vehicleRepository.deleteById(id);}
+
+    @Override
+    public void delete(Grp4Ss21Vehicle vehicle) { vehicleRepository.delete(vehicle);}
+
+    //@Override
+    //public List<Grp4Ss21Vehicle> findAllById(UUID id) { return vehicleRepository.findAllById(id); }
 }
