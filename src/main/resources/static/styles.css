@@ -303,7 +303,31 @@ tbody tr:hover {
     padding-right: 15px;
   }
 }
+.contact > img {
+  width: 30%;
+  align-items: center;
+}
+.contactdata > .contact {
+  width: 300px;
+  height: 300px;
+  float: left;
+  justify-content: center;
+}
+.contactdata {
+  display: inline-block;
+  margin-left: 200px;
+}
+h3 {
+ font-size: 30px;
+ font-weight: bolder;
+}
+.contact > p {
+ font-size: 20px;
+}
+.iframe{
+ margin-bottom: 30px;
+}
+#datatable-vehicle-index{
+ weight:80%;
 
-
-
-
+ }
