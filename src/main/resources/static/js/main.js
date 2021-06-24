@@ -36,6 +36,7 @@ document.getElementById("time-elapsed").innerHTML = h+" Stunden, "+m+" Minuten, 
 timer = setInterval(updateClock, 1000);
 */
 
+/*
 function downloadCSV(csv, filename) {
     var csvFile;
     var downloadLink;
@@ -77,3 +78,5 @@ function exportTableToCSV(filename) {
 
     // Download CSV file
     downloadCSV(csv.join("\n"), filename);
+}
+*/

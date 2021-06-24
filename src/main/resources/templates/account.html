@@ -9,7 +9,7 @@
     <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="main.js"></script>
 </head>
 <header class="site-header" th:replace="fragments :: header"></header>
 <body>
@@ -76,24 +76,27 @@
             <div class="content-inner">
 
                 <div class="formular">
-                    <form action="index.html" method="post">
+                    <form th:action="@{/account}" method="post" th:object="${account}">
 
-                        <label for="field"><b>Owner First Name</b></label>
-                        <input type="text" placeholder="Enter Owner First Name" name="uname" required>
+                        <input th:field="*{id}" type="text" th:value="#{currentUserAccount.id}" th:text="#{currentUserAccount.id}"  id="id" name="id" required disabled style="display: none;">
 
-                        <label for="field"><b>Owner Surname</b></label>
-                        <input type="text" placeholder="Enter Owner Surname" name="uname" required>
+                        <label for="ownerFName"><b>Owner First Name</b></label>
+                        <input th:field="*{ownerFName}" type="text" th:value="#{currentUserAccount.ownerFName}" th:text="#{currentUserAccount.ownerFName}"  id="ownerFName" name="ownerFName" required>
 
-                        <label for="field"><b>IBAN</b></label>
-                        <input type="text" placeholder="Enter IBAN" name="uname" required>
+                        <label for="ownerLName"><b>Owner Surname</b></label>
+                        <input th:field="*{ownerLName}" type="text" th:value="#{currentUserAccount.ownerLName}" th:text="#{currentUserAccount.ownerLName}" id="ownerLName" name="ownerLName" required>
 
-                        <label for="field"><b>BIC</b></label>
-                        <input type="text" placeholder="Enter BIC" name="uname" required>
+                        <label for="IBAN"><b>IBAN</b></label>
+                        <input th:field="*{IBAN}" type="text" th:value="#{currentUserAccount.IBAN}" th:text="#{currentUserAccount.IBAN}" id="IBAN" name="IBAN" required>
 
-                        <label for="field"><b>Bankname</b></label>
-                        <input type="text" placeholder="Enter Bankname" name="uname" required>
+                        <label for="BIC"><b>BIC</b></label>
+                        <input th:field="*{BIC}" type="text" th:value="#{currentUserAccount.BIC}" th:text="#{currentUserAccount.BIC}" id="BIC" name="BIC" required>
 
-                        <button id="paybutton" type="add"><a href="index.html">Save Changes </a></button>
+                        <label for="bankName"><b>Bank Name</b></label>
+                        <input th:field="*{bankName}" type="text" th:value="#{currentUserAccount.bankName}" th:text="#{currentUserAccount.bankName}" id="bankName" name="bankName" required>
+
+                        <button type="submit">Save Changes</button>
+                        <!--<button id="paybutton" type="add"><a href="index.html">Save Changes </a></button> -->
                     </form>
                 </div>
             </div>
@@ -259,7 +262,7 @@
 
                                     $.ajax({
                                         type: 'GET',
-                                        url: "/deleteVehicle",
+                                        url: "/deleteVehicleById",
                                         data: data,
                                         success: function(res) {
                                             $('#view-all').html(res.html);
@@ -274,12 +277,13 @@
                                 } );
                     });
 
+/*
                     jQueryAjaxDelete = form => {
                         if (confirm('Do you really want to delete this entry?')) {
                             try {
                             console.log(form);
                                 $.ajax({
-                                    type: 'DELETE',
+                                    type: 'GET',
                                     url: "/deleteVehicle",
                                     data: new FormData(form),
                                     contentType: false,
@@ -298,34 +302,10 @@
                         }
                         return false;
                     }
-                </script>
-                <script>
-                    function createDataTable(args) {
-                        $('#datatable-vehicle-index').DataTable( {
-                            data: args,
-                            "columns": [
-                            { "data": "brand" },
-                            { "data": "plateOrSerialNumber" },
-                            { "data": "pricePerMinute" },
-                            { "data": "longitude" },
-                            { "data": "latitude" },
-                            { "data": "vehicleTypeId" }
-                            ]
-                        } );
-                    }
-                    $(document).ready(function() {
-                        $.ajax({
-                            dataType: "GET",
-                            url: "/json/getVehicleData.json",
-                            success: function (res) {
-                                createDataTable(res);
-                            },
-                            error: (xhr, ajaxOptions, thrownError) => {
-                                console.error(xhr.responseText, { xhr });
-                            }
-                        });
-                        
-                    });
+                    */
+
+
+                                        /*
                     function Upload() {
                         var fileUpload = document.getElementById("fileUpload");
                         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
@@ -358,6 +338,7 @@
                         }
                         $('#bokings').data.reload();
                     }
+                    */
 
                 </script>
                 <!-- <div class="formular">

@@ -1,15 +1,15 @@
 package hsesslingen.group4.jumbleShare.Web.Dto;
 
+import hsesslingen.group4.jumbleShare.JumbleShareApplication;
 import org.springframework.security.core.Authentication;
-
 import java.math.BigDecimal;
 import java.util.UUID;
 
 public class CreateVehicleDto {
 
     //TODO: Replace with actual login system
-    private  String currentlyActiveUser = "D568817B-A8D2-43AA-A4BD-DC92378CB6DE";
-    private  UUID _currentlyActiveUser = UUID.fromString(currentlyActiveUser);
+    //private  String currentlyActiveUser = "D568817B-A8D2-43AA-A4BD-DC92378CB6DE";
+    //private  UUID _currentlyActiveUser = UUID.fromString(currentlyActiveUser);
 
     private UUID id;
     private String brand;
@@ -32,12 +32,12 @@ public class CreateVehicleDto {
         this.latitude = latitude;
         this.longitude = longitude;
         this.vehicleTypeId = vehicleTypeId;
-        this.userId = _currentlyActiveUser;
+        this.userId = JumbleShareApplication._currentlyActiveUser;
     }
 
     public UUID getUserId()
     {
-        return _currentlyActiveUser;
+        return JumbleShareApplication._currentlyActiveUser;
     }
 
     public void setUserId(UUID userId)

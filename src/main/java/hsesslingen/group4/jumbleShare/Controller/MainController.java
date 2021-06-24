@@ -20,65 +20,53 @@ public class MainController
 
     @Autowired
     UserServiceImpl userService;
+    @Autowired
+    VehicleServiceImpl vehicleService;
+    @Autowired
+    VehicleTypeServiceImpl vehicleTypeService;
 
+
+    //User
     @GetMapping(path = "getUserData")
     List<Grp4Ss21User> getUsers()
     {
         return userService.findAll();
     }
 
-    @Autowired
-    VehicleServiceImpl vehicleService;
 
+    //Vehicle
     @GetMapping(path = "getVehicleData")
     List<Grp4Ss21Vehicle> getVehicle() { return vehicleService.findAll(); }
 
     @GetMapping(path = "getVehicleDataForUser")
-    List<Grp4Ss21Vehicle> getVehicleById(String userId)
+    List<Grp4Ss21Vehicle> getVehicleByUserId(String userId)
     {
-        userId = userId.toLowerCase(Locale.ROOT);
-        userId = userId.replaceAll("-", "");
-        userId = userId.substring(userId.length() - 8);
-
         var vehicles = vehicleService.findAll();
         ArrayList<Grp4Ss21Vehicle> vehiclesFiltered = new ArrayList<Grp4Ss21Vehicle>();
 
         for (Grp4Ss21Vehicle ele : vehicles)
         {
-            var parsedGuid = HelperExtension.hexToStr(ele.getUserId().toString());
-            parsedGuid = parsedGuid.replaceAll("-","");
-            parsedGuid = parsedGuid.substring(parsedGuid.length() - 8);
-
-            if(userId.contentEquals(parsedGuid))
+            if(HelperExtension.UuidEqualityCheck(userId, ele.getUserId().toString()))
                 vehiclesFiltered.add(ele);
         }
 
         return vehiclesFiltered;
     }
 
+    //Using DeleteMapping leads to spring security refusing connection - GetMapping as a workaround
+    @GetMapping(path ="deleteVehicleById")
+    boolean deleteVehicleById(String id)
+    {
+        vehicleService.deleteById(UUID.fromString(id));
+        return true;
+    }
 
-    @Autowired
-    VehicleTypeServiceImpl vehicleTypeService;
-
+    //VehicleType
     @GetMapping(path = "getVehicleTypeById")
     Grp4Ss21VehicleType getVehicleTypeById(UUID id) { return vehicleTypeService.getVehicleTypeById(id); }
 
     @GetMapping(path = "getVehicleTypes")
     List<String> getVehicleTypes() { return dbController.getAllVehicleTypes(); }
-
-    @GetMapping(path ="deleteVehicle")
-    boolean deleteVehicleById(String id)
-    {
-        //TODO: Continue here
-        System.out.println("Hello world!");
-        var test = "test";
-        return true;
-    }
-
-
-
-    //@PostMapping(path = "createNewVehicle")
-    //public @ResponseBody String addNewVehicle (@RequestParam boolean isActive, @RequestParam String brand, @RequestParam String plateOrSerialNumber, @RequestParam String additionalInformation, @RequestParam double pricePerMinute)
 
 
 }

@@ -1,7 +1,9 @@
 package hsesslingen.group4.jumbleShare.Controller;
 
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
+import hsesslingen.group4.jumbleShare.JumbleShareApplication;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21VehicleRepository;
+import hsesslingen.group4.jumbleShare.Service.AccountServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -23,10 +25,7 @@ public class WebController {
     }
 
     @GetMapping(value = "/account.html")
-    public String account()
-    {
-        return "account";
-    }
+    public String account() { return "account"; }
 
     @GetMapping(value = "/contact.html")
     public String contact()
