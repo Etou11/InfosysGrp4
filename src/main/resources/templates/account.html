@@ -207,6 +207,65 @@
                 </table>
                 <script>
 
+                    $(document).ready(function() {
+
+                    var dataGetVehicleDataForUser = {
+                    userId: 'D568817B-A8D2-43AA-A4BD-DC92378CB6DE'
+                    };
+
+                    $.ajax({
+                        type: "GET",
+                        data: dataGetVehicleDataForUser,
+                        url: "/getVehicleDataForUser",
+                        success: function (res) {
+                            createDataTable(res);
+                        },
+                        error: (xhr, ajaxOptions, thrownError) => {
+                            console.log("ajax failed");
+                            console.error(xhr.responseText, { xhr });
+                        }
+                    });
+
+                    $('#datatable-vehicle-account').on( 'click', 'button', function () {
+                        if (confirm('Do you really want to delete this entry?')) {
+                        var vehicle = table.row( $(this).parents('tr') ).data();
+
+                        var data = {
+                            id: vehicle.id
+                        }
+
+                        //DELETE call distinguished as GET
+                        $.ajax({
+                            type: 'GET',
+                            url: "/deleteVehicleById",
+                            data: data,
+                            success: function(res) {
+                                $('#view-all').html(res.html);
+                                location.reload();
+                            },
+                            error: function(err) {
+                                console.log(err);
+                            }
+                        });
+
+                        }
+                    });
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/getAccountDetailsByUserId",
+                        success: function (res) {
+                            console.log(res);
+                            populateAccountDetailForm(res);
+                        },
+                        error: (xhr, ajaxOptions, thrownError) => {
+                            console.error(xhr.responseText, { xhr });
+                        }
+                    });
+
+                //End Document.ready
+                });
+
 
                 $("#form-account-details").submit(function(e) {
                     e.preventDefault(); // avoid to execute the actual submit of the form.
@@ -255,67 +314,6 @@
                              ]
                         } );
                     }
-
-
-                    $(document).ready(function() {
-
-                        var data = {
-                        userId: 'D568817B-A8D2-43AA-A4BD-DC92378CB6DE'
-                        };
-
-                        $.ajax({
-                            type: "GET",
-                            data: data,
-                            url: "/getVehicleDataForUser",
-                            success: function (res) {
-                                createDataTable(res);
-                            },
-                            error: (xhr, ajaxOptions, thrownError) => {
-                                console.log("ajax failed");
-                                console.error(xhr.responseText, { xhr });
-                            }
-                        });
-
-                        $('#datatable-vehicle-account').on( 'click', 'button', function () {
-                            if (confirm('Do you really want to delete this entry?')) {
-                            var vehicle = table.row( $(this).parents('tr') ).data();
-
-                            var data = {
-                                id: vehicle.id
-                            }
-
-                            //DELETE call distinguished as GET
-                            $.ajax({
-                                type: 'GET',
-                                url: "/deleteVehicleById",
-                                data: data,
-                                success: function(res) {
-                                    $('#view-all').html(res.html);
-                                    location.reload();
-                                },
-                                error: function(err) {
-                                    console.log(err);
-                                }
-                            });
-
-                            }
-                        });
-
-                        $.ajax({
-                            type: "GET",
-                            url: "/getAccountDetailsByUserId",
-                            success: function (res) {
-                                console.log(res);
-                                populateAccountDetailForm(res);
-                            },
-                            error: (xhr, ajaxOptions, thrownError) => {
-                                console.error(xhr.responseText, { xhr });
-                            }
-                        });
-
-                    //End Document.ready
-                    });
-
 
                     function populateAccountDetailForm(list) {
 

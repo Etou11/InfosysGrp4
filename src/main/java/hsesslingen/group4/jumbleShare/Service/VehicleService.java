@@ -11,5 +11,4 @@ public interface VehicleService {
     List<Grp4Ss21Vehicle> findAll();
     void deleteById(UUID id);
     void delete(Grp4Ss21Vehicle vehicle);
-    //List<Grp4Ss21Vehicle> findAllById(UUID id);
 }

@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * $table.getTableComment()
@@ -23,7 +24,7 @@ public class Grp4Ss21Transaction implements Serializable
 
     @Id
     @Column(name = "[id]", nullable = false)
-    private String id;
+    private UUID id;
 
     @Column(name = "[value]", nullable = false)
     private BigDecimal value;
@@ -35,6 +36,6 @@ public class Grp4Ss21Transaction implements Serializable
     private String accountIdReceiver;
 
     @Column(name = "[tripid]", nullable = false)
-    private String tripId;
+    private UUID tripId;
 
 }

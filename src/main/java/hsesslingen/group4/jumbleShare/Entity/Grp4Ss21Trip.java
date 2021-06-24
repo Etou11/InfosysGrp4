@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * $table.getTableComment()
@@ -23,7 +24,7 @@ public class Grp4Ss21Trip implements Serializable
 
     @Id
     @Column(name = "Id", nullable = false)
-    private String id;
+    private UUID id;
 
     @Column(name = "TimestampStart", nullable = false)
     private Date timestampStart;
@@ -47,9 +48,22 @@ public class Grp4Ss21Trip implements Serializable
     private BigDecimal vehiclePricePerMinute;
 
     @Column(name = "UserId", nullable = false)
-    private String userId;
+    private UUID userId;
 
     @Column(name = "VehicleId", nullable = false)
-    private String vehicleId;
+    private UUID vehicleId;
 
+    public Grp4Ss21Trip(UUID id, Date timestampStart, Date timestampEnd, BigDecimal longitudeOrig, BigDecimal latitudeOrig, BigDecimal longitudeFin, BigDecimal latitudeFin, BigDecimal vehiclePricePerMinute, UUID userId, UUID vehicleId)
+    {
+        this.id = id;
+        this.timestampStart = timestampStart;
+        this.timestampEnd = timestampEnd;
+        this.longitudeOrig = longitudeOrig;
+        this.latitudeOrig = latitudeOrig;
+        this.longitudeFin = longitudeFin;
+        this.latitudeFin = latitudeFin;
+        this.vehiclePricePerMinute = vehiclePricePerMinute;
+        this.userId = userId;
+        this.vehicleId = vehicleId;
+    }
 }
