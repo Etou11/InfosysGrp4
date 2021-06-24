@@ -1,318 +1,545 @@
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
-  <head>
-    <!-- Site Title-->
-    <title>About Me</title>
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="utf-8">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <!-- Stylesheets-->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic%7CJosefin+Sans:400,700,300italic">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
-    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
-  </head>
-  <body>
-    <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
-    <!-- Page Loader-->
-    <div id="page-loader">
-      <div class="page-loader-body">
-        <div class="cssload-spinner">
-          <div class="cssload-cube cssload-cube0"></div>
-          <div class="cssload-cube cssload-cube1"></div>
-          <div class="cssload-cube cssload-cube2"></div>
-          <div class="cssload-cube cssload-cube3"></div>
-          <div class="cssload-cube cssload-cube4"></div>
-          <div class="cssload-cube cssload-cube5"></div>
-          <div class="cssload-cube cssload-cube6"> </div>
-          <div class="cssload-cube cssload-cube7"></div>
-          <div class="cssload-cube cssload-cube8"></div>
-          <div class="cssload-cube cssload-cube9"></div>
-          <div class="cssload-cube cssload-cube10"></div>
-          <div class="cssload-cube cssload-cube11"></div>
-          <div class="cssload-cube cssload-cube12"></div>
-          <div class="cssload-cube cssload-cube13"></div>
-          <div class="cssload-cube cssload-cube14"></div>
-          <div class="cssload-cube cssload-cube15"></div>
-        </div>
-      </div>
-    </div>
-    <!-- Page-->
-    <div class="page">
-      <!-- Top Banner--><a class="section section-banner text-center veil reveal-lg-block" href="https://www.templatemonster.com/intense-multipurpose-html-template.html" style="background-image: url(images/banner/background-04-1920x60.jpg); background-image: -webkit-image-set( url(images/banner/background-04-1920x60.jpg) 1x, url(images/banner/background-04-3840x120.jpg) 2x )" target="_blank"><img src="images/banner/foreground-04-1600x60.png" srcset="images/banner/foreground-04-1600x60.png 1x, images/banner/foreground-04-3200x120.png 2x" alt="" width="1600" height="310"></a>
-      <!-- Page Header-->
-      <header class="section page-header">
-        <!-- RD Navbar-->
-        <div class="rd-navbar-wrap">
-          <nav class="rd-navbar" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-static" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-stick-up-clone="false" data-md-stick-up-offset="5px" data-lg-stick-up-offset="5px" data-md-stick-up="true" data-lg-stick-up="true">
-            <div class="rd-navbar-main-outer">
-              <div class="rd-navbar-main">
-                <!-- RD Navbar Panel-->
-                <div class="rd-navbar-panel">
-                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
-                  <!-- RD Navbar Brand-->
-                  <div class="rd-navbar-brand"><a class="brand" href="index.html">
-                      <div class="brand__name"><img class="brand__logo-dark" src="images/logo-default-237x35.png" alt="" width="237" height="35"/><img class="brand__logo-light" src="images/logo-inverse-237x35.png" alt="" width="237" height="35"/>
-                      </div><span class="brand__slogan">love story photographer</span></a></div>
-                </div>
-                <!-- RD Navbar Nav-->
-                <div class="rd-navbar-nav-wrap">
-                  <div class="rd-navbar-element">
-                    <ul class="list-icons list-inline-sm">
-                      <li><a class="icon icon-sm fa fa-instagram icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
-                      <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
-                      <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
-                    </ul>
-                  </div>
-                  <!-- RD Navbar Nav-->
-                  <ul class="rd-navbar-nav">
-                    <li><a href="index.html">Home<span></span><span></span><span></span><span></span></a>
-                    </li>
-                    <li class="active"><a href="about-me.html">About Me<span></span><span></span><span></span><span></span></a>
-                    </li>
-                    <li><a href="typography.html">Typography<span></span><span></span><span></span><span></span></a>
-                    </li>
-                    <li><a href="contact-us.html">Contact Us<span></span><span></span><span></span><span></span></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
+    <title>JumbleShare</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" type="text/css"/>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" type="text/css"/>
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
+    <script src="/js/main.js"></script>
+</head>
+<header class="site-header" th:replace="fragments :: header"></header>
+<body>
+<!--  1. Part -->
+<div class="container">
+    <div class="acc"> <!-- acc = personaldata-->
+        <h2>Personal Data</h2>
+        <div class="content">
+            <div class="content-inner">
 
-      <!-- Breadcrumbs-->
-      <section class="breadcrumbs-custom bg-image" style="background-image: url(images/breadcrumbs-image.jpg);">
-        <div class="shell">
-          <h1 class="breadcrumbs-custom__title">About Me</h1>
-          <ul class="breadcrumbs-custom__path">
-            <li><a href="index.html">Home</a></li>
-            <li class="active">About Me</li>
-          </ul>
-        </div>
-      </section>
+                <div class="formular">
+                    <form action="insert.php" method="post">
 
-      <!-- About Me-->
-      <section class="section section-md bg-white">
-        <div class="shell">
-          <div class="range range-50 range-sm-center range-md-left">
-            <div class="cell-sm-6 cell-md-5">
-              <div class="thumb-bordered"><img src="images/about-1-437x435.jpg" alt="" width="437" height="435"/>
-              </div>
-            </div>
-            <div class="cell-sm-6 cell-md-7">
-              <div class="box-width-3 box-centered">
-                <article class="quote-big">
-                  <p class="q">I’ve been working as a professional wedding photographer all my adult life.</p>
-                </article>
-                <div class="divider"></div>
-                <p class="text-spacing-05">My name is Susan Parker, and I have been a professional wedding photographer since 2005. On this website you can take a look at my latest photos or order a photo session for yourself or your family.</p>
-                <div class="group-3-columns" data-lightgallery="group">
-                  <div class="column-item"><a class="thumb-light" href="images/certificate-1-847x1200.jpg" data-lightgallery="item"><img src="images/certificate-1-120x171.jpg" alt="" width="120" height="171"/>
-                      <div class="thumb-light__overlay"></div></a></div>
-                  <div class="column-item"><a class="thumb-light" href="images/certificate-1-847x1200.jpg" data-lightgallery="item"><img src="images/certificate-1-120x171.jpg" alt="" width="120" height="171"/>
-                      <div class="thumb-light__overlay"></div></a></div>
-                  <div class="column-item"><a class="thumb-light" href="images/certificate-1-847x1200.jpg" data-lightgallery="item"><img src="images/certificate-1-120x171.jpg" alt="" width="120" height="171"/>
-                      <div class="thumb-light__overlay"></div></a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                        <label for="customernr"><b>Customer Number</b></label>
+                        <input type="text" placeholder="Enter Customer Number" name="customernr" id="customernr"
+                               required>
 
-      <!-- My Best Photos-->
-      <section class="section section-sm bg-gray-lighter text-center"> 
-        <div class="shell">
-          <div class="range range-50 range-sm-center">
-            <div class="cell-md-10 cell-lg-9">
-              <h1>My Best Photos</h1>
-              <p>In my portfolio, there are hundreds of successful photo shoots and dozens of satisfied customers. All of the couples I’ve been working with were more than satisfied with my works. Check out the gallery to learn more about my skills and style.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Owl Carousel-->
-        <div class="owl-carousel-wrap owl-carousel_style-2">
-          <div class="owl-carousel" data-items="1" data-lg-items="3" data-autoplay="true" data-xl-items="3" data-dots="false" data-nav="false" data-stage-padding="0" data-xs-stage-padding="90" data-sm-stage-padding="140" data-md-stage-padding="260" data-lg-stage-padding="1" data-loop="true" data-margin="0" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav" data-center-mode="true" data-speed="500" data-lightgallery="group"><a class="thumb-ruby thumb-mixed_large" href="images/group-image-1-1200x800-original.jpg" data-lightgallery="item"><img class="thumb-ruby__image" src="images/about-2-649x427.jpg" alt="" width="649" height="427"/>
-              <div class="thumb-ruby__caption"> 
-                <p class="thumb-ruby__title heading-3">Image #1</p>
-                <p class="thumb-ruby__text">If you are looking for high quality wedding photography, I will be glad to help you.</p>
-              </div></a><a class="thumb-ruby thumb-mixed_large" href="images/group-image-2-1200x800-original.jpg" data-lightgallery="item"><img class="thumb-ruby__image" src="images/about-3-649x427.jpg" alt="" width="649" height="427"/>
-              <div class="thumb-ruby__caption"> 
-                <p class="thumb-ruby__title heading-3">Image #2</p>
-                <p class="thumb-ruby__text">If you are looking for high quality wedding photography, I will be glad to help you.</p>
-              </div></a><a class="thumb-ruby thumb-mixed_large" href="images/group-image-3-1200x800-original.jpg" data-lightgallery="item"><img class="thumb-ruby__image" src="images/about-4-649x427.jpg" alt="" width="649" height="427"/>
-              <div class="thumb-ruby__caption"> 
-                <p class="thumb-ruby__title heading-3">Image #3</p>
-                <p class="thumb-ruby__text">If you are looking for high quality wedding photography, I will be glad to help you.</p>
-              </div></a>
-          </div>
-          <div class="owl-outer-navigation" id="owl-carousel-nav">
-            <button class="owl-arrow owl-arrow-prev">
-              <svg x="0px" y="0px" viewbox="0 0 28.5 16" width="26" height="14">
-                <line x1="27.5" y1="8" x2="1" y2="8" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></line>
-                <polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="8.8,15 1,8 8.8,1"></polyline>
-              </svg>
-            </button>
-            <button class="owl-arrow owl-arrow-next">
-              <svg x="0px" y="0px" viewbox="0 0 28.5 16" width="26" height="14">
-                <line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1" y1="8" x2="27.5" y2="8"></line>
-                <polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="19.7,15 27.5,8 19.7,1"></polyline>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </section>
+                        <label for="fname"><b>First Name</b></label>
+                        <input type="text" placeholder="Enter First Name" name="fname" id="fname" required>
 
-      <!-- What People Say-->
-      <section class="section section-md bg-white text-center">
-        <div class="shell">
-          <h1>What People Say</h1>
-          <p><span>Need more feedback? </span><a href="#">Click Here!</a></p>
-          <div class="range range-50 range-sm-center">
-            <div class="cell-sm-9 cell-md-6">
-                    <!-- Quote boxed-->
-                    <article class="quote-boxed"><span></span><span></span><span></span><span></span>
-                      <p class="quote-boxed__title">The Best Photographer I Know</p>
-                      <div class="quote-boxed__text">
-                        <svg class="quote-boxed__shape" version="1.1" x="0px" y="0px" viewbox="0 0 32.2 28" width="32.2" height="28">
-                          <path d="M6.2,0C2.8,0,0,2.8,0,6.3s2.8,6.3,6.2,6.3c6.2,0,2.1,12.3-6.2,12.3v3C14.7,27.9,20.4,0,6.2,0L6.2,0z M23.9,0       c-3.4,0-6.2,2.8-6.2,6.3s2.8,6.3,6.2,6.3c6.2,0,2.1,12.3-6.2,12.3v3C32.4,27.9,38.2,0,23.9,0L23.9,0z M23.9,0"></path>
-                        </svg>
-                        <p>I have been working with you for a long time and I can easily say that you are the best family photographer. Thank you for the high quality of your work!</p>
-                      </div>
-                      <ul class="quote-boxed__meta">
-                        <li>
-                          <div class="unit unit-horizontal unit-middle">
-                            <div class="unit__left"><img class="quote-boxed__avatar" src="images/user-1-46x46.jpg" alt="" width="46" height="46"/>
-                            </div>
-                            <div class="unit__body">
-                              <cite class="quote-boxed__cite">Rebecca Smith</cite>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <time class="quote-boxed__time" datetime="2019">Jul 20, 2019</time>
-                        </li>
-                      </ul>
-                    </article>
-            </div>
-            <div class="cell-sm-9 cell-md-6">
-                    <!-- Quote boxed-->
-                    <article class="quote-boxed"><span></span><span></span><span></span><span></span>
-                      <p class="quote-boxed__title">You Take the Best Photos!</p>
-                      <div class="quote-boxed__text">
-                        <svg class="quote-boxed__shape" version="1.1" x="0px" y="0px" viewbox="0 0 32.2 28" width="32.2" height="28">
-                          <path d="M6.2,0C2.8,0,0,2.8,0,6.3s2.8,6.3,6.2,6.3c6.2,0,2.1,12.3-6.2,12.3v3C14.7,27.9,20.4,0,6.2,0L6.2,0z M23.9,0       c-3.4,0-6.2,2.8-6.2,6.3s2.8,6.3,6.2,6.3c6.2,0,2.1,12.3-6.2,12.3v3C32.4,27.9,38.2,0,23.9,0L23.9,0z M23.9,0"></path>
-                        </svg>
-                        <p>Thank you very much for the photos! They are very beautiful, especially printed. All the relatives are delighted and I hope to work with you again in the future.</p>
-                      </div>
-                      <ul class="quote-boxed__meta">
-                        <li>
-                          <div class="unit unit-horizontal unit-middle">
-                            <div class="unit__left"><img class="quote-boxed__avatar" src="images/user-2-46x46.jpg" alt="" width="46" height="46"/>
-                            </div>
-                            <div class="unit__body">
-                              <cite class="quote-boxed__cite">Jane Brown</cite>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <time class="quote-boxed__time" datetime="2019">Jul 20, 2019</time>
-                        </li>
-                      </ul>
-                    </article>
-            </div>
-          </div>
-        </div>
-      </section>
+                        <label for="lname"><b>Enter Last Name</b></label>
+                        <input type="text" placeholder="Enter Last Name" name="lname" id="lname" required>
 
-            <section class="section parallax-container bg-image-dark" data-parallax-img="images/bg-image-6-1920x1225.jpg">
-              <div class="parallax-content">
-                <section class="section-lg text-center">
-                  <div class="shell">
-                    <div class="range range-50 range-sm-center range-md-reverse range-md-middle">
-                      <div class="cell-md-6 cell-lg-5">
-                        <div class="box-width-4 box-centered">
-                          <p class="heading-1">Book Your <br> Photo Shoot </p>
-                          <div class="divider-small"></div>
-                          <p>To order a photo shoot, please share as many details about your particular wedding as possible. I will be giving you my feedback immediately after I receive your message!</p>
-                        </div>
-                      </div>
-                      <div class="cell-sm-10 cell-md-6 cell-lg-7">
-                        <article class="box-bordered">
-                          <div class="box-bordered__main">
-                            <!-- RD Mailform-->
-                            <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
-                              <div class="form-wrap">
-                                <input class="form-input" id="contact-date" type="text" data-time-picker="date" name="date" data-constraints="@Required">
-                                <label class="form-label" for="contact-date">Event Date</label>
-                              </div>
-                              <div class="form-wrap">
-                                <input class="form-input" id="contact-name" type="text" name="name" data-constraints="@Required">
-                                <label class="form-label" for="contact-name">Your Name</label>
-                              </div>
-                              <div class="form-wrap">
-                                <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Email @Required">
-                                <label class="form-label" for="contact-email">E-mail</label>
-                              </div>
-                              <div class="form-wrap">
-                                <label class="form-label" for="contact-message">Your Message</label>
-                                <textarea class="form-input" id="contact-message" name="message" data-constraints="@Required"></textarea>
-                              </div>
-                              <div class="form-wrap form-button offset-1">
-                                <button class="button button-block button-primary-outline button-ujarak" type="submit">make an appointment</button>
-                              </div>
-                            </form>
-                          </div>
-                        </article>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </div>
-            </section>
+                        <label for="uname"><b>Username</b></label>
+                        <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
 
+                        <label for="email"><b>E-Mail</b></label>
+                        <input type="email" placeholder="Enter E-Mail" name="email" id="email" required>
 
-      <!-- Bottom Banner--><a class="section section-banner" href="https://www.templatemonster.com/intense-multipurpose-html-template.html" style="background-image: url(images/banner/background-03-1920x310.jpg); background-image: -webkit-image-set( url(images/banner/background-03-1920x310.jpg) 1x, url(images/banner/background-03-3840x620.jpg) 2x )" target="_blank"><img src="images/banner/foreground-03-1600x310.png" srcset="images/banner/foreground-03-1600x310.png 1x, images/banner/foreground-03-3200x620.png 2x" alt="" width="1600" height="310"></a>
-      <!-- Page Footer -->
-      <footer class="footer-centered section bg-gray-darker">
-        <div class="shell">
-          <div class="range range-sm-center">
-            <div class="cell-sm-10 cell-md-8 cell-lg-6">
-              <!-- Brand--><a class="brand" href="index.html">
-                <div class="brand__name"><img src="images/logo-inverse-237x35.png" alt="" width="237" height="35"/>
-                </div><span class="brand__slogan">love story photographer</span></a>
-                    <!-- RD Mailform-->
-                    <form class="rd-mailform form_inline" data-form-output="form-output-global" data-form-type="subscribe" method="post" action="bat/rd-mailform.php">
-                      <div class="form__inner">
-                        <div class="form-wrap">
-                          <input class="form-input" id="subscribe-form-footer-email" type="email" name="email" data-constraints="@Email @Required">
-                          <label class="form-label" for="subscribe-form-footer-email">Your E-mail...</label>
-                        </div>
-                        <div class="form-button">
-                          <button class="button button-link" type="submit">Subscribe</button>
-                        </div>
-                      </div>
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+                        <!--<label for="field"><b>Birthday</b></label> Date Picker Feld hinzufügen
+                        <input type="text" placeholder="Enter Birthday" name="uname" id="customernr" required> -->
+
+                        <!-- <label for="field"><b>Phone number</b></label>
+                        <input type="text" placeholder="Enter Phone number" name="uname" required> -->
+
+                        <label for="street"><b>Street and Number</b></label>
+                        <input type="text" placeholder="Enter Street and Number" name="street" id="street" required>
+
+                        <label for="postcode"><b>Post Code</b></label>
+                        <input type="text" placeholder="Enter Post Code" name="postcode" id="postcode" required>
+
+                        <label for="city"><b>City</b></label>
+                        <input type="text" placeholder="Enter City" name="city" id="city" required>
+
+                        <label for="country"><b>Country</b></label>
+                        <input type="text" placeholder="Enter Country" name="country" id="country" required>
+
+                        <button id="add" type="add"><a href="index.html">Save Changes </a></button>
                     </form>
-              <ul class="list-icons list-inline-sm">
-                <li><a class="icon icon-sm fa fa-instagram icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
-                <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
-                <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
-              </ul>
-              <!-- Rights-->
-              <p class="rights"><span>Susan Parker</span><span>&nbsp;&copy;&nbsp; </span><span class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline" href="#">Privacy Policy</a><span> Design&nbsp;by&nbsp;<a href="https://www.templatemonster.com">TemplateMonster</a></span></p>
+                </div>
             </div>
-          </div>
         </div>
-      </footer>
     </div>
-    <!-- Global Mailform Output-->
-    <div class="snackbars" id="form-output-global"></div>
-    <!-- Javascript-->
-    <script src="js/core.min.js"></script>
-    <script src="js/script.js"></script>
-  </body>
+</div>
+
+<!--  2. Part -->
+<div class="container">
+    <div class="acc">
+        <h2>Payment Settings</h2>
+        <div class="content">
+            <div class="content-inner">
+
+                <div id="bank-details-change-successful" class="alert alert-info" style="display: none;">
+                    You've successfully changed your bank information!
+                </div>
+
+                <div class="formular">
+                    <form id="form-account-details" method="GET">
+
+                        <input type="text" id="accountId" name="accountId" style="display: none;">
+                        <input type="text" id="userId" name="userId" style="display: none;">
+
+                        <label for="ownerFName"><b>Owner First Name</b></label>
+                        <input type="text" id="ownerFName" name="ownerFName" required>
+
+                        <label for="ownerLName"><b>Owner Surname</b></label>
+                        <input type="text" id="ownerLName" name="ownerLName" required>
+
+                        <label for="IBAN"><b>IBAN</b></label>
+                        <input type="text"  id="IBAN" name="IBAN" required>
+
+                        <label for="BIC"><b>BIC</b></label>
+                        <input type="text"  id="BIC" name="BIC" required>
+
+                        <label for="bankName"><b>Bank Name</b></label>
+                        <input type="text" id="bankName" name="bankName" required>
+
+                        <button type="submit">Save Changes</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 3. Part  -->
+<div class="container">
+    <div class="acc">
+        <h2>My Bookings</h2> <!--MIT DATA TABLES MACHEN / Rechnungserstellung PDF-->
+        <div class="content">
+            <div class="content-inner">
+
+                <!-- <div class="formular">
+                  <form action="index.html" method="post"> -->
+
+                <div class="limiter">
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100">
+                                <input tpye="file" id="upload-csv" accept=".csv">
+                                <table id="bookings">
+                                    <thead>
+                                    <tr class="table100-head">
+                                        <th class="column1">Start Trip</th>
+                                        <th class="column2">End Trip</th>
+                                        <th class="column3">Order ID</th>
+                                        <th class="column4">User</th>
+                                        <th class="column5">Price</th>
+                                        <th class="column6">Quantity</th>
+                                        <th class="column7">Total</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="column1">2017-09-29 01:22</td>
+                                        <td class="column2">200398</td>
+                                        <td class="column3">diana12</td>
+                                        <td class="column4">0,40€</td>
+                                        <td class="column5">5 min</td>
+                                        <td class="column6">2€</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="column1">2017-09-28 05:57</td>
+                                        <td class="column2">200397</td>
+                                        <td class="column3">lukas20</td>
+                                        <td class="column4">0,40€</td>
+                                        <td class="column5">5 min</td>
+                                        <td class="column6">2€</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="column1">2017-09-26 05:57</td>
+                                        <td class="column2">200396</td>
+                                        <td class="column3">player13</td>
+                                        <td class="column4">0,40€</td>
+                                        <td class="column5">5 min</td>
+                                        <td class="column6">2€</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <button class="btn" onclick="exportTableToCSV('bookings.csv')">CSV File</button>
+                                <div id="dvImportSegments" class="fileupload ">
+                                    <fieldset>
+                                        <legend>Upload your CSV File</legend>
+                                        <input type="file" name="File Upload" id="txtFileUpload" accept=".csv"/>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- 4. Part  -->
+<div class="container">
+    <div class="acc">
+        <h2>My Vehicles</h2> <!-- MIT DATA TABLES MACHEN / SAVE CHANGES + DELETE BUTTONS /-->
+        <div class="content">
+            <div class="content-inner">
+
+                <table id="datatable-vehicle-account" class="datatable datatable-vehicle datatable-vehicle-account">
+                    <thead>
+                    <tr class="table100-head">
+                        <th>Brand</th>
+                        <th>PlateNumber</th>
+                        <th>Price per Minute</th>
+                        <th>Longitude</th>
+                        <th>Latitude</th>
+                        <th>Vehicle Type Id</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tfoot>
+                    <tr>
+                    </tr>
+                    </tfoot>
+                </table>
+                <script>
+
+
+                $("#form-account-details").submit(function(e) {
+                    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+                    var form = $(this);
+
+                    $.ajax({
+                           type: "GET",
+                           url: "/updateUserBankDetails",
+                           data: form.serialize(), // serializes the form's elements.
+                           success: function(data)
+                           {
+                               var successPrompt = document.getElementById("bank-details-change-successful");
+                               successPrompt.style.display = "block";
+                           }
+                         });
+
+
+                });
+
+                var table;
+
+                    function createDataTable(args) {
+                       table = $('#datatable-vehicle-account').DataTable( {
+                            data: args,
+                            "columns": [
+                            { "data": "brand" },
+                            { "data": "plateOrSerialNumber" },
+                            { "data": "pricePerMinute" },
+                            { "data": "longitude" },
+                            { "data": "latitude" },
+                            { "data": "vehicleTypeId" },
+                            { "data": "id" },
+                            { "data": null }
+                            ],
+                            "columnDefs": [ {
+                                "targets": -1,
+                                "data": null,
+                                "orderable": false,
+                                "defaultContent": "<button type='button'>Delete</button>"
+                            },
+                            {
+                                "targets": [ 6 ],
+                                "visible": false
+                            }
+                             ]
+                        } );
+                    }
+
+
+                    $(document).ready(function() {
+
+                        var data = {
+                        userId: 'D568817B-A8D2-43AA-A4BD-DC92378CB6DE'
+                        };
+
+                        $.ajax({
+                            type: "GET",
+                            data: data,
+                            url: "/getVehicleDataForUser",
+                            success: function (res) {
+                                createDataTable(res);
+                            },
+                            error: (xhr, ajaxOptions, thrownError) => {
+                                console.log("ajax failed");
+                                console.error(xhr.responseText, { xhr });
+                            }
+                        });
+
+                        $('#datatable-vehicle-account').on( 'click', 'button', function () {
+                            if (confirm('Do you really want to delete this entry?')) {
+                            var vehicle = table.row( $(this).parents('tr') ).data();
+
+                            var data = {
+                                id: vehicle.id
+                            }
+
+                            //DELETE call distinguished as GET
+                            $.ajax({
+                                type: 'GET',
+                                url: "/deleteVehicleById",
+                                data: data,
+                                success: function(res) {
+                                    $('#view-all').html(res.html);
+                                    location.reload();
+                                },
+                                error: function(err) {
+                                    console.log(err);
+                                }
+                            });
+
+                            }
+                        });
+
+                        $.ajax({
+                            type: "GET",
+                            url: "/getAccountDetailsByUserId",
+                            success: function (res) {
+                                console.log(res);
+                                populateAccountDetailForm(res);
+                            },
+                            error: (xhr, ajaxOptions, thrownError) => {
+                                console.error(xhr.responseText, { xhr });
+                            }
+                        });
+
+                    //End Document.ready
+                    });
+
+
+                    function populateAccountDetailForm(list) {
+
+                        var id = document.getElementById("accountId");
+                        id.text = list.id;
+                        id.value = list.id;
+
+                        var ownerFName = document.getElementById("ownerFName");
+                        ownerFName.text = list.ownerFName;
+                        ownerFName.value = list.ownerFName;
+
+                        var ownerLName = document.getElementById("ownerLName");
+                        ownerLName.text = list.ownerLName;
+                        ownerLName.value = list.ownerLName;
+
+                        var iban = document.getElementById("IBAN");
+                        iban.text = list.iban;
+                        iban.value = list.iban;
+
+                        var bic = document.getElementById("BIC");
+                        bic.text = list.bic;
+                        bic.value = list.bic;
+
+                        var bic = document.getElementById("BIC");
+                        bic.text = list.bic;
+                        bic.value = list.bic;
+
+                        var bankName = document.getElementById("bankName");
+                        bankName.text = list.bankName;
+                        bankName.value = list.bankName;
+
+                        var userId = document.getElementById("userId");
+                        userId.text = list.userId;
+                        userId.value = list.userId;
+
+                    }
+
+
+                                        /*
+                    function Upload() {
+                        var fileUpload = document.getElementById("fileUpload");
+                        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+                        if (regex.test(fileUpload.value.toLowerCase())) {
+                            if (typeof (FileReader) != "undefined") {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    var table = document.getElementById("bookings");
+                                    var rows = e.target.result.split("\n");
+                                    for (var i = 0; i < rows.length; i++) {
+                                        var cells = rows[i].split(";");
+                                        if (cells.length > 1) {
+                                            var row = table.insertRow(-1);
+                                            for (var j = 0; j < cells.length; j++) {
+                                                var cell = row.insertCell(-1);
+                                                cell.innerHTML = cells[j];
+                                            }
+                                        }
+                                    }
+                                    var dvCSV = document.getElementById("dvCSV");
+                                    dvCSV.innerHTML = "";
+                                    dvCSV.appendChild(table);
+                                }
+                                reader.readAsText(fileUpload.files[0]);
+                            } else {
+                                alert("This browser does not support HTML5.");
+                            }
+                        } else {
+                            alert("Please upload a valid CSV file.");
+                        }
+                        $('#bokings').data.reload();
+                    }
+                    */
+
+                </script>
+                <!-- <div class="formular">
+                  <form action="index.html" method="post">
+
+                    <label for="field"><b>Vehicle Typ</b></label>
+                    <input type="text" placeholder="Enter Vehicle type" name="uname" required>
+
+                    <label for="field"><b>Brand</b></label>
+                    <input type="text" placeholder="Enter Vehicle Brand" name="uname" required>
+
+                    <label for="field"><b>Model</b></label>
+                    <input type="text" placeholder="Enter Vehicle Model" name="uname" required>
+
+                    <label for="field"><b>Price per Minute</b></label>
+                    <input type="text" placeholder="Enter Vehicle Price per Minute" name="uname" required>
+
+                    <button id="add" type="add"><a href="index.html">Save Changes </a></button>
+                  </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+        *{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        font-family: Arial, Helvetica, sans-serif;
+        }
+        h2 {
+          text-align: center;
+          font-size: 50px;
+          margin: 50px;
+        }
+        h3 {
+        text-align: center;
+        font-size: 30px;
+        }
+        input[type=text], input[type=password], input[type=email] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid lightgray;
+          box-sizing: border-box;
+        }
+        button {
+          background-color: #3082cf;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+        button:hover {
+          opacity: 0.8;
+        }
+        .formular{
+          margin: 50px;
+          width: 600px;
+        }
+        .container {
+          max-width: 70%;
+          margin: 0 auto;
+          padding: 8px;
+          margin-top:20px;
+          margin-bottom: 10px;
+
+        }
+        .acc h2 {
+          font-size: 25px;
+          background-color: rgb(36, 147, 211);
+          color:white;
+          padding: 15px;
+          margin: 0;
+          cursor: pointer;
+          letter-spacing: 2px;
+          position: relative;
+
+        }
+        /*Format Screen Width*/
+        @media (min-width:300px) { .acc h2 {font-size:15px;} }
+
+        @media (min-width:640px) { .acc h2 {font-size:20px;} }
+
+        @media (min-width:960px) { .acc h2 {font-size:20px;} }
+
+        @media (min-width:1100px) { .acc h2 {font-size:25px;} }
+
+        /*Formatting for the paragraphs closed*/
+        .acc h2:after {
+          content: '+';
+          position: absolute;
+          right: 20px;
+          font-size: 40px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        @media (min-width: 300px) { .acc h2:after {font-size:20px;} }
+
+        @media (min-width: 640px) { .acc h2:after {font-size:30px;} }
+
+        @media (min-width:960px) { .acc h2:after {font-size:35px;} }
+
+        @media (min-width:1100px) { .acc h2:after {font-size:40px;} }
+
+        /*Formatting for the paragraphs opened*/
+        .acc.active h2:after {
+        content: '-';
+        }
+        .acc {
+          border-bottom: 1px solid  #fff ;
+        }
+        /*Content in boxes*/
+        .content {
+          background-color: #fff;
+          display: none;
+          margin-top: 0;
+          line-height: 1.5;
+        }
+        .content-inner {
+          padding: 15px;
+        }
+        /*Format Screen Width*/
+        @viewport{
+        zoom: 1.0;
+        width: extend-to-zoom;
+        }
+        #upload {
+            padding: 8px;
+            margin-left:20px;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #3082cf;
+            color: white;
+        }
+        #upload:hover {
+            opacity: 0.8;
+        }
+        button.btn-space {
+        margin-left: 1em;
+    }
+
+
+</style>
+</body>
+<footer th:replace="fragments :: footer"></footer>
+</div>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<header class="site-header" th:fragment="header">
+    <div class="wrapper site-header__wrapper">
+        <a href="index.html" class="logo"><img src="images/logo_small.png" alt="logo" width="50%"></a>
+        <nav class="nav">
+            <ul class="nav__wrapper">
+                <li class="nav__item"><a href="/index.html">Home</a></li>
+                <li class="nav__item"><a href="/new">Add Vehicle</a></li>
+                <li class="nav__item"><a href="/account.html">My Account</a></li>
+                <li class="nav__item"><a href="/contact.html">Contact</a></li>
+                <li sec:authorize="isAnonymous()" class="nav__item"><a href="/login">Log In</a></li>
+                <li sec:authorize="isAuthenticated()" class="nav__item"><a href="/login?logout">Log Out</a></li>
+            </ul>
+        </nav>
+        <div>
+            <li sec:authorize="isAuthenticated()" class="nav__item">Hello, <span sec:authentication="name"></span></li>
+        </div>
+    </div>
+</header>
+<div class="site-header" th:fragment="header-login">
+    <div class="wrapper site-header__wrapper">
+        <a href="index.html" class="logo"><img src="images/logo_small.png" alt="logo" width="50%"></a>
+    </div>
+</div>
+<body>
+</body>
+<footer th:fragment="footer">
+    <p> Follow us </p>
+    <div id="icons">
+        <img src="images/facebook.svg" alt="facebook">
+        <img src="images/instagram.svg" alt="instagram">
+        <img src="images/twitter.svg" alt="twitter">
+        <img src="images/linkedin.svg" alt="linkedin">
+    </div>
+    <div id="copyright"><p> &copy; 2021 by JumbleShare</p></div>
+</footer>
+</html>
