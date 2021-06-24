@@ -9,7 +9,7 @@
     <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
-    <script src="main.js"></script>
+    <script src="/js/main.js"></script>
 </head>
 <header class="site-header" th:replace="fragments :: header"></header>
 <body>
@@ -75,28 +75,33 @@
         <div class="content">
             <div class="content-inner">
 
-                <div class="formular">
-                    <form th:action="@{/account}" method="post" th:object="${account}">
+                <div id="bank-details-change-successful" class="alert alert-info" style="display: none;">
+                    You've successfully changed your bank information!
+                </div>
 
-                        <input th:field="*{id}" type="text" th:value="#{currentUserAccount.id}" th:text="#{currentUserAccount.id}"  id="id" name="id" required disabled style="display: none;">
+                <div class="formular">
+                    <form id="form-account-details" method="GET">
+
+                        <input type="text" id="accountId" name="accountId" style="display: none;">
+                        <input type="text" id="userId" name="userId" style="display: none;">
 
                         <label for="ownerFName"><b>Owner First Name</b></label>
-                        <input th:field="*{ownerFName}" type="text" th:value="#{currentUserAccount.ownerFName}" th:text="#{currentUserAccount.ownerFName}"  id="ownerFName" name="ownerFName" required>
+                        <input type="text" id="ownerFName" name="ownerFName" required>
 
                         <label for="ownerLName"><b>Owner Surname</b></label>
-                        <input th:field="*{ownerLName}" type="text" th:value="#{currentUserAccount.ownerLName}" th:text="#{currentUserAccount.ownerLName}" id="ownerLName" name="ownerLName" required>
+                        <input type="text" id="ownerLName" name="ownerLName" required>
 
                         <label for="IBAN"><b>IBAN</b></label>
-                        <input th:field="*{IBAN}" type="text" th:value="#{currentUserAccount.IBAN}" th:text="#{currentUserAccount.IBAN}" id="IBAN" name="IBAN" required>
+                        <input type="text"  id="IBAN" name="IBAN" required>
 
                         <label for="BIC"><b>BIC</b></label>
-                        <input th:field="*{BIC}" type="text" th:value="#{currentUserAccount.BIC}" th:text="#{currentUserAccount.BIC}" id="BIC" name="BIC" required>
+                        <input type="text"  id="BIC" name="BIC" required>
 
                         <label for="bankName"><b>Bank Name</b></label>
-                        <input th:field="*{bankName}" type="text" th:value="#{currentUserAccount.bankName}" th:text="#{currentUserAccount.bankName}" id="bankName" name="bankName" required>
+                        <input type="text" id="bankName" name="bankName" required>
 
                         <button type="submit">Save Changes</button>
-                        <!--<button id="paybutton" type="add"><a href="index.html">Save Changes </a></button> -->
+
                     </form>
                 </div>
             </div>
@@ -202,6 +207,26 @@
                 </table>
                 <script>
 
+
+                $("#form-account-details").submit(function(e) {
+                    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+                    var form = $(this);
+
+                    $.ajax({
+                           type: "GET",
+                           url: "/updateUserBankDetails",
+                           data: form.serialize(), // serializes the form's elements.
+                           success: function(data)
+                           {
+                               var successPrompt = document.getElementById("bank-details-change-successful");
+                               successPrompt.style.display = "block";
+                           }
+                         });
+
+
+                });
+
                 var table;
 
                     function createDataTable(args) {
@@ -221,7 +246,7 @@
                                 "targets": -1,
                                 "data": null,
                                 "orderable": false,
-                                "defaultContent": "<button type='button'>Delete!</button>"
+                                "defaultContent": "<button type='button'>Delete</button>"
                             },
                             {
                                 "targets": [ 6 ],
@@ -238,71 +263,95 @@
                         userId: 'D568817B-A8D2-43AA-A4BD-DC92378CB6DE'
                         };
 
+                        $.ajax({
+                            type: "GET",
+                            data: data,
+                            url: "/getVehicleDataForUser",
+                            success: function (res) {
+                                createDataTable(res);
+                            },
+                            error: (xhr, ajaxOptions, thrownError) => {
+                                console.log("ajax failed");
+                                console.error(xhr.responseText, { xhr });
+                            }
+                        });
+
+                        $('#datatable-vehicle-account').on( 'click', 'button', function () {
+                            if (confirm('Do you really want to delete this entry?')) {
+                            var vehicle = table.row( $(this).parents('tr') ).data();
+
+                            var data = {
+                                id: vehicle.id
+                            }
+
+                            //DELETE call distinguished as GET
                             $.ajax({
-                                type: "GET",
+                                type: 'GET',
+                                url: "/deleteVehicleById",
                                 data: data,
-                                url: "/getVehicleDataForUser",
-                                success: function (res) {
-                                    createDataTable(res);
+                                success: function(res) {
+                                    $('#view-all').html(res.html);
+                                    location.reload();
                                 },
-                                error: (xhr, ajaxOptions, thrownError) => {
-                                    console.log("ajax failed");
-                                    console.error(xhr.responseText, { xhr });
+                                error: function(err) {
+                                    console.log(err);
                                 }
                             });
 
+                            }
+                        });
 
-                                $('#datatable-vehicle-account').on( 'click', 'button', function () {
-                                    if (confirm('Do you really want to delete this entry?')) {
-                                    var vehicle = table.row( $(this).parents('tr') ).data();
+                        $.ajax({
+                            type: "GET",
+                            url: "/getAccountDetailsByUserId",
+                            success: function (res) {
+                                console.log(res);
+                                populateAccountDetailForm(res);
+                            },
+                            error: (xhr, ajaxOptions, thrownError) => {
+                                console.error(xhr.responseText, { xhr });
+                            }
+                        });
 
-                                    var data = {
-                                        id: vehicle.id
-                                    }
-
-                                    $.ajax({
-                                        type: 'GET',
-                                        url: "/deleteVehicleById",
-                                        data: data,
-                                        success: function(res) {
-                                            $('#view-all').html(res.html);
-                                            location.reload();
-                                        },
-                                        error: function(err) {
-                                            console.log(err);
-                                        }
-                                    });
-
-                                    }
-                                } );
+                    //End Document.ready
                     });
 
-/*
-                    jQueryAjaxDelete = form => {
-                        if (confirm('Do you really want to delete this entry?')) {
-                            try {
-                            console.log(form);
-                                $.ajax({
-                                    type: 'GET',
-                                    url: "/deleteVehicle",
-                                    data: new FormData(form),
-                                    contentType: false,
-                                    processData: false,
-                                    success: function(res) {
-                                        $('#view-all').html(res.html);
-                                        location.reload();
-                                    },
-                                    error: function(err) {
-                                        console.log(err);
-                                    }
-                                });
-                            } catch (ex) {
-                                console.log(ex);
-                            }
-                        }
-                        return false;
+
+                    function populateAccountDetailForm(list) {
+
+                        var id = document.getElementById("accountId");
+                        id.text = list.id;
+                        id.value = list.id;
+
+                        var ownerFName = document.getElementById("ownerFName");
+                        ownerFName.text = list.ownerFName;
+                        ownerFName.value = list.ownerFName;
+
+                        var ownerLName = document.getElementById("ownerLName");
+                        ownerLName.text = list.ownerLName;
+                        ownerLName.value = list.ownerLName;
+
+                        var iban = document.getElementById("IBAN");
+                        iban.text = list.iban;
+                        iban.value = list.iban;
+
+                        var bic = document.getElementById("BIC");
+                        bic.text = list.bic;
+                        bic.value = list.bic;
+
+                        var bic = document.getElementById("BIC");
+                        bic.text = list.bic;
+                        bic.value = list.bic;
+
+                        var bankName = document.getElementById("bankName");
+                        bankName.text = list.bankName;
+                        bankName.value = list.bankName;
+
+                        var userId = document.getElementById("userId");
+                        userId.text = list.userId;
+                        userId.value = list.userId;
+
                     }
-                    */
 
 
                                         /*

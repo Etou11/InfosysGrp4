@@ -1,17 +1,17 @@
 package hsesslingen.group4.jumbleShare.Controller;
 
+import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Account;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21User;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21VehicleType;
 import hsesslingen.group4.jumbleShare.Helper.HelperExtension;
+import hsesslingen.group4.jumbleShare.JumbleShareApplication;
+import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21AccountRepository;
 import hsesslingen.group4.jumbleShare.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 public class MainController
@@ -24,6 +24,10 @@ public class MainController
     VehicleServiceImpl vehicleService;
     @Autowired
     VehicleTypeServiceImpl vehicleTypeService;
+    @Autowired
+    AccountServiceImp accountService;
+    @Autowired
+    Grp4Ss21AccountRepository accountRepository;
 
 
     //User
@@ -31,6 +35,29 @@ public class MainController
     List<Grp4Ss21User> getUsers()
     {
         return userService.findAll();
+    }
+
+
+    //Account
+    @GetMapping(path = "getAccountDetailsByUserId")
+    Grp4Ss21Account getAccountDetailsByUserId()
+    {
+        return accountService.findByUserId(JumbleShareApplication._currentlyActiveUser);
+    }
+
+    @GetMapping(path = "updateUserBankDetails")
+    boolean updateUserBankDetails(Grp4Ss21Account account)
+    {
+        var accountToChange = accountService.findByUserId(account.getUserId());
+        accountToChange.setOwnerFName(account.getOwnerFName());
+        accountToChange.setOwnerLName(account.getOwnerLName());
+        accountToChange.setBIC(account.getBIC());
+        accountToChange.setIBAN(account.getIBAN());
+        accountToChange.setBankName(account.getBankName());
+
+        accountRepository.save(accountToChange);
+
+        return true;
     }
 
 

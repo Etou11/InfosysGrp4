@@ -1,11 +1,11 @@
 package hsesslingen.group4.jumbleShare.Service;
 
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Account;
+import hsesslingen.group4.jumbleShare.Helper.HelperExtension;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21AccountRepository;
 import hsesslingen.group4.jumbleShare.Web.Dto.AccountDto;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -19,12 +19,12 @@ public class AccountServiceImp implements AccountService
     }
 
     @Override
-    public Optional<Grp4Ss21Account> findByUserId(UUID id)
+    public Grp4Ss21Account findByUserId(UUID id)
     {
         var accounts = accountRepository.findAll();
-        var account = accounts.stream().filter(x -> x.getUserId() == id).findFirst();
+        var account = accounts.stream().filter(x -> HelperExtension.UuidEqualityCheck(id.toString(), x.getUserId().toString())).findFirst().orElse(new Grp4Ss21Account());
 
-        return accounts.stream().filter(x -> x.getUserId() == id).findFirst();
+        return account;
     }
 
     @Override

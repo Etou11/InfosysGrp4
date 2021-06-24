@@ -1,7 +1,5 @@
 package hsesslingen.group4.jumbleShare.Web.Dto;
 
-import java.util.UUID;
-
 public class VehicleTypeDto
 {
     private String description;

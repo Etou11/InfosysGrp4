@@ -27,7 +27,7 @@ public class UpdateAccountController
     public AccountDto accountDto() { return new AccountDto(); }
 
     @GetMapping
-    public String showAccountDataInForm(Model model)
+    public String showAccountDetailsForm(Model model)
     {
         var currentUserAccount = accountService.findByUserId(JumbleShareApplication._currentlyActiveUser);
         model.addAttribute("currentUserAccount", currentUserAccount);

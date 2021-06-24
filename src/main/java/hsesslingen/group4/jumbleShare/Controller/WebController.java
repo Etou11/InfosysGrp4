@@ -17,7 +17,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-public class WebController {
+public class WebController
+{
 
     @RequestMapping(value = "/index.html")
     public String index() {
@@ -28,23 +29,15 @@ public class WebController {
     public String account() { return "account"; }
 
     @GetMapping(value = "/contact.html")
-    public String contact()
-    {
-        return "contact";
-    }
+    public String contact() { return "contact"; }
 
     @GetMapping(value = "/login.html")
-    public String login()
-    {
-        return "login";
-    }
+    public String login() { return "login"; }
 
     @GetMapping(value = "/new.html")
     public String newPage() { return "new"; }
 
     @GetMapping(value = "/test.html")
-    public String test()
-    {
-        return "test";
-    }
+    public String test() { return "test"; }
+
 }

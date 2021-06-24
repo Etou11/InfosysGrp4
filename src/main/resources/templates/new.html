@@ -7,7 +7,7 @@
     <link href="styles.css" type="text/css" rel="stylesheet"/>
     <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
     <script src="http://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script src="main.js"></script>
+    <script src="/js/main.js"></script>
 </head>
 </head>
 <header th:replace="fragments :: header"></header>
@@ -18,7 +18,7 @@
 
             <div th:if="${param.success}">
                 <div class="alert alert-info">
-                    You've successfully add the vehicle!
+                    You've successfully added the vehicle!
                 </div>
             </div>
             <form th:action="@{/new}" method="post" th:object="${vehicle}">
@@ -100,7 +100,7 @@
         </style>
     <script>
 
-/*
+
     function populateDropdown(list) {
 
     for (var i = 0; i < list.length; i+=2) {
@@ -111,11 +111,8 @@
         select.add(option);
         }
     }
-    */
 
         $(document).ready(function() {
-
-/*
         $.ajax({
             type: "GET",
             url: "/getVehicleTypes",
@@ -126,8 +123,6 @@
                 console.error(xhr.responseText, { xhr });
             }
         });
-        */
-
     });
 
         var lat = document.getElementById("latitude");
