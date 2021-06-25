@@ -1,8 +1,5 @@
 package hsesslingen.group4.jumbleShare.Helper;
 
-import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -12,7 +9,6 @@ public class HelperExtension
     {
         return guid.replaceAll("(.{8})(.{4})(.{4})(.{4})(.{12})", "$1-$2-$3-$4-$5").replaceAll("(.{2})(.{2})(.{2})(.{2}).(.{2})(.{2}).(.{2})(.{2})(.{18})", "$4$3$2$1-$6$5-$8$7$9");
     }
-
 
     //Checks if a Java UUID is equal to a SQL GUID by converting and only comparing the last eight characters
     public static boolean UuidEqualityCheck(String uuid, String guid)
@@ -27,7 +23,6 @@ public class HelperExtension
 
         return uuid.contentEquals(parsedGuid);
     }
-
 
     public static double GetTimespanInMinutes(Date start, Date end)
     {

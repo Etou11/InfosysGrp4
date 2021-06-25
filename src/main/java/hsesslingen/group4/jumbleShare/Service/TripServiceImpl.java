@@ -6,6 +6,7 @@ import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21TripRepository;
 import hsesslingen.group4.jumbleShare.Web.Dto.TripDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -28,6 +29,56 @@ public class TripServiceImpl implements TripService
                 .findFirst()
                 .orElse(new Grp4Ss21Trip());
         return trip;
+    }
+
+    @Override
+    public boolean checkoutVehicle(TripDto trip)
+    {
+        Grp4Ss21Trip newTrip = new Grp4Ss21Trip(
+                trip.getId(),
+                trip.getTimestampStart(),
+                null,
+                trip.getLongitudeOrig(),
+                trip.getLatitudeOrig(),
+                null,
+                null,
+                trip.getVehiclePricePerMinute(),
+                trip.getUserId(),
+                trip.getVehicleId()
+        );
+        tripRepository.save(newTrip);
+
+        return true;
+    }
+
+    @Override
+    public boolean checkinVehicle(TripDto updatedTrip)
+    {
+        var trips = tripRepository.findAll();
+        var trip = trips.stream()
+                .filter(x -> HelperExtension.UuidEqualityCheck(x.getId().toString(), updatedTrip.getId().toString()))
+                .findFirst()
+                .orElse(new Grp4Ss21Trip());
+
+        trip.setLongitudeFin(updatedTrip.getLongitudeFin());
+        trip.setLatitudeFin(updatedTrip.getLatitudeFin());
+        trip.setTimestampEnd(updatedTrip.getTimestampEnd());
+
+        tripRepository.save(trip);
+
+        return true;
+    }
+
+    @Override
+    public boolean importFullTrip(List<TripDto> trips)
+    {
+        for(var trip : trips)
+        {
+            checkoutVehicle(trip);
+            checkinVehicle(trip);
+        }
+
+        return true;
     }
 
 

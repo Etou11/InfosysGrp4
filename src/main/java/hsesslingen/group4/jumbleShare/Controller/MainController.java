@@ -1,14 +1,12 @@
 package hsesslingen.group4.jumbleShare.Controller;
 
-import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Account;
-import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21User;
-import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
-import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21VehicleType;
+import hsesslingen.group4.jumbleShare.Entity.*;
 import hsesslingen.group4.jumbleShare.Helper.HelperExtension;
 import hsesslingen.group4.jumbleShare.JumbleShareApplication;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21AccountRepository;
 import hsesslingen.group4.jumbleShare.Service.*;
 import hsesslingen.group4.jumbleShare.Web.Dto.TransactionBookingsDto;
+import hsesslingen.group4.jumbleShare.Web.Dto.TripDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +17,7 @@ public class MainController
 {
     DbController dbController = new DbController();
 
+    //Service
     @Autowired
     UserServiceImpl userService;
     @Autowired
@@ -28,7 +27,11 @@ public class MainController
     @Autowired
     AccountServiceImp accountService;
     @Autowired
-    TransactionService transactionService;
+    TransactionServiceImpl transactionService;
+    @Autowired
+    TripServiceImpl tripService;
+
+    //Repository
     @Autowired
     Grp4Ss21AccountRepository accountRepository;
 
@@ -46,6 +49,27 @@ public class MainController
     {
         return transactionService.findTransactionsForBookingsByUserId(JumbleShareApplication._currentlyActiveUser);
     }
+
+
+    //Trip
+    @GetMapping(path = "checkoutVehicle")
+    boolean checkoutVehicle(TripDto trip)
+    {
+        return tripService.checkoutVehicle(trip);
+    }
+
+    @GetMapping(path = "checkinVehicle")
+    boolean checkinVehicle(TripDto trip)
+    {
+        return tripService.checkinVehicle(trip);
+    }
+
+    @GetMapping(path = "importFullTrip")
+    boolean importFullTrip(List<TripDto> trips)
+    {
+        return tripService.importFullTrip(trips);
+    }
+
 
     //Account
     @GetMapping(path = "getAccountDetailsByUserId")
