@@ -32,9 +32,6 @@ public class Grp4Ss21Transaction implements Serializable
     @Column(name = "[description]", nullable = false)
     private String description;
 
-    @Column(name = "[accountidreceiver]", nullable = false)
-    private String accountIdReceiver;
-
     @Column(name = "[tripid]", nullable = false)
     private UUID tripId;
 

@@ -23,34 +23,34 @@ public class Grp4Ss21Trip implements Serializable
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "Id", nullable = false)
+    @Column(name = "[id}", nullable = false)
     private UUID id;
 
-    @Column(name = "TimestampStart", nullable = false)
+    @Column(name = "[timestampstart]", nullable = false)
     private Date timestampStart;
 
-    @Column(name = "TimestampEnd")
+    @Column(name = "[timestampend]")
     private Date timestampEnd;
 
-    @Column(name = "LongitudeOrig", nullable = false)
+    @Column(name = "[longitudeorig]", nullable = false)
     private BigDecimal longitudeOrig;
 
-    @Column(name = "LatitudeOrig", nullable = false)
+    @Column(name = "[latitudeorig]", nullable = false)
     private BigDecimal latitudeOrig;
 
-    @Column(name = "LongitudeFin", nullable = false)
+    @Column(name = "[longitudefin]", nullable = false)
     private BigDecimal longitudeFin;
 
-    @Column(name = "LatitudeFin", nullable = false)
+    @Column(name = "[latitudefin]", nullable = false)
     private BigDecimal latitudeFin;
 
-    @Column(name = "VehiclePricePerMinute", nullable = false)
+    @Column(name = "[vehiclepriceperminute]", nullable = false)
     private BigDecimal vehiclePricePerMinute;
 
-    @Column(name = "UserId", nullable = false)
+    @Column(name = "[userid]", nullable = false)
     private UUID userId;
 
-    @Column(name = "VehicleId", nullable = false)
+    @Column(name = "[vehicleid]", nullable = false)
     private UUID vehicleId;
 
     public Grp4Ss21Trip(UUID id, Date timestampStart, Date timestampEnd, BigDecimal longitudeOrig, BigDecimal latitudeOrig, BigDecimal longitudeFin, BigDecimal latitudeFin, BigDecimal vehiclePricePerMinute, UUID userId, UUID vehicleId)
@@ -65,5 +65,10 @@ public class Grp4Ss21Trip implements Serializable
         this.vehiclePricePerMinute = vehiclePricePerMinute;
         this.userId = userId;
         this.vehicleId = vehicleId;
+    }
+
+    public Grp4Ss21Trip()
+    {
+
     }
 }

@@ -37,7 +37,7 @@ public class CreateVehicleDto {
 
     public UUID getUserId()
     {
-        return JumbleShareApplication._currentlyActiveUser;
+        return userId;
     }
 
     public void setUserId(UUID userId)

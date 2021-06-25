@@ -124,44 +124,21 @@
                         <div class="wrap-table100">
                             <div class="table100">
                                 <input tpye="file" id="upload-csv" accept=".csv">
-                                <table id="bookings">
+                                <table id="datatable-account-bookings" class="datatable datatable-bookings datatable-account-bookings">
                                     <thead>
                                     <tr class="table100-head">
-                                        <th class="column1">Start Trip</th>
-                                        <th class="column2">End Trip</th>
-                                        <th class="column3">Order ID</th>
-                                        <th class="column4">User</th>
-                                        <th class="column5">Price</th>
-                                        <th class="column6">Quantity</th>
-                                        <th class="column7">Total</th>
+                                        <th>Transaction Id</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Vehicle</th>
+                                        <th>Vehicle Price Per Minute</th>
+                                        <th>Total Duration</th>
+                                        <th>Total Price</th>
                                     </tr>
-                                    </thead>
-                                    <tbody>
+                                    <tfoot>
                                     <tr>
-                                        <td class="column1">2017-09-29 01:22</td>
-                                        <td class="column2">200398</td>
-                                        <td class="column3">diana12</td>
-                                        <td class="column4">0,40€</td>
-                                        <td class="column5">5 min</td>
-                                        <td class="column6">2€</td>
                                     </tr>
-                                    <tr>
-                                        <td class="column1">2017-09-28 05:57</td>
-                                        <td class="column2">200397</td>
-                                        <td class="column3">lukas20</td>
-                                        <td class="column4">0,40€</td>
-                                        <td class="column5">5 min</td>
-                                        <td class="column6">2€</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="column1">2017-09-26 05:57</td>
-                                        <td class="column2">200396</td>
-                                        <td class="column3">player13</td>
-                                        <td class="column4">0,40€</td>
-                                        <td class="column5">5 min</td>
-                                        <td class="column6">2€</td>
-                                    </tr>
-                                    </tbody>
+                                    </tfoot>
                                 </table>
                                 <button class="btn" onclick="exportTableToCSV('bookings.csv')">CSV File</button>
                                 <div id="dvImportSegments" class="fileupload ">
@@ -218,10 +195,24 @@
                         data: dataGetVehicleDataForUser,
                         url: "/getVehicleDataForUser",
                         success: function (res) {
-                            createDataTable(res);
+                            createAccountVehicleTable(res);
                         },
                         error: (xhr, ajaxOptions, thrownError) => {
                             console.log("ajax failed");
+                            console.error(xhr.responseText, { xhr });
+                        }
+                    });
+
+                        $.ajax({
+                        type: "GET",
+                        data: dataGetVehicleDataForUser,
+                        url: "/getTransactionBookingsDtosByUserId",
+                        success: function (res) {
+                            console.log(res);
+                            createAccountBookingsTable(res);
+                        },
+                        error: (xhr, ajaxOptions, thrownError) => {
+                            console.log("ajax failed badly");
                             console.error(xhr.responseText, { xhr });
                         }
                     });
@@ -288,7 +279,7 @@
 
                 var table;
 
-                    function createDataTable(args) {
+                    function createAccountVehicleTable(args) {
                        table = $('#datatable-vehicle-account').DataTable( {
                             data: args,
                             "columns": [
@@ -312,7 +303,22 @@
                                 "visible": false
                             }
                              ]
-                        } );
+                        });
+                    }
+
+                    function createAccountBookingsTable(args) {
+                       $('#datatable-account-bookings').DataTable( {
+                            data: args,
+                            "columns": [
+                            { "data": "id" },
+                            { "data": "startTime" },
+                            { "data": "endTime" },
+                            { "data": "vehicleBrand" },
+                            { "data": "vehiclePricePerMinute" },
+                            { "data": "totalDuration" },
+                            { "data": "totalPrice" }
+                            ]
+                        });
                     }
 
                     function populateAccountDetailForm(list) {

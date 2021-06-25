@@ -3,6 +3,7 @@ package hsesslingen.group4.jumbleShare.Helper;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 public class HelperExtension
@@ -25,5 +26,12 @@ public class HelperExtension
         parsedGuid = parsedGuid.substring(parsedGuid.length() - 8);
 
         return uuid.contentEquals(parsedGuid);
+    }
+
+
+    public static double GetTimespanInMinutes(Date start, Date end)
+    {
+        var diffMinutes = (end.getTime() - start.getTime()) / (60 * 1000);
+        return Math.ceil(diffMinutes);
     }
 }

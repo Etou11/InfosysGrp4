@@ -7,8 +7,8 @@ import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21VehicleType;
 import hsesslingen.group4.jumbleShare.Helper.HelperExtension;
 import hsesslingen.group4.jumbleShare.JumbleShareApplication;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21AccountRepository;
-import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21TransactionRepository;
 import hsesslingen.group4.jumbleShare.Service.*;
+import hsesslingen.group4.jumbleShare.Web.Dto.TransactionBookingsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,9 +28,9 @@ public class MainController
     @Autowired
     AccountServiceImp accountService;
     @Autowired
-    Grp4Ss21AccountRepository accountRepository;
+    TransactionService transactionService;
     @Autowired
-    Grp4Ss21TransactionRepository transactionRepository;
+    Grp4Ss21AccountRepository accountRepository;
 
 
     //User
@@ -40,6 +40,12 @@ public class MainController
         return userService.findAll();
     }
 
+    //Transaction
+    @GetMapping(path = "getTransactionBookingsDtosByUserId")
+    List<TransactionBookingsDto> getTransactionBookingsDtosByUserId(String userId)
+    {
+        return transactionService.findTransactionsForBookingsByUserId(JumbleShareApplication._currentlyActiveUser);
+    }
 
     //Account
     @GetMapping(path = "getAccountDetailsByUserId")
@@ -83,7 +89,7 @@ public class MainController
         return vehiclesFiltered;
     }
 
-    //Using DeleteMapping leads to spring security refusing connection - GetMapping as a workaround
+    ////Using DeleteMapping leads to spring security refusing connection - GetMapping as a workaround
     @GetMapping(path ="deleteVehicleById")
     boolean deleteVehicleById(String id)
     {

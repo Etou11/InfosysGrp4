@@ -1,7 +1,7 @@
 package hsesslingen.group4.jumbleShare.Web.Dto;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.util.UUID;
 
 public class TripDto

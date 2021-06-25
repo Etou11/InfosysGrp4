@@ -1,6 +1,7 @@
 package hsesslingen.group4.jumbleShare.Service;
 
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Trip;
+import hsesslingen.group4.jumbleShare.Helper.HelperExtension;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21TripRepository;
 import hsesslingen.group4.jumbleShare.Web.Dto.TripDto;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,17 @@ public class TripServiceImpl implements TripService
     {
         super();
         this.tripRepository = tripRepository;
+    }
+
+    @Override
+    public Grp4Ss21Trip findById(UUID id)
+    {
+        var trips = tripRepository.findAll();
+        var trip = trips.stream()
+                .filter(x -> HelperExtension.UuidEqualityCheck(id.toString(), x.getId().toString()))
+                .findFirst()
+                .orElse(new Grp4Ss21Trip());
+        return trip;
     }
 
 
