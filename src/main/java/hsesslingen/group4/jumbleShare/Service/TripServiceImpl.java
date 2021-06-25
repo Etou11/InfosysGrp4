@@ -70,7 +70,7 @@ public class TripServiceImpl implements TripService
     }
 
     @Override
-    public boolean importFullTrip(List<TripDto> trips)
+    public boolean importTrips(List<TripDto> trips)
     {
         for(var trip : trips)
         {

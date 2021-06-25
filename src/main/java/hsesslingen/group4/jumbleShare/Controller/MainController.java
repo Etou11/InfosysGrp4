@@ -64,10 +64,10 @@ public class MainController
         return tripService.checkinVehicle(trip);
     }
 
-    @GetMapping(path = "importFullTrip")
-    boolean importFullTrip(List<TripDto> trips)
+    @GetMapping(path = "importTrip")
+    boolean importTrip(List<TripDto> trips)
     {
-        return tripService.importFullTrip(trips);
+        return tripService.importTrips(trips);
     }
 
 

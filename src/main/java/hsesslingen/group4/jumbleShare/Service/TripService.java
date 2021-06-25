@@ -12,6 +12,6 @@ public interface TripService
     Grp4Ss21Trip findById(UUID id);
     boolean checkoutVehicle(TripDto trip);
     boolean checkinVehicle(TripDto trip);
-    boolean importFullTrip(List<TripDto> trips);
+    boolean importTrips(List<TripDto> trips);
 
 }
