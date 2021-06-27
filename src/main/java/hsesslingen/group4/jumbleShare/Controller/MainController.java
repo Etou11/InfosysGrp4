@@ -133,7 +133,7 @@ public class MainController
     @Autowired
     private ReportService service;
 
-    @GetMapping("/report/{format}")
+    @GetMapping("/invoice/{format}")
     public String generateInvoice(@PathVariable String format) throws FileNotFoundException, JRException {
         return service.exportInvoice(format);
     }
