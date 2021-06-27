@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice_temp" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="140096a9-35cb-43cc-b5c9-0d0512002b09">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="102" splitType="Stretch">
+            <image>
+                <reportElement stretchType="RelativeToTallestObject" x="420" y="0" width="90" height="90" uuid="9c0eedde-d44c-4281-8c6c-9377b5d6673e"/>
+                <imageExpression><![CDATA["C:/Users/imer_/Desktop/WKB6/Infosys/logo2.PNG"]]></imageExpression>
+            </image>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="170" splitType="Stretch">
+            <textField pattern="MMMMM dd, yyyy">
+                <reportElement x="410" y="100" width="100" height="20" uuid="b535b75b-8f84-406f-babc-9f1ff7a3601d"/>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="10" y="0" width="251" height="20" uuid="38866372-2934-4104-ae09-65ce5735adaf"/>
+                <textElement>
+                    <font fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[JumbleShare GmbH | Musterweg 1 | 12345 Musterstadt]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="10" y="20" width="250" height="60" uuid="d7379588-0360-4eb5-891c-45af7e744b94"/>
+                <textElement>
+                    <font fontName="SansSerif" size="12"/>
+                </textElement>
+                <text><![CDATA[Herr Jumble Share
+Musterstrasse 1
+12345 Musterstadt]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="260" y="80" width="90" height="20" uuid="6445e142-e3b6-4f88-9dc6-7583de21b52b"/>
+                <textElement>
+                    <font fontName="SansSerif" size="12"/>
+                </textElement>
+                <text><![CDATA[Leistungsdatum]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="410" y="80" width="100" height="20" uuid="fd386efd-39d1-42e4-aa30-99a406e9204a"/>
+                <textElement>
+                    <font fontName="SansSerif" size="12"/>
+                </textElement>
+                <text><![CDATA[Rechnungsdatum]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="10" y="120" width="170" height="20" uuid="c58e11dd-8f02-4e11-a1cd-91a2f45954e8"/>
+                <textElement>
+                    <font fontName="SansSerif" size="12"/>
+                </textElement>
+                <text><![CDATA[Rechnungs Nr. 12345]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="10" y="140" width="500" height="20" uuid="c8ffe160-5713-4fce-b861-d53c6771f19d"/>
+                <text><![CDATA[Wir bedanken uns für deine Fahrt mit JumbleShare und stellen dir folgende Reise in Rechnung]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="260" y="100" width="91" height="20" uuid="c90cc718-0612-4888-97c7-ced84f6c1e3a"/>
+                <text><![CDATA[26.06.2021]]></text>
+            </staticText>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="38" splitType="Stretch">
+            <staticText>
+                <reportElement x="10" y="8" width="30" height="22" uuid="c47df515-059b-4e0b-a962-c62d60b82c71"/>
+                <text><![CDATA[Pos.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="60" y="8" width="120" height="22" uuid="b43c29c8-2f0d-4636-8244-9cf32bc368b0"/>
+                <text><![CDATA[Bezeichnung]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="260" y="8" width="90" height="22" uuid="d6a212f0-afed-4cb3-971e-aae44884a655"/>
+                <text><![CDATA[Preis Pro Minute]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="450" y="8" width="60" height="22" uuid="797418f5-b7ef-4e55-a474-459f7e8e23a5"/>
+                <text><![CDATA[Gesamt (€)]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="370" y="8" width="60" height="22" uuid="7fc35c3e-5885-462f-af62-7ace93e1e815"/>
+                <text><![CDATA[Minuten]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="101" splitType="Stretch">
+            <staticText>
+                <reportElement x="10" y="13" width="30" height="17" uuid="7f163606-4021-4a2d-8011-6a677a1b1a5f"/>
+                <text><![CDATA[1]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="60" y="13" width="120" height="17" uuid="9f55519d-77f9-488d-9967-ddf3ae4dc1e9"/>
+                <text><![CDATA[Fahrzeug]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="370" y="70" width="61" height="31" uuid="1c35f132-c9cc-4894-bc52-3200bc58f5de"/>
+                <text><![CDATA[Summe]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="60" y="30" width="120" height="21" uuid="a9d90853-a8cd-44ef-9f5d-369030df6b6a"/>
+                <text><![CDATA[Ford Mondeo]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="261" y="10" width="90" height="35" uuid="b12503cc-5226-4d65-96fb-65ccc82a9b41"/>
+                <text><![CDATA[0,40 €]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="371" y="10" width="60" height="35" uuid="820134b0-dcc6-44bc-a4ab-a39ca1164809"/>
+                <text><![CDATA[35 Minuten]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="450" y="10" width="60" height="35" uuid="bbc59c7e-e883-4b3f-9760-1e9e657d507e"/>
+                <text><![CDATA[14,00 €]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="450" y="70" width="61" height="31" uuid="d0de0033-cb9e-456e-be6e-253c0b587c38"/>
+                <text><![CDATA[14,00 €]]></text>
+            </staticText>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="82" splitType="Stretch">
+            <staticText>
+                <reportElement x="10" y="9" width="501" height="21" uuid="77fa6d58-7a6e-4d20-9f32-0f2384374448"/>
+                <text><![CDATA[Zahlung wird innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzüge von deinem Bankkonto abgebucht.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="10" y="40" width="171" height="20" uuid="8ee307f6-926a-4ed1-80f4-766cf962c889"/>
+                <text><![CDATA[Mit freundlichen Grüßen]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="10" y="60" width="170" height="20" uuid="3285a3f6-35cc-4fb5-8666-00db7d062399"/>
+                <text><![CDATA[Dein JumbleShare Team]]></text>
+            </staticText>
+        </band>
+    </columnFooter>
+    <pageFooter>
+        <band height="70" splitType="Stretch">
+            <staticText>
+                <reportElement x="10" y="8" width="100" height="62" uuid="b473601a-952e-48f1-9541-744719ae8a0b"/>
+                <text><![CDATA[JumbleShare GmbH
+Musterweg 1
+12345 Musterstadt
+Ust-IdNr.: DE123456789]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="170" y="10" width="150" height="60" uuid="a5fc3131-d0c5-473b-8dcd-544291a38bdc"/>
+                <text><![CDATA[Tel.: (+49) 1234/98 76 54
+Fax: (+49) 1234/98 76 55
+E-Mail: jumbleshare@gmx.de
+Web: www.jumbleshare.com]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="380" y="11" width="130" height="59" uuid="339aee4e-9f27-4cb6-b780-a4c579740b24"/>
+                <text><![CDATA[Kreissparkasse Esslingen
+IBAN: DE34233004333401
+BIC: GENODE61FR1
+Kto. Inh.: Mathias Muster
+]]></text>
+            </staticText>
+        </band>
+    </pageFooter>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>
