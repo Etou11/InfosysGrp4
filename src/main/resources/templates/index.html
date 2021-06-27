@@ -12,7 +12,7 @@
 </head>
 <header class="site-header" th:replace="fragments :: header"></header>
 <body>
-<table id="datatable-vehicle-index" class="datatable datatable-vehicle datatable-vehicle-index" style="width:80%">
+<table id="datatable-vehicle-index" class="datatable datatable-vehicle datatable-vehicle-index display" style="width:80%">
     <thead>
     <tr>
         <th>Brand</th>
@@ -28,6 +28,37 @@
     </tr>
     </tfoot>
 </table>
+<!--
+<div class="rahmen">
+    <div class="limiter">
+        <div>
+            <div class="product-teaser">
+                <img src="images/active.jpg" alt="active vehicle">
+                <div>
+                    <h1>Active Vehicle</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tableborder">
+        <table id="bookedVehicle" class="bookedVehicle">
+            <tr>
+                <th>Vehicle Type</th>
+                <th>Brand</th>
+                <th>Price per Minute</th>
+                <th>Duration</th>
+                <div class="box">CHECKOUT</div>
+            </tr>
+            <tr>
+                <td>Car</td>
+                <td>Opel Corsa</td>
+                <td>0,50€</td>
+                <td><div id="time-elapsed"></div></td>
+            </tr>
+        </table>
+    </div>
+</div>
+-->
 <script>
     function createDataTable(args) {
         $('#datatable-vehicle-index').DataTable( {
@@ -41,6 +72,16 @@
             { "data": "vehicleTypeId" }
             ]
         } );
+        var table = $('#Searchtbl').DataTable({
+    });
+        /*
+        $('#datatable-vehicle-index tbody').on('click', 'tr', function () {
+            var tableData = $(this).children("td").map(function () {
+                return $(this).text();
+            }).get();
+            alert("Your data is: " + $.trim(tableData[0]));
+        });
+        */
     }
     $(document).ready(function() {
         $.ajax({
@@ -115,6 +156,109 @@
               background-image: url('images/EBike.jpg');
               background-size: cover;
           }
+          .dataTables_length, .dataTables_info {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 135px;
+          }
+          .dataTables_filter, .dataTables_paginate {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-right: 135px;
+          }
+          thead th {
+            background-color: #3082cf;
+            color: white;
+          }
+          /*
+          .tableborder{
+          padding-bottom: 30px;
+          }
+          .product-teaser {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 50px;
+          min-height: 50px;
+          padding: 2em;
+        }
+        .product-teaser img {
+          width: 100%;
+          height: 100%;
+          background-position: center;
+          background-size: cover;
+        }
+        .product-teaser div {
+          position: absolute;
+          background-color: rgba(54, 53, 53, 0.466);
+          padding: 1em;
+          border-radius: 2em;
+          border-style: solid;
+          text-align: center;
+          border: 2px solid#FFFFFF;
+          color: white;
+          cursor: pointer;
+        }
+        .product-teaser div a {
+          text-decoration: none;
+          color: white;
+        }
+        .limiter {
+          padding: 1.2em;
+        }
+        .box {
+	background: linear-gradient(to right, rgb(35, 99, 173), rgb(108, 165, 231));
+	color: white;
+	--width: 150px;
+	--height: calc(var(--width) / 3);
+	width: var(--width);
+	height: var(--height);
+	text-align: center;
+	line-height: var(--height);
+	font-size: calc(var(--height) / 2.5);
+	font-family: sans-serif;
+	letter-spacing: 0.2em;
+	border: 1px solid white;
+	border-radius: 2em;
+	transform: perspective(500px) rotateY(-15deg);
+	text-shadow: 6px 3px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 2px 0 0 5px rgba(0, 0, 0, 0.2);
+	transition: 0.5s;
+	position: relative;
+	overflow: hidden;
+  left:250px;
+    margin-bottom: 50px;
+
+}
+
+.box:hover {
+	transform: perspective(500px) rotateY(15deg);
+	text-shadow: -6px 3px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: -2px 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.box::before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to right, transparent, white, transparent);
+	left: -100%;
+	transition: 0.5s;
+}
+
+.box:hover::before {
+	left: 100%;
+}
+ .rahmen{
+    width:50%;
+    height:auto;
+    background-color: rgb(136, 172, 206);
+    margin:auto;
+    margin-top: 20px;
+
+}*/
           /* #vehicle:nth-child(7){
               background-image: url('images/Fahrrad.jpg');
               background-size: cover;

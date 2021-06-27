@@ -119,19 +119,19 @@ Musterstrasse 1
             </staticText>
             <staticText>
                 <reportElement x="261" y="10" width="90" height="35" uuid="b12503cc-5226-4d65-96fb-65ccc82a9b41"/>
-                <text><![CDATA[0,40 €]]></text>
+                <text><![CDATA[1,00 €]]></text>
             </staticText>
             <staticText>
                 <reportElement x="371" y="10" width="60" height="35" uuid="820134b0-dcc6-44bc-a4ab-a39ca1164809"/>
-                <text><![CDATA[35 Minuten]]></text>
+                <text><![CDATA[5 Minuten]]></text>
             </staticText>
             <staticText>
                 <reportElement x="450" y="10" width="60" height="35" uuid="bbc59c7e-e883-4b3f-9760-1e9e657d507e"/>
-                <text><![CDATA[14,00 €]]></text>
+                <text><![CDATA[5,00 €]]></text>
             </staticText>
             <staticText>
                 <reportElement x="450" y="70" width="61" height="31" uuid="d0de0033-cb9e-456e-be6e-253c0b587c38"/>
-                <text><![CDATA[14,00 €]]></text>
+                <text><![CDATA[5,00 €]]></text>
             </staticText>
         </band>
     </detail>

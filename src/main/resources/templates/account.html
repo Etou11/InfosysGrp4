@@ -115,9 +115,8 @@
         <div class="content">
             <div class="content-inner">
                 <div class="table100">
-                    <input tpye="file" id="upload-csv" accept=".csv">
-                    <table id="datatable-account-bookings" class="datatable datatable-bookings datatable-account-bookings">
-                        <thead>
+                    <table id="datatable-account-bookings" class="display datatable datatable-bookings datatable-account-bookings">
+                        <thead class="dthead">
                         <tr class="table100-head">
                             <th>Transaction Id</th>
                             <th>Start Time</th>
@@ -127,6 +126,7 @@
                             <th>Total Duration</th>
                             <th>Total Price</th>
                         </tr>
+                        </thead>
                         <tfoot>
                         <tr>
                         </tr>
@@ -151,8 +151,8 @@
         <h2>My Vehicles</h2> <!-- MIT DATA TABLES MACHEN / SAVE CHANGES + DELETE BUTTONS /-->
         <div class="content">
             <div class="content-inner">
-                <table id="datatable-vehicle-account" class="datatable datatable-vehicle datatable-vehicle-account">
-                    <thead>
+                <table id="datatable-vehicle-account" class="display datatable datatable-vehicle datatable-vehicle-account">
+                    <thead class="dthead">
                     <tr class="table100-head">
                         <th>Brand</th>
                         <th>PlateNumber</th>
@@ -505,6 +505,7 @@
           line-height: 1.5;
         }
         .content-inner {
+
           display: flex;
           justify-content: center;
           align-items: center;
@@ -527,9 +528,20 @@
         }
         button.btn-space {
         margin-left: 1em;
-    }
-
-
+        }
+        .dataTables_length, .dataTables_info {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 135px;
+          }
+          .dataTables_filter, .dataTables_paginate {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-right: 135px;
+          }
+        .dthead tr th {
+          font-family: Arial, sans-serif;
+        }
 </style>
 </body>
 <footer th:replace="fragments :: footer"></footer>

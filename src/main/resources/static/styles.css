@@ -308,24 +308,29 @@ tbody tr:hover {
   align-items: center;
 }
 .contactdata > .contact {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 150px;
   float: left;
   justify-content: center;
 }
 .contactdata {
-  display: inline-block;
-  margin-left: 200px;
+   display: flex;
+   justify-content: space-around;
+   margin-bottom: 50px;
+}
+.contact-title {
+ text-align: center;
 }
 h3 {
- font-size: 30px;
+ font-size: 20px;
  font-weight: bolder;
 }
 .contact > p {
- font-size: 20px;
+ font-size: 14px;
 }
 .iframe{
  margin-bottom: 30px;
+ margin-left:90px;
 }
 #datatable-vehicle-index{
  weight:80%;
