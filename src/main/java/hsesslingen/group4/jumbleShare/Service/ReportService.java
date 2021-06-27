@@ -1,6 +1,5 @@
 package hsesslingen.group4.jumbleShare.Service;
 
-import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Transaction;
 import hsesslingen.group4.jumbleShare.JumbleShareApplication;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21TransactionRepository;
 import hsesslingen.group4.jumbleShare.Web.Dto.TransactionBookingsDto;
@@ -19,8 +18,6 @@ import java.util.Map;
 @Service
 public class ReportService {
 
-    private TransactionBookingsDto bookings;
-
     @Autowired
     private TransactionServiceImpl transactionService;
 
@@ -29,8 +26,8 @@ public class ReportService {
 
     public String exportInvoice(String invoiceFormat) throws FileNotFoundException, JRException {
         String path = "C:\\Users\\imer_\\Desktop\\Infosys";
-        //List<TransactionBookingsDto> bookings = transactionService.findTransactionsForBookingsByUserId(JumbleShareApplication._currentlyActiveUser);
-        List<Grp4Ss21Transaction> bookings = repository.findAll();
+        List<TransactionBookingsDto> bookings = transactionService.findTransactionsForBookingsByUserId(JumbleShareApplication._currentlyActiveUser);
+        //List<Grp4Ss21Transaction> bookings = repository.findAll();
         File file = ResourceUtils.getFile("src/main/resources/invoice.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookings);

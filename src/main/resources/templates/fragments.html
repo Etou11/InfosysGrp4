@@ -9,12 +9,12 @@
                 <li class="nav__item"><a href="/new">Add Vehicle</a></li>
                 <li class="nav__item"><a href="/account.html">My Account</a></li>
                 <li class="nav__item"><a href="/contact.html">Contact</a></li>
-                <li sec:authorize="isAnonymous()" class="nav__item"><a href="/login">Log In</a></li>
-                <li sec:authorize="isAuthenticated()" class="nav__item"><a href="/login?logout">Log Out</a></li>
+                <li class="nav__item"><a href="/login">Log In</a></li>
+                <!-- <li sec:authorize="isAuthenticated()" class="nav__item"><a href="/login">Log Out</a></li> -->
             </ul>
         </nav>
         <div>
-            <li sec:authorize="isAuthenticated()" class="nav__item">Hello, <span sec:authentication="name"></span></li>
+            <li sec:authorize="isAuthenticated()" class="nav__item">Hello, <span sec:authentication="name" class="showname"></span></li>
         </div>
     </div>
 </header>

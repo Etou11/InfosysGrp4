@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice_temp" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="140096a9-35cb-43cc-b5c9-0d0512002b09">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="invoice_temp" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20"
+              topMargin="20" bottomMargin="20" uuid="140096a9-35cb-43cc-b5c9-0d0512002b09">
     <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
     <queryString>
         <![CDATA[]]>
@@ -11,8 +15,9 @@
     <title>
         <band height="102" splitType="Stretch">
             <image>
-                <reportElement stretchType="RelativeToTallestObject" x="420" y="0" width="90" height="90" uuid="9c0eedde-d44c-4281-8c6c-9377b5d6673e"/>
-                <imageExpression><![CDATA["C:/Users/imer_/Desktop/WKB6/Infosys/logo2.PNG"]]></imageExpression>
+                <reportElement stretchType="RelativeToTallestObject" x="420" y="0" width="90" height="90"
+                               uuid="9c0eedde-d44c-4281-8c6c-9377b5d6673e"/>
+                <imageExpression><![CDATA["static/images/logo2.PNG"]]></imageExpression>
             </image>
         </band>
     </title>
@@ -61,7 +66,8 @@ Musterstrasse 1
             </staticText>
             <staticText>
                 <reportElement x="10" y="140" width="500" height="20" uuid="c8ffe160-5713-4fce-b861-d53c6771f19d"/>
-                <text><![CDATA[Wir bedanken uns für deine Fahrt mit JumbleShare und stellen dir folgende Reise in Rechnung]]></text>
+                <text>
+                    <![CDATA[Wir bedanken uns für deine Fahrt mit JumbleShare und stellen dir folgende Reise in Rechnung]]></text>
             </staticText>
             <staticText>
                 <reportElement x="260" y="100" width="91" height="20" uuid="c90cc718-0612-4888-97c7-ced84f6c1e3a"/>
@@ -133,7 +139,8 @@ Musterstrasse 1
         <band height="82" splitType="Stretch">
             <staticText>
                 <reportElement x="10" y="9" width="501" height="21" uuid="77fa6d58-7a6e-4d20-9f32-0f2384374448"/>
-                <text><![CDATA[Zahlung wird innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzüge von deinem Bankkonto abgebucht.]]></text>
+                <text>
+                    <![CDATA[Zahlung wird innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzüge von deinem Bankkonto abgebucht.]]></text>
             </staticText>
             <staticText>
                 <reportElement x="10" y="40" width="171" height="20" uuid="8ee307f6-926a-4ed1-80f4-766cf962c889"/>

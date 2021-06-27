@@ -10,6 +10,7 @@ import hsesslingen.group4.jumbleShare.Web.Dto.TripDto;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -137,5 +138,4 @@ public class MainController
     public String generateInvoice(@PathVariable String format) throws FileNotFoundException, JRException {
         return service.exportInvoice(format);
     }
-
 }

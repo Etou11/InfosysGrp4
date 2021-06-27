@@ -10,6 +10,7 @@
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/csv.js"></script>
 </head>
 <header class="site-header" th:replace="fragments :: header"></header>
 <body>
@@ -19,10 +20,8 @@
         <h2>Personal Data</h2>
         <div class="content">
             <div class="content-inner">
-
                 <div class="formular">
                     <form action="insert.php" method="post">
-
                         <label for="customernr"><b>Customer Number</b></label>
                         <input type="text" placeholder="Enter Customer Number" name="customernr" id="customernr"
                                required>
@@ -60,7 +59,7 @@
                         <label for="country"><b>Country</b></label>
                         <input type="text" placeholder="Enter Country" name="country" id="country" required>
 
-                        <button id="add" type="add"><a href="index.html">Save Changes </a></button>
+                        <button class="btn" id="add" type="add"><a href="index.html">Save Changes </a></button>
                     </form>
                 </div>
             </div>
@@ -100,7 +99,7 @@
                         <label for="bankName"><b>Bank Name</b></label>
                         <input type="text" id="bankName" name="bankName" required>
 
-                        <button type="submit">Save Changes</button>
+                        <button class="btn" type="submit">Save Changes</button>
 
                     </form>
                 </div>
@@ -115,40 +114,28 @@
         <h2>My Bookings</h2> <!--MIT DATA TABLES MACHEN / Rechnungserstellung PDF-->
         <div class="content">
             <div class="content-inner">
+                <div class="table100">
+                    <input tpye="file" id="upload-csv" accept=".csv">
+                    <table id="datatable-account-bookings" class="datatable datatable-bookings datatable-account-bookings">
+                        <thead>
+                        <tr class="table100-head">
+                            <th>Transaction Id</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Vehicle</th>
+                            <th>Vehicle Price Per Minute</th>
+                            <th>Total Duration</th>
+                            <th>Total Price</th>
+                        </tr>
+                        <tfoot>
+                        <tr>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <div class="import-export">
+                        <button class="btn-export" onclick="exportTableToCSV('bookings.csv')"></button>
 
-                <!-- <div class="formular">
-                  <form action="index.html" method="post"> -->
-
-                <div class="limiter">
-                    <div class="container-table100">
-                        <div class="wrap-table100">
-                            <div class="table100">
-                                <input tpye="file" id="upload-csv" accept=".csv">
-                                <table id="datatable-account-bookings" class="datatable datatable-bookings datatable-account-bookings">
-                                    <thead>
-                                    <tr class="table100-head">
-                                        <th>Transaction Id</th>
-                                        <th>Start Time</th>
-                                        <th>End Time</th>
-                                        <th>Vehicle</th>
-                                        <th>Vehicle Price Per Minute</th>
-                                        <th>Total Duration</th>
-                                        <th>Total Price</th>
-                                    </tr>
-                                    <tfoot>
-                                    <tr>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                                <button class="btn" onclick="exportTableToCSV('bookings.csv')">CSV File</button>
-                                <div id="dvImportSegments" class="fileupload ">
-                                    <fieldset>
-                                        <legend>Upload your CSV File</legend>
-                                        <input type="file" name="File Upload" id="txtFileUpload" accept=".csv"/>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="invoice/pdf"><button class="btn-invoice"></button></a>
                     </div>
                 </div>
             </div>
@@ -164,7 +151,6 @@
         <h2>My Vehicles</h2> <!-- MIT DATA TABLES MACHEN / SAVE CHANGES + DELETE BUTTONS /-->
         <div class="content">
             <div class="content-inner">
-
                 <table id="datatable-vehicle-account" class="datatable datatable-vehicle datatable-vehicle-account">
                     <thead>
                     <tr class="table100-head">
@@ -356,43 +342,6 @@
                         userId.value = list.userId;
 
                     }
-
-
-                                        /*
-                    function Upload() {
-                        var fileUpload = document.getElementById("fileUpload");
-                        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
-                        if (regex.test(fileUpload.value.toLowerCase())) {
-                            if (typeof (FileReader) != "undefined") {
-                                var reader = new FileReader();
-                                reader.onload = function (e) {
-                                    var table = document.getElementById("bookings");
-                                    var rows = e.target.result.split("\n");
-                                    for (var i = 0; i < rows.length; i++) {
-                                        var cells = rows[i].split(";");
-                                        if (cells.length > 1) {
-                                            var row = table.insertRow(-1);
-                                            for (var j = 0; j < cells.length; j++) {
-                                                var cell = row.insertCell(-1);
-                                                cell.innerHTML = cells[j];
-                                            }
-                                        }
-                                    }
-                                    var dvCSV = document.getElementById("dvCSV");
-                                    dvCSV.innerHTML = "";
-                                    dvCSV.appendChild(table);
-                                }
-                                reader.readAsText(fileUpload.files[0]);
-                            } else {
-                                alert("This browser does not support HTML5.");
-                            }
-                        } else {
-                            alert("Please upload a valid CSV file.");
-                        }
-                        $('#bokings').data.reload();
-                    }
-                    */
-
                 </script>
                 <!-- <div class="formular">
                   <form action="index.html" method="post">
@@ -452,12 +401,50 @@
           cursor: pointer;
           width: 100%;
         }
+        .import-export {
+          width: 245px;
+          height: 100px;
+          display: flex;
+          align-items: center;
+        }
+        .btn {
+          background-color: #3082cf;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 25%;
+        }
+        .btn-export {
+          background-image: url("images/csv-export.png");
+          background-size: 75px 75px;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: 1px solid #3082cf;
+          cursor: pointer;
+          width: 75px;
+          height: 75px;
+        }
+        .btn-invoice {
+          background-image: url("images/pdf-export.png");
+          background-size: 75px 75px;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: 1px solid #3082cf;
+          cursor: pointer;
+          width: 75px;
+          height: 75px;
+        }
         button:hover {
           opacity: 0.8;
         }
         .formular{
           margin: 50px;
           width: 600px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         .container {
           max-width: 70%;
@@ -465,7 +452,6 @@
           padding: 8px;
           margin-top:20px;
           margin-bottom: 10px;
-
         }
         .acc h2 {
           font-size: 25px;
@@ -519,7 +505,9 @@
           line-height: 1.5;
         }
         .content-inner {
-          padding: 15px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         /*Format Screen Width*/
         @viewport{
