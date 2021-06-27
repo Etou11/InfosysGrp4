@@ -7,9 +7,11 @@ import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21AccountRepository;
 import hsesslingen.group4.jumbleShare.Service.*;
 import hsesslingen.group4.jumbleShare.Web.Dto.TransactionBookingsDto;
 import hsesslingen.group4.jumbleShare.Web.Dto.TripDto;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 @RestController
@@ -128,5 +130,12 @@ public class MainController
     @GetMapping(path = "getVehicleTypes")
     List<String> getVehicleTypes() { return dbController.getAllVehicleTypes(); }
 
+    @Autowired
+    private ReportService service;
+
+    @GetMapping("/report/{format}")
+    public String generateInvoice(@PathVariable String format) throws FileNotFoundException, JRException {
+        return service.exportInvoice(format);
+    }
 
 }

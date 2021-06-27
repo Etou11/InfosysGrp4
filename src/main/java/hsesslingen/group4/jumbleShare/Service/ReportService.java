@@ -23,6 +23,11 @@ public class ReportService {
     @Autowired
     private TransactionServiceImpl transactionService;
 
+    List<TransactionBookingsDto> getTransactionBookingsDtosByUserId(String userId)
+    {
+        return transactionService.findTransactionsForBookingsByUserId(JumbleShareApplication._currentlyActiveUser);
+    }
+
     public String exportInvoice(String invoiceFormat) throws FileNotFoundException, JRException {
         String path = "C:";
         List<TransactionBookingsDto> bookings = transactionService.findTransactionsForBookingsByUserId(JumbleShareApplication._currentlyActiveUser);
@@ -32,6 +37,9 @@ public class ReportService {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("created By", "jumbleShare");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        if(invoiceFormat.equalsIgnoreCase("html")) {
+            JasperExportManager.exportReportToHtmlFile(jasperPrint, path+"\\invoice.html");
+        }
         if(invoiceFormat.equalsIgnoreCase("pdf")) {
             JasperExportManager.exportReportToPdfFile(jasperPrint, path+"\\invoice.pdf");
         }
