@@ -54,6 +54,7 @@ public class MainController
     }
 
 
+
     //Trip
     @GetMapping(path = "checkoutVehicle")
     boolean checkoutVehicle(TripDto trip)
@@ -132,7 +133,7 @@ public class MainController
     List<String> getVehicleTypes() { return dbController.getAllVehicleTypes(); }
 
     @Autowired
-    private ReportService service;
+    private InvoiceService service;
 
     @GetMapping("/invoice/{format}")
     public String generateInvoice(@PathVariable String format) throws FileNotFoundException, JRException {

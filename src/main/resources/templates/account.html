@@ -115,6 +115,18 @@
         <div class="content">
             <div class="content-inner">
                 <div class="table100">
+                    <form id="upload-csv" method="POST" enctype="multipart/form-data">
+                        <div>
+                            <br/>
+                            <label>Import Transaction</label>
+                        </div>
+                        <div>
+                            <input type="file" name="csv_file" id="csv_file" accept=".csv"/>
+                        </div>
+                        <div>
+                            <input type="submit" name="upload" id="upload" value="Upload">
+                        </div>
+                    </form>
                     <table id="datatable-account-bookings" class="display datatable datatable-bookings datatable-account-bookings">
                         <thead class="dthead">
                         <tr class="table100-head">
@@ -134,7 +146,6 @@
                     </table>
                     <div class="import-export">
                         <button class="btn-export" onclick="exportTableToCSV('bookings.csv')"></button>
-
                         <a href="invoice/pdf"><button class="btn-invoice"></button></a>
                     </div>
                 </div>
@@ -169,6 +180,7 @@
                     </tfoot>
                 </table>
                 <script>
+
 
                     $(document).ready(function() {
 

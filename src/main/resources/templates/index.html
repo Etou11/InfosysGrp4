@@ -28,7 +28,6 @@
     </tr>
     </tfoot>
 </table>
-<!--
 <div class="rahmen">
     <div class="limiter">
         <div>
@@ -42,6 +41,7 @@
     </div>
     <div class="tableborder">
         <table id="bookedVehicle" class="bookedVehicle">
+            <thead>
             <tr>
                 <th>Vehicle Type</th>
                 <th>Brand</th>
@@ -49,16 +49,20 @@
                 <th>Duration</th>
                 <div class="box">CHECKOUT</div>
             </tr>
+            </thead>
+            <tbody>
+            <!--
             <tr>
                 <td>Car</td>
                 <td>Opel Corsa</td>
                 <td>0,50€</td>
                 <td><div id="time-elapsed"></div></td>
             </tr>
+            -->
+            </tbody>
         </table>
     </div>
 </div>
--->
 <script>
     function createDataTable(args) {
         $('#datatable-vehicle-index').DataTable( {
@@ -74,14 +78,12 @@
         } );
         var table = $('#Searchtbl').DataTable({
     });
-        /*
         $('#datatable-vehicle-index tbody').on('click', 'tr', function () {
             var tableData = $(this).children("td").map(function () {
                 return $(this).text();
             }).get();
             alert("Your data is: " + $.trim(tableData[0]));
         });
-        */
     }
     $(document).ready(function() {
         $.ajax({
@@ -168,7 +170,7 @@
           }
           thead th {
             background-color: #3082cf;
-            color: white;
+            color: white
           }
           /*
           .tableborder{
