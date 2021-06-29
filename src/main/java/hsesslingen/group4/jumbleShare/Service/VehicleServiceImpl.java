@@ -33,6 +33,7 @@ public class VehicleServiceImpl implements VehicleService {
         );
         DbController dbController = new DbController();
         dbController.createNewVehicle(vehicle);
+        //vehicleRepository.save(vehicle);
     }
 
     @Override

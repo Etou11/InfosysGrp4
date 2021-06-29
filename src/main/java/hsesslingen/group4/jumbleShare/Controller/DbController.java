@@ -2,6 +2,7 @@ package hsesslingen.group4.jumbleShare.Controller;
 
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21User;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
+import hsesslingen.group4.jumbleShare.JumbleShareApplication;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -112,13 +113,13 @@ public class DbController
                     "           ,[UserId]\n" +
                     "           ,[VehicleTypeId])\n" +
                     "     VALUES\n" +
-                    "('" + vehicle.getId() + "',\n" +
+                    "( NEWID(),\n" +
                     "'"+ vehicle.getBrand()  +"',\n" +
                     " '"+ vehicle.getPlateOrSerialNumber()  +"',\n" +
                     " '" + vehicle.getPricePerMinute()+ "',\n" +
                     "'" + vehicle.getLongitude() + "',\n" +
                     "'" + vehicle.getLatitude() + "',\n" +
-                    "'" + vehicle.getUserId()+ "',\n" +
+                    "(SELECT TOP 1 Id FROM [dbo].[Grp_4_SS21_User] WHERE Id = '" + JumbleShareApplication._currentlyActiveUser + "'),\n" +
                     "'" + vehicle.getVehicleTypeId() + "')");
         }
         catch (Exception e)
