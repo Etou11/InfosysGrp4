@@ -91,10 +91,10 @@
                         <input type="text" id="ownerLName" name="ownerLName" required>
 
                         <label for="IBAN"><b>IBAN</b></label>
-                        <input type="text"  id="IBAN" name="IBAN" required>
+                        <input type="text" id="IBAN" name="IBAN" required>
 
                         <label for="BIC"><b>BIC</b></label>
-                        <input type="text"  id="BIC" name="BIC" required>
+                        <input type="text" id="BIC" name="BIC" required>
 
                         <label for="bankName"><b>Bank Name</b></label>
                         <input type="text" id="bankName" name="bankName" required>
@@ -115,19 +115,8 @@
         <div class="content">
             <div class="content-inner">
                 <div class="table100">
-                    <form id="upload-csv" method="POST" enctype="multipart/form-data">
-                        <div>
-                            <br/>
-                            <label>Import Transaction</label>
-                        </div>
-                        <div>
-                            <input type="file" name="csv_file" id="csv_file" accept=".csv"/>
-                        </div>
-                        <div>
-                            <input type="submit" name="upload" id="upload" value="Upload">
-                        </div>
-                    </form>
-                    <table id="datatable-account-bookings" class="display datatable datatable-bookings datatable-account-bookings">
+                    <table id="datatable-account-bookings"
+                           class="display datatable datatable-bookings datatable-account-bookings">
                         <thead class="dthead">
                         <tr class="table100-head">
                             <th>Transaction Id</th>
@@ -139,6 +128,10 @@
                             <th>Total Price</th>
                         </tr>
                         </thead>
+                        <tbody>
+                        <tr>
+                        </tr>
+                        </tbody>
                         <tfoot>
                         <tr>
                         </tr>
@@ -146,7 +139,12 @@
                     </table>
                     <div class="import-export">
                         <button class="btn-export" onclick="exportTableToCSV('bookings.csv')"></button>
-                        <a href="invoice/pdf"><button class="btn-invoice"></button></a>
+                        <a href="feedTripData">
+                            <button class="btn-import"></button>
+                        </a>
+                        <a href="invoice/pdf">
+                            <button class="btn-invoice"></button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -162,7 +160,8 @@
         <h2>My Vehicles</h2> <!-- MIT DATA TABLES MACHEN / SAVE CHANGES + DELETE BUTTONS /-->
         <div class="content">
             <div class="content-inner">
-                <table id="datatable-vehicle-account" class="display datatable datatable-vehicle datatable-vehicle-account">
+                <table id="datatable-vehicle-account"
+                       class="display datatable datatable-vehicle datatable-vehicle-account">
                     <thead class="dthead">
                     <tr class="table100-head">
                         <th>Brand</th>
@@ -354,6 +353,7 @@
                         userId.value = list.userId;
 
                     }
+
                 </script>
                 <!-- <div class="formular">
                   <form action="index.html" method="post">
@@ -430,6 +430,16 @@
         }
         .btn-export {
           background-image: url("images/csv-export.png");
+          background-size: 75px 75px;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: 1px solid #3082cf;
+          cursor: pointer;
+          width: 75px;
+          height: 75px;
+        }
+        .btn-import {
+          background-image: url("images/csv-import.png");
           background-size: 75px 75px;
           padding: 14px 20px;
           margin: 8px 0;
@@ -554,6 +564,7 @@
         .dthead tr th {
           font-family: Arial, sans-serif;
         }
+
 </style>
 </body>
 <footer th:replace="fragments :: footer"></footer>

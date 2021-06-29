@@ -15,7 +15,6 @@
     <body>
         <h1> Add Vehicle </h1>
         <div class="formular">
-
             <div th:if="${param.success}">
                 <div class="alert alert-info">
                     You've successfully added the vehicle!
@@ -41,12 +40,13 @@
                 <input th:field="*{userId}" style="display: none;" th:value="1d7cd350-2492-0e46-ab26-25ba831d7786">
                 <br>
                 <!--
-                                <label for="location"><b>Location</b></label>
-                                <button type="button" onclick="getLocation()" name="uname" id="location">Get Current Position</button>
-                                <p th:field="*{latitude}" id="latitude"></p>
-                                <p th:field="*{longitude}" id="longitude"></p>
+                <label for="location"><b>Location</b></label>
+                <button type="button" onclick="getLocation()" name="uname" id="location">Get Current Position</button>
+                <p th:field="*{latitude}" id="latitude"></p>
+                <p th:field="*{longitude}" id="longitude"></p>
 
-                               <button id="add" type="add"><a href="index.html">Add Vehicle</a></button>-->
+               <button id="add" type="add"><a href="index.html">Add Vehicle</a></button>
+               -->
                 <button type="submit" id="submit">
                     Add Vehicle
                 </button>
@@ -54,77 +54,73 @@
         </div>
         <style>
         *{
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    font-family: Arial, Helvetica, sans-serif;
-}
-          input[type=text], input[type=password] {
-              width: 100%;
-              padding: 12px 20px;
-              margin: 8px 0;
-              display: inline-block;
-              border: 1px solid lightgray;
-              box-sizing: border-box;
-          }
-          #vehicletype {
-              width: 100%;
-              padding: 12px 20px;
-              margin: 8px 0;
-              display: inline-block;
-              border: 1px solid lightgray;
-              box-sizing: border-box;
-          }
-          button {
-              background-color: #3082cf;
-              color: white;
-              padding: 14px 20px;
-              margin: 8px 0;
-              border: none;
-              cursor: pointer;
-              width: 100%;
-          }
-          button:hover {
-              opacity: 0.8;
-          }
-          .formular{
-              margin: 50px;
-              width: 600px;
-          }
-          #add{
-              width: 300px;
-          }
-        </style>
-    <script>
-
-
-    function populateDropdown(list) {
-
-    for (var i = 0; i < list.length; i+=2) {
-        var select = document.getElementById("vehicletype");
-        var option = document.createElement("option");
-        option.text = list[i+1];
-        option.value = list[i];
-        select.add(option);
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+            font-family: Arial, Helvetica, sans-serif;
         }
-    }
+        input[type=text], input[type=password] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid lightgray;
+          box-sizing: border-box;
+        }
+        #vehicletype {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid lightgray;
+          box-sizing: border-box;
+        }
+        button {
+          background-color: #3082cf;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+        button:hover {
+          opacity: 0.8;
+        }
+        .formular{
+          margin: 50px;
+          width: 600px;
+        }
+        #add{
+          width: 300px;
+        }
+        </style>
+        <script>
+        function populateDropdown(list) {
 
-        $(document).ready(function() {
-        $.ajax({
-            type: "GET",
-            url: "/getVehicleTypes",
-            success: function (res) {
-                populateDropdown(res);
-            },
-            error: (xhr, ajaxOptions, thrownError) => {
-                console.error(xhr.responseText, { xhr });
+        for (var i = 0; i < list.length; i+=2) {
+            var select = document.getElementById("vehicletype");
+            var option = document.createElement("option");
+            option.text = list[i+1];
+            option.value = list[i];
+            select.add(option);
             }
+        }
+        $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: "/getVehicleTypes",
+                success: function (res) {
+                    populateDropdown(res);
+                },
+                error: (xhr, ajaxOptions, thrownError) => {
+                    console.error(xhr.responseText, { xhr });
+                }
+            });
         });
-    });
-
         var lat = document.getElementById("latitude");
         var long = document.getElementById("longitude");
         function getLocation() {
@@ -134,12 +130,10 @@
                 lat.innerHTML = "Geolocation is not supported by this browser.";
             }
         }
-        function showPosition(position) {
-            lat.innerHTML = "Latitude: " + position.coords.latitude;
-            long.innerHTML = "Longitude: " + position.coords.longitude;
-        }
-
-
+            function showPosition(position) {
+                lat.innerHTML = "Latitude: " + position.coords.latitude;
+                long.innerHTML = "Longitude: " + position.coords.longitude;
+            }
     </script>
     </body>
 </div>

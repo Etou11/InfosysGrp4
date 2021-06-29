@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -69,11 +70,14 @@ public class MainController
     }
 
     @GetMapping(path = "importTrip")
-    boolean importTrip(List<TripDto> trips)
-    {
+    boolean importTrip(List<TripDto> trips) throws IOException {
         return tripService.importTrips(trips);
     }
 
+    @RequestMapping(path="feedTripData")
+    public void setDataInDB() {
+        tripService.saveTripData();
+    }
 
     //Account
     @GetMapping(path = "getAccountDetailsByUserId")

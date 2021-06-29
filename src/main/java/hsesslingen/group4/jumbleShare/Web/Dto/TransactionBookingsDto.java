@@ -1,7 +1,5 @@
 package hsesslingen.group4.jumbleShare.Web.Dto;
 
-import java.math.BigDecimal;
-
 import java.util.Date;
 import java.util.UUID;
 

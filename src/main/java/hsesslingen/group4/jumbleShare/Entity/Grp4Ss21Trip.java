@@ -71,4 +71,86 @@ public class Grp4Ss21Trip implements Serializable
     {
 
     }
+    
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public Date getTimestampStart() {
+        return timestampStart;
+    }
+
+    public void setTimestampStart(Date timestampStart) {
+        this.timestampStart = timestampStart;
+    }
+
+    public Date getTimestampEnd() {
+        return timestampEnd;
+    }
+
+    public void setTimestampEnd(Date timestampEnd) {
+        this.timestampEnd = timestampEnd;
+    }
+
+    public BigDecimal getLongitudeOrig() {
+        return longitudeOrig;
+    }
+
+    public void setLongitudeOrig(BigDecimal longitudeOrig) {
+        this.longitudeOrig = longitudeOrig;
+    }
+
+    public BigDecimal getLatitudeOrig() {
+        return latitudeOrig;
+    }
+
+    public void setLatitudeOrig(BigDecimal latitudeOrig) {
+        this.latitudeOrig = latitudeOrig;
+    }
+
+    public BigDecimal getLongitudeFin() {
+        return longitudeFin;
+    }
+
+    public void setLongitudeFin(BigDecimal longitudeFin) {
+        this.longitudeFin = longitudeFin;
+    }
+
+    public BigDecimal getLatitudeFin() {
+        return latitudeFin;
+    }
+
+    public void setLatitudeFin(BigDecimal latitudeFin) {
+        this.latitudeFin = latitudeFin;
+    }
+
+    public BigDecimal getVehiclePricePerMinute() {
+        return vehiclePricePerMinute;
+    }
+
+    public void setVehiclePricePerMinute(BigDecimal vehiclePricePerMinute) {
+        this.vehiclePricePerMinute = vehiclePricePerMinute;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+
+    public UUID getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(UUID vehicleId) {
+        this.vehicleId = vehicleId;
+    }
+
 }

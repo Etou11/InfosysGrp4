@@ -64,6 +64,26 @@
     </div>
 </div>
 <script>
+$('#datatable-vehicle-index').on( 'click', 'button', function () {
+if (confirm('Do you want to book this car?')) {
+var vehicle = table.row( $(this).parents('tr') ).data();
+
+//DELETE call distinguished as GET
+$.ajax({
+    type: 'GET',
+    url: "/checkinVehicle",
+    data: vehicle,
+    success: function(res) {
+        $('#view-all').html(res.html);
+        location.reload();
+    },
+    error: function(err) {
+        console.log(err);
+    }
+});
+
+}
+});
     function createDataTable(args) {
         $('#datatable-vehicle-index').DataTable( {
             data: args,
