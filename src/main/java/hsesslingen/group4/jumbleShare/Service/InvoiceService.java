@@ -25,7 +25,8 @@ public class InvoiceService {
     private Grp4Ss21TransactionRepository repository;
 
     public String exportInvoice(String invoiceFormat) throws FileNotFoundException, JRException {
-        String path = "C:\\Users\\imer_\\Desktop\\Infosys";
+        String pathImer = "C:\\Users\\imer_\\Desktop\\Infosys";
+        String pathChris = "D:\\Users\\Chris\\Documents\\Studium Extended\\Semester 5\\Informationssysteme\\Projekt";
         List<TransactionBookingsDto> bookings = transactionService.findTransactionsForBookingsByUserId(JumbleShareApplication._currentlyActiveUser);
         File file = ResourceUtils.getFile("src/main/resources/invoice.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
@@ -34,12 +35,12 @@ public class InvoiceService {
         parameters.put("created By", "jumbleShare");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
         if(invoiceFormat.equalsIgnoreCase("html")) {
-            JasperExportManager.exportReportToHtmlFile(jasperPrint, path+"\\invoice.html");
+            JasperExportManager.exportReportToHtmlFile(jasperPrint, pathChris+"\\invoice.html");
         }
         if(invoiceFormat.equalsIgnoreCase("pdf")) {
-            JasperExportManager.exportReportToPdfFile(jasperPrint, path+"\\invoice.pdf");
+            JasperExportManager.exportReportToPdfFile(jasperPrint, pathChris+"\\invoice.pdf");
         }
-        return "report generated in path: " + path;
+        return "report generated in path: " + pathChris;
     }
 
 }

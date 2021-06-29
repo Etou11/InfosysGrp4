@@ -21,6 +21,7 @@
         <th>Longitude</th>
         <th>Latitude</th>
         <th>Vehicle Type</th>
+        <th></th>
     </tr>
     </thead>
     <tfoot>
@@ -47,7 +48,7 @@
                 <th>Brand</th>
                 <th>Price per Minute</th>
                 <th>Duration</th>
-                <div class="box">CHECKOUT</div>
+                <th><div class="box">CHECKOUT</div></th>
             </tr>
             </thead>
             <tbody>
@@ -64,59 +65,81 @@
     </div>
 </div>
 <script>
-$('#datatable-vehicle-index').on( 'click', 'button', function () {
-if (confirm('Do you want to book this car?')) {
-var vehicle = table.row( $(this).parents('tr') ).data();
-
-//DELETE call distinguished as GET
-$.ajax({
-    type: 'GET',
-    url: "/checkinVehicle",
-    data: vehicle,
-    success: function(res) {
-        $('#view-all').html(res.html);
-        location.reload();
-    },
-    error: function(err) {
-        console.log(err);
-    }
-});
-
-}
-});
-    function createDataTable(args) {
-        $('#datatable-vehicle-index').DataTable( {
-            data: args,
-            "columns": [
-            { "data": "brand" },
-            { "data": "plateOrSerialNumber" },
-            { "data": "pricePerMinute" },
-            { "data": "longitude" },
-            { "data": "latitude" },
-            { "data": "vehicleTypeId" }
-            ]
-        } );
-        var table = $('#Searchtbl').DataTable({
-    });
-        $('#datatable-vehicle-index tbody').on('click', 'tr', function () {
-            var tableData = $(this).children("td").map(function () {
-                return $(this).text();
-            }).get();
-            alert("Your data is: " + $.trim(tableData[0]));
-        });
-    }
-    $(document).ready(function() {
-        $.ajax({
-            type: "GET",
-            url: "/getVehicleData",
-            success: function (res) {
-                createDataTable(res);
-            },
-            error: (xhr, ajaxOptions, thrownError) => {
-                console.error(xhr.responseText, { xhr });
+function createDataTable(args) {
+    $('#datatable-vehicle-index').DataTable( {
+        data: args,
+        "columns": [
+        { "data": "brand" },
+        { "data": "plateOrSerialNumber" },
+        { "data": "pricePerMinute" },
+        { "data": "longitude" },
+        { "data": "latitude" },
+        { "data": "vehicleTypeId" },
+        { "data": null }
+        ],
+        "columnDefs": [ {
+        "targets": -1,
+        "data": null,
+        "orderable": false,
+        "defaultContent": "<button style='background-color: rgb(38, 103, 166); color: rgb(232, 230, 227); margin: 8px; padding: 8px;' type='button'>Book</button>"
             }
-        });
+        ]
     } );
+    var table = $('#Searchtbl').DataTable({
+});
+
+
+    $('#datatable-vehicle-index tbody').on('click', 'tr', function () {
+        var tableData = $(this).children("td").map(function () {
+            return $(this).text();
+        }).get();
+        alert("Your data is: " + $.trim(tableData[0]));
+    });
+}
+
+
+$(document).ready(function() {
+
+    $.ajax({
+        type: "GET",
+        url: "/getVehicleData",
+        success: function (res) {
+            createDataTable(res);
+        },
+        error: (xhr, ajaxOptions, thrownError) => {
+            console.error(xhr.responseText, { xhr });
+        }
+    });
+
+    $('#datatable-vehicle-index').on( 'click', 'button', function () {
+    if (confirm('Do you really want to book this vehicle?')) {
+    var vehicle = table.row( $(this).parents('tr') ).data();
+
+    var data = {
+        id: vehicle.id
+    }
+
+    //YOUR CODE HERE!!!!
+    //DELETE call distinguished as GET
+    $.ajax({
+        type: 'GET',
+        url: "/YOURURL HERE",
+        data: data,
+        success: function(res) {
+            $('#view-all').html(res.html);
+            location.reload();
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
+
+
+    }
+});
+
+
+} );
 </script>
 <style>
 *{
