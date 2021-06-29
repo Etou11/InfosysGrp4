@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class ReportService {
+public class InvoiceService {
 
     @Autowired
     private TransactionServiceImpl transactionService;
@@ -27,7 +27,6 @@ public class ReportService {
     public String exportInvoice(String invoiceFormat) throws FileNotFoundException, JRException {
         String path = "C:\\Users\\imer_\\Desktop\\Infosys";
         List<TransactionBookingsDto> bookings = transactionService.findTransactionsForBookingsByUserId(JumbleShareApplication._currentlyActiveUser);
-        //List<Grp4Ss21Transaction> bookings = repository.findAll();
         File file = ResourceUtils.getFile("src/main/resources/invoice.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(bookings);
