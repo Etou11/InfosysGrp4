@@ -135,7 +135,8 @@ public class MainController
     private ReportService service;
 
     @GetMapping("/invoice/{format}")
-    public String generateInvoice(@PathVariable String format) throws FileNotFoundException, JRException {
+    public String generateInvoice(@PathVariable String format) throws FileNotFoundException, JRException
+    {
         return service.exportInvoice(format);
     }
 }

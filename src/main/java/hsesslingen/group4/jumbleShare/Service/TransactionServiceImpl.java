@@ -50,6 +50,20 @@ public class TransactionServiceImpl implements TransactionService
     {
         var transactions = transactionRepository.findAll();
         var trips = tripRepository.findAll();
+
+        List<Grp4Ss21Transaction> filteredTransactions = new ArrayList<>();
+
+        for(var transaction : transactions)
+        {
+            for(var trip : trips)
+            {
+                if(HelperExtension.UuidEqualityCheck(transaction.getTripId(), trip.getId()) && HelperExtension.UuidEqualityCheck(userId, trip.getUserId()))
+                    filteredTransactions.add(transaction);
+            }
+        }
+
+        //Do not delete - so much nicer code than those two loops above :((
+        /*
         var filteredTransactions = transactions.stream()
                 .filter(x -> HelperExtension.UuidEqualityCheck(x.getTripId().toString(), trips.stream()
                     .filter(y -> HelperExtension.UuidEqualityCheck(y.getUserId().toString(), userId.toString()))
@@ -58,6 +72,7 @@ public class TransactionServiceImpl implements TransactionService
                         .getId()
                         .toString()))
                 .collect(Collectors.toList());
+         */
         return filteredTransactions;
     }
 

@@ -2,6 +2,7 @@ package hsesslingen.group4.jumbleShare.Helper;
 
 import java.util.Date;
 import java.util.Locale;
+import java.util.UUID;
 
 public class HelperExtension
 {
@@ -24,9 +25,27 @@ public class HelperExtension
         return uuid.contentEquals(parsedGuid);
     }
 
+    public static boolean UuidEqualityCheck(UUID uuid, UUID guid)
+    {
+        var uuidParsed = uuid.toString();
+        var guidParsed = guid.toString();
+
+        uuidParsed = uuidParsed.toLowerCase(Locale.ROOT);
+        uuidParsed = uuidParsed.replaceAll("-", "");
+        uuidParsed = uuidParsed.substring(uuidParsed.length() - 8);
+
+        var parsedGuid = HelperExtension.hexToStr(guidParsed);
+        parsedGuid = parsedGuid.replaceAll("-","");
+        parsedGuid = parsedGuid.substring(parsedGuid.length() - 8);
+
+        return uuidParsed.contentEquals(parsedGuid);
+    }
+
     public static double GetTimespanInMinutes(Date start, Date end)
     {
         var diffMinutes = (end.getTime() - start.getTime()) / (60 * 1000);
         return Math.ceil(diffMinutes);
     }
+
+
 }
