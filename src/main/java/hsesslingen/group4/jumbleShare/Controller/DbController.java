@@ -28,6 +28,8 @@ public class DbController
     PreparedStatement p_stmt = null;
     ResultSet rs = null;
 
+    String guid = "38694717-6ffc-42c8-bfba-5f1e23c46972";
+
     public DbController ()
     {
 
@@ -52,7 +54,7 @@ public class DbController
                     "           ,[UserId]\n" +
                     "           ,[VehicleId])\n" +
                     "     VALUES\n" +
-                    "           ('" + trip.getId() +"'\n" +
+                    "           ('" + guid +"'\n" +
                     "           ,GETDATE() \n" +
                     "           ," + trip.getTimestampEnd() +"\n" +
                     "           ," + trip.getLongitudeOrig() +"\n" +
@@ -62,6 +64,33 @@ public class DbController
                     "           ," + trip.getVehiclePricePerMinute()+"\n" +
                     "           ,'" + trip.getUserId() +"'\n" +
                     "           ,'C7864511-DB27-4086-8471-9DB9BEA93090')");
+        }
+        catch (Exception e)
+        {
+
+        }
+
+    }
+
+    public void updateTrip(Grp4Ss21Trip trip)
+    {
+        try
+        {
+            Connection con = DriverManager.getConnection (connectionUrl);
+
+            Statement St = con.createStatement();
+            St.executeQuery("UPDATE [dbo].[Grp_4_SS21_Trip]\n" +
+                    "   SET [Id] = '"+ guid +"'\n" +
+                    "      ,[TimestampStart] = GETDATE() \n" +
+                    "      ,[TimestampEnd] = DATEADD(MINUTE, 5, GETDATE()) \n" +
+                    "      ,[LongitudeOrig] =  1 \n" +
+                    "      ,[LatitudeOrig] = 1 \n" +
+                    "      ,[LongitudeFin] = 10 \n" +
+                    "      ,[LatitudeFin] = 1 \n" +
+                    "      ,[VehiclePricePerMinute] = 1 \n" +
+                    "      ,[UserId] = '" + JumbleShareApplication._currentlyActiveUser +"'\n" +
+                    "      ,[VehicleId] = 'C7864511-DB27-4086-8471-9DB9BEA93090' \n" +
+                    " WHERE Id = '"+ guid +"'");
         }
         catch (Exception e)
         {

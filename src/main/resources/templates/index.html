@@ -142,8 +142,6 @@ function createDataTable(args) {
             var vehicle = table.row( $(this).parents('tr') ).data();
             var closestButton = $(this).closest('tr').find('.btn-book');
 
-            console.log(vehicle);
-
             var tripData = {
                 id: '8c81edc9-252c-4f3c-9492-0838d24fde15',
                 brand: vehicle.brand,
@@ -153,8 +151,6 @@ function createDataTable(args) {
                 userId: '8c81edc9-252c-4f3c-9492-0838d24fde15',
                 vehicleId: vehicle.id
             }
-
-            console.log(tripData);
 
             $.ajax({
                 type: 'GET',

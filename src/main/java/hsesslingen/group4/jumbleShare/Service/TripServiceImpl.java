@@ -106,7 +106,8 @@ public class TripServiceImpl implements TripService
         trip.setLatitudeFin(updatedTrip.getLatitudeFin());
         trip.setTimestampEnd(new Timestamp(System.currentTimeMillis()));
 
-        tripRepository.save(trip);
+        DbController dbController = new DbController();
+        dbController.updateTrip(trip);
 
         return true;
     }
