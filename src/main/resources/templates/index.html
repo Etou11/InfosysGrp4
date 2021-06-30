@@ -162,7 +162,6 @@ function createDataTable(args) {
                 data: tripData,
                 success: function(res) {
                     $('#view-all').html(res.html);
-                    location.reload();
                 },
                 error: function(err) {
                     console.log(err);
@@ -213,7 +212,6 @@ function createDataTable(args) {
                         data: tripData,
                         success: function(res) {
                             $('#view-all').html(res.html);
-                            location.reload();
                         },
                         error: function(err) {
                             console.log(err);

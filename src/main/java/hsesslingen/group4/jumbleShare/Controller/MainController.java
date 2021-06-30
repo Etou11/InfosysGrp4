@@ -10,6 +10,7 @@ import hsesslingen.group4.jumbleShare.Web.Dto.TripDto;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.FileNotFoundException;
@@ -74,7 +75,7 @@ public class MainController
         return tripService.importTrips(trips);
     }
 
-    @RequestMapping(path="feedTripData")
+    @RequestMapping(path = "feedTripData")
     public void setDataInDB() {
         tripService.saveTripData();
     }
