@@ -9,6 +9,8 @@
     <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
     <script src="http://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/csv.js"></script>
+    <script src="/js/timer.js"></script>
 </head>
 <header class="site-header" th:replace="fragments :: header"></header>
 <body>
@@ -33,7 +35,7 @@
     <div class="limiter">
         <div>
             <div class="product-teaser">
-                <img src="images/active.jpg" alt="active vehicle">
+                <!--<img src="images/active.jpg" alt="active vehicle">-->
                 <div>
                     <h1>Active Vehicle</h1>
                 </div>
@@ -48,25 +50,53 @@
                 <th>Brand</th>
                 <th>Price per Minute</th>
                 <th>Duration</th>
-                <th><div class="box">CHECKOUT</div></th>
+                <th>
+                    <button class="box">CHECKOUT</button>
+                </th>
             </tr>
             </thead>
             <tbody>
-            <!--
             <tr>
-                <td>Car</td>
-                <td>Opel Corsa</td>
-                <td>0,50€</td>
+                <td id="activevehicletype"></td>
+                <td id="activebrand"></td>
+                <td id="activeprice"></td>
                 <td><div id="time-elapsed"></div></td>
+                <td>
+                    <button id="end-trip" style='background-color: rgb(38, 103, 166); color: rgb(232, 230, 227); margin: 8px; padding: 8px;' type='button' disabled>End Trip</button>
+                </td>
             </tr>
-            -->
             </tbody>
         </table>
     </div>
 </div>
+<div class="details-header">
+    <h3>Thank you for using jumbleShare for your trip.</h3>
+    <h4>Below you can see datas of your trips</h4>
+    <table class="details" >
+        <thead>
+        <tr>
+            <th>Vehicle Type</th>
+            <th>Brand</th>
+            <th>Price per Minute</th>
+            <th>Duration</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td id="vehicletypDetails"></td>
+            <td id="brandDetails"></td>
+            <td id="priceDetails"></td>
+            <td id="timeDetails"></td>
+        </tr>
+    </table>
+</div>
+<div class="import-export">
+    <button class="btn-export" onclick="exportTripToCSV('trip.csv')"></button>
+</div>
 <script>
+var table;
 function createDataTable(args) {
-    $('#datatable-vehicle-index').DataTable( {
+    table = $('#datatable-vehicle-index').DataTable( {
         data: args,
         "columns": [
         { "data": "brand" },
@@ -81,25 +111,112 @@ function createDataTable(args) {
         "targets": -1,
         "data": null,
         "orderable": false,
-        "defaultContent": "<button style='background-color: rgb(38, 103, 166); color: rgb(232, 230, 227); margin: 8px; padding: 8px;' type='button'>Book</button>"
+        "defaultContent": "<button class='btn-book' style='background-color: rgb(38, 103, 166); color: rgb(232, 230, 227); margin: 8px; padding: 8px;' type='button'>Book</button>"
             }
         ]
     } );
+    /*
     var table = $('#Searchtbl').DataTable({
-});
+    });
+    */
 
+    var actBrand = document.getElementById("activebrand");
+    var actVehicleType = document.getElementById("activevehicletype");
+    var actPrice = document.getElementById("activeprice");
+    var actTime = document.getElementById("time-elapsed");
 
-    $('#datatable-vehicle-index tbody').on('click', 'tr', function () {
-        var tableData = $(this).children("td").map(function () {
-            return $(this).text();
-        }).get();
-        alert("Your data is: " + $.trim(tableData[0]));
+    var endTrip = document.getElementById("end-trip");
+
+    var vehicleDetails = document.getElementById("vehicletypDetails");
+    var brandDetails = document.getElementById("brandDetails");
+    var priceDetails = document.getElementById("priceDetails");
+    var timeDetails = document.getElementById("timeDetails");
+
+    let vehicleTypeTrip = "";
+    let brandTrip = "";
+    let priceTrip = "";
+    let timeTrip = "";
+
+    $('#datatable-vehicle-index tbody').on('click', 'button', function () {
+        if (confirm('Do you want to book this car?')) {
+            var vehicle = table.row( $(this).parents('tr') ).data();
+            var closestButton = $(this).closest('tr').find('.btn-book');
+
+            var tripData = {
+                id: vehicle.vehicleTypeId,
+                brand: vehicle.brand,
+                pricePerMinute: vehicle.pricePerMinute
+            }
+
+            $.ajax({
+                type: 'GET',
+                url: "/checkinVehicle",
+                data: tripData,
+                success: function(res) {
+                    $('#view-all').html(res.html);
+                    location.reload();
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+
+            actVehicleType.innerHTML = vehicle.vehicleTypeId;
+            actBrand.innerHTML = vehicle.brand;
+            actPrice.innerHTML = vehicle.pricePerMinute;
+
+            closestButton.prop("disabled",true);
+            closestButton.css("background","red");
+
+            endTrip.disabled = false;
+
+            endTrip.onclick = function() {
+                if (confirm('Do you want to end this trip?')) {
+
+                    closestButton.prop("disabled", false);
+                    closestButton.css("background", "rgb(38, 103, 166)");
+
+                    vehicleTypeTrip = actVehicleType.innerHTML;
+                    brandTrip = actBrand.innerHTML;
+                    priceTrip = actPrice.innerHTML;
+                    timeTrip = actTime.innerHTML;
+
+                    var tripData = {
+                        id: vehicle.vehicleTypeId,
+                        brand: vehicle.brand,
+                        pricePerMinute: vehicle.pricePerMinute
+                    }
+
+                    vehicleDetails.innerHTML = vehicleTypeTrip;
+                    brandDetails.innerHTML = brandTrip;
+                    priceDetails.innerHTML = priceTrip;
+                    timeDetails.innerHTML = timeTrip;
+
+                    document.cookie = "vehicleType: " + vehicleDetails.innerHTML + "brandType: " + brandDetails.innerHTML + "priceType " + priceDetails.innerHTML + "time " + timeDetails.innerHTML;
+                    alert(document.cookie);
+
+                    actVehicleType.innerHTML = "";
+                    actBrand.innerHTML = "";
+                    actPrice.innerHTML = "";
+
+                    $.ajax({
+                        type: 'GET',
+                        url: "/checkoutVehicle",
+                        data: tripData,
+                        success: function(res) {
+                            $('#view-all').html(res.html);
+                            location.reload();
+                        },
+                        error: function(err) {
+                            console.log(err);
+                        }
+                    });
+                }
+            };
+        }
     });
 }
-
-
 $(document).ready(function() {
-
     $.ajax({
         type: "GET",
         url: "/getVehicleData",
@@ -110,36 +227,7 @@ $(document).ready(function() {
             console.error(xhr.responseText, { xhr });
         }
     });
-
-    $('#datatable-vehicle-index').on( 'click', 'button', function () {
-    if (confirm('Do you really want to book this vehicle?')) {
-    var vehicle = table.row( $(this).parents('tr') ).data();
-
-    var data = {
-        id: vehicle.id
-    }
-
-    //YOUR CODE HERE!!!!
-    //DELETE call distinguished as GET
-    $.ajax({
-        type: 'GET',
-        url: "/YOURURL HERE",
-        data: data,
-        success: function(res) {
-            $('#view-all').html(res.html);
-            location.reload();
-        },
-        error: function(err) {
-            console.log(err);
-        }
-    });
-
-
-    }
 });
-
-
-} );
 </script>
 <style>
 *{
@@ -215,7 +303,6 @@ $(document).ready(function() {
             background-color: #3082cf;
             color: white
           }
-          /*
           .tableborder{
           padding-bottom: 30px;
           }
@@ -303,7 +390,37 @@ $(document).ready(function() {
     margin:auto;
     margin-top: 20px;
 
-}*/
+}
+.details-header {
+    width: 100%;
+    height: 100px;
+    margin-top: 100px;
+    text-align: center;
+    margin-bottom: 150px;
+    background-color: white;
+}
+.details {
+    width: 500px;
+    height: 50px;
+    margin-top: 20px;
+}
+.import-export {
+  width: 100%;
+  height: 100px;
+  display: flex;
+}
+.btn-export {
+  background-image: url("images/csv-export.png");
+  background-size: 75px 75px;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid #3082cf;
+  cursor: pointer;
+  width: 75px;
+  height: 75px;
+  margin: auto;
+  padding: auto;
+}
           /* #vehicle:nth-child(7){
               background-image: url('images/Fahrrad.jpg');
               background-size: cover;

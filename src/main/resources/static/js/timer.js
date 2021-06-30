@@ -1,4 +1,4 @@
-const startDateTime = new Date('June 21, 2021 , 11:18:00'); // start
+const startDateTime = new Date(); // start
 const startStamp = startDateTime.getTime();
 
 let newDate = new Date();
