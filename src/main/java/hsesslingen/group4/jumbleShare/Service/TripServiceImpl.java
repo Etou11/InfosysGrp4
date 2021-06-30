@@ -1,7 +1,9 @@
 package hsesslingen.group4.jumbleShare.Service;
 
+import hsesslingen.group4.jumbleShare.Controller.DbController;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Trip;
 import hsesslingen.group4.jumbleShare.Helper.HelperExtension;
+import hsesslingen.group4.jumbleShare.JumbleShareApplication;
 import hsesslingen.group4.jumbleShare.Repository.Grp4Ss21TripRepository;
 import hsesslingen.group4.jumbleShare.Web.Dto.TripDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -70,18 +73,19 @@ public class TripServiceImpl implements TripService
     public boolean checkoutVehicle(TripDto trip)
     {
         Grp4Ss21Trip newTrip = new Grp4Ss21Trip(
-                trip.getId(),
-                trip.getTimestampStart(),
+                UUID.randomUUID(),
+                new Timestamp(System.currentTimeMillis()),
                 null,
                 trip.getLongitudeOrig(),
                 trip.getLatitudeOrig(),
                 null,
                 null,
                 trip.getVehiclePricePerMinute(),
-                trip.getUserId(),
+                JumbleShareApplication._currentlyActiveUser,
                 trip.getVehicleId()
         );
-        tripRepository.save(newTrip);
+        DbController dbController = new DbController();
+        dbController.createTrip(newTrip);
 
         return true;
     }
@@ -97,7 +101,7 @@ public class TripServiceImpl implements TripService
 
         trip.setLongitudeFin(updatedTrip.getLongitudeFin());
         trip.setLatitudeFin(updatedTrip.getLatitudeFin());
-        trip.setTimestampEnd(updatedTrip.getTimestampEnd());
+        trip.setTimestampEnd(new Timestamp(System.currentTimeMillis()));
 
         tripRepository.save(trip);
 

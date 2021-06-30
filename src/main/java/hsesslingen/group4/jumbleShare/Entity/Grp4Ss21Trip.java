@@ -29,7 +29,7 @@ public class Grp4Ss21Trip implements Serializable
     @Column(name = "[timestampstart]", nullable = false)
     private Date timestampStart;
 
-    @Column(name = "[timestampend]")
+    @Column(name = "[timestampend]", nullable = true)
     private Date timestampEnd;
 
     @Column(name = "[longitudeorig]", nullable = false)
@@ -38,10 +38,10 @@ public class Grp4Ss21Trip implements Serializable
     @Column(name = "[latitudeorig]", nullable = false)
     private BigDecimal latitudeOrig;
 
-    @Column(name = "[longitudefin]", nullable = false)
+    @Column(name = "[longitudefin]", nullable = true)
     private BigDecimal longitudeFin;
 
-    @Column(name = "[latitudefin]", nullable = false)
+    @Column(name = "[latitudefin]", nullable = true)
     private BigDecimal latitudeFin;
 
     @Column(name = "[vehiclepriceperminute]", nullable = false)

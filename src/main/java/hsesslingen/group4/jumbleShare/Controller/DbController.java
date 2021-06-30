@@ -1,5 +1,6 @@
 package hsesslingen.group4.jumbleShare.Controller;
 
+import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Trip;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21User;
 import hsesslingen.group4.jumbleShare.Entity.Grp4Ss21Vehicle;
 import hsesslingen.group4.jumbleShare.JumbleShareApplication;
@@ -29,6 +30,43 @@ public class DbController
 
     public DbController ()
     {
+
+    }
+
+    public void createTrip(Grp4Ss21Trip trip)
+    {
+        try
+        {
+            Connection con = DriverManager.getConnection (connectionUrl);
+
+            Statement St = con.createStatement();
+            St.executeQuery("INSERT INTO [dbo].[Grp_4_SS21_Trip]\n" +
+                    "           ([Id]\n" +
+                    "           ,[TimestampStart]\n" +
+                    "           ,[TimestampEnd]\n" +
+                    "           ,[LongitudeOrig]\n" +
+                    "           ,[LatitudeOrig]\n" +
+                    "           ,[LongitudeFin]\n" +
+                    "           ,[LatitudeFin]\n" +
+                    "           ,[VehiclePricePerMinute]\n" +
+                    "           ,[UserId]\n" +
+                    "           ,[VehicleId])\n" +
+                    "     VALUES\n" +
+                    "           ('" + trip.getId() +"'\n" +
+                    "           ,GETDATE() \n" +
+                    "           ," + trip.getTimestampEnd() +"\n" +
+                    "           ," + trip.getLongitudeOrig() +"\n" +
+                    "           ," + trip.getLatitudeOrig() +"\n" +
+                    "           ," + trip.getLongitudeFin() +"\n" +
+                    "           ," + trip.getLatitudeFin() +"\n" +
+                    "           ," + trip.getVehiclePricePerMinute()+"\n" +
+                    "           ,'" + trip.getUserId() +"'\n" +
+                    "           ,'C7864511-DB27-4086-8471-9DB9BEA93090')");
+        }
+        catch (Exception e)
+        {
+
+        }
 
     }
 
