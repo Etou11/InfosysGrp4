@@ -28,7 +28,7 @@ public class DbController
     PreparedStatement p_stmt = null;
     ResultSet rs = null;
 
-    String guid = "38694717-6ffc-42c8-bfba-5f1e23c46972";
+    String guid = "6ed0132a-ee25-44cf-95a1-8f4cf9d1da3c";
 
     public DbController ()
     {
